@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="QuanLyRapChieuPhim.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="vi">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - MIGOS Cinema</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body style="background-color:black ;">
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="font-family: 'Segoe UI'; font-size: 20px; ">
+                        <li><a runat="server" href="~/"><strong>Trang chủ</strong></a></li>
+                        <li><a runat="server" href="~/PhimDangChieu"><strong>Phim đang chiếu</strong></a></li>
+                        <li><a runat="server" href="~/GiaVe"><strong>Giá vé</strong></a></li>                        
+                        <li><a runat="server" href="~/Contact"><strong>Liên hệ</strong></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <asp:Panel ID="Panel1" runat="server" BackColor="#333333">
+            <p style="text-align:right; color:darkgray; font-size:x-large; font-family:'Segoe UI'">
+                <asp:Label ID="labelLogin" runat="server" Font-Bold="true" Text="Bạn là thành viên?"></asp:Label>
+                <asp:HyperLink ID="linkLogin" runat="server" NavigateUrl="~/DangNhap.aspx"><strong>Đăng nhập</strong></asp:HyperLink>
+                <br />
+                <asp:Label ID="labelLogout" runat="server" Text="Xin chào,"></asp:Label>
+                <asp:Label ID="labelTenNguoiDung" runat="server"></asp:Label>
+                &nbsp;
+                <asp:Button ID="btn_LogOut" Text="Đăng xuất" OnClick="btn_LogOut_Click" runat="server" BorderStyle="None" />
+            </p>
+        </asp:Panel>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>COPYRIGHT 2017 MIGOS. ALL RIGHTS RESERVED</p>
+            </footer>
+        </div>
+
+    </form>
+</body>
+</html>

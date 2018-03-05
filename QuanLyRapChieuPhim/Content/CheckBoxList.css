@@ -1,0 +1,126 @@
+﻿.sub-1 {
+    padding: 0px 1px;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 2px solid #ffac0a;
+    box-shadow: 2px 2px 3px 0px #680f10;
+}
+
+    .sub-1 > li {
+        text-align: center;
+        line-height: 28px;
+        white-space: nowrap;
+        border-bottom: 1px solid #e8e8e8;
+    }
+
+        .sub-1 > li > a {
+            padding: 5px 10px;
+            color: #474747;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: .9rem;
+        }
+
+            .sub-1 > li > a:hover {
+                color: #ffac0a;
+            }
+
+        .sub-1 > li.active > a {
+            color: #ff5c00 !important;
+        }
+
+.sub-2 {
+    position: absolute;
+    left: 101%;
+    top: 0px;
+    width: 616px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 1;
+    box-shadow: 2px 2px 3px 0px #680f10;
+    white-space: normal;
+    display: none;
+}
+    /*.sub-1 > li:hover .sub-2{ display: block;}*/
+    .sub-2 .col-width-1 {
+        width: 41%;
+        float: left;
+    }
+
+    .sub-2 .col-width-2 {
+        width: 33%;
+        float: left;
+    }
+
+    .sub-2 .col-width-3 {
+        width: 27%;
+        float: left;
+    }
+
+    .sub-2 .col-3 {
+        overflow: hidden;
+    }
+
+.item-wrap {
+    overflow: hidden;
+}
+
+.sub-2 .sub-title {
+    background: url('../images/arrow-menu-title.png') left 11px no-repeat;
+    padding-left: 13px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #ff8000;
+    text-transform: uppercase;
+}
+
+.sub-2 .items {
+    color: #680f10;
+    padding-left: 13px;
+    text-align: left;
+}
+
+    .sub-2 .items li {
+        padding: 5px 0;
+        line-height: 1.1;
+        cursor: pointer;
+        font-size: .85rem;
+    }
+
+        .sub-2 .items li:hover {
+            color: #ffac0a;
+        }
+
+        .sub-2 .items li.active {
+            font-weight: bold;
+            color: #ff5c00 !important;
+        }
+
+.sub-2 .item-title {
+    color: #680f10;
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: .9rem;
+    padding: 4px 0;
+}
+
+.sub-2 .item-time {
+    margin-left: -7px;
+}
+
+    .sub-2 .item-time li {
+        float: left;
+        color: #680f10;
+        ;
+        border-right: 1px solid #680f10;
+        padding: 0 7px;
+        margin: 5px 0;
+    }
+
+        .sub-1 li:nth-child(3) .col-3 .item-time li:nth-child(5n),
+        .sub-1 li:not(:nth-child(3)) .sub-2 .item-time li:nth-child(3n),
+        .sub-2 .item-time li:last-child {
+            border: none;
+            padding-right: 0;
+        }
