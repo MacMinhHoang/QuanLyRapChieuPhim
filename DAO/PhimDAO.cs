@@ -19,12 +19,12 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 PhimDTO phimDTO = new PhimDTO();
-                phimDTO.MaPhim = dr["MaPhim"].ToString();
-                phimDTO.TenPhim = dr["TenPhim"].ToString();
+                phimDTO.MaPhim = (int) dr["MaPhim"];
+                phimDTO.Ten = dr["Ten"].ToString();
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
                 phimDTO.DienVien = dr["DienVien"].ToString();
-                phimDTO.GioiHanDoTuoi = dr["GioiHanDoTuoi"].ToString();
+                phimDTO.GioiHanDoTuoi =(int) dr["GioiHanDoTuoi"];
                 phimDTO.NoiDung = dr["NoiDung"].ToString();
                 phimDTO.NamSanXuat = Convert.ToInt32(dr["NamSanXuat"]);
                 phimDTO.Poster = dr["Poster"].ToString();
@@ -36,25 +36,23 @@ namespace DAO
             return listPhimDTO;
         }
 
-        public List<PhimDTO> TimKiemTheoTen(string tenphim)
+        public List<PhimDTO> TimKiemTheoTen(string ten)
         {
             List<PhimDTO> listPhimDTO = new List<PhimDTO>();
-            String query = "SELECT * FROM Phim WHERE TenPhim LIKE N'%" + tenphim + "%'";
+            String query = "SELECT * FROM Phim WHERE Ten LIKE N'%" + ten + "%'";
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
                 PhimDTO phimDTO = new PhimDTO();
-                phimDTO.MaPhim = dr["MaPhim"].ToString();
-                phimDTO.TenPhim = dr["TenPhim"].ToString();
+                phimDTO.Ten = dr["Ten"].ToString();
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
                 phimDTO.DienVien = dr["DienVien"].ToString();
-                phimDTO.GioiHanDoTuoi = dr["GioiHanDoTuoi"].ToString();
+                phimDTO.GioiHanDoTuoi = (int)dr["GioiHanDoTuoi"];
                 phimDTO.NoiDung = dr["NoiDung"].ToString();
                 phimDTO.NamSanXuat = Convert.ToInt32(dr["NamSanXuat"]);
                 phimDTO.Poster = dr["Poster"].ToString();
                 phimDTO.Trailer = dr["Trailer"].ToString();
-                listPhimDTO.Add(phimDTO);
             }
             return listPhimDTO;
         }
@@ -68,12 +66,11 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 PhimDTO phimDTO = new PhimDTO();
-                phimDTO.MaPhim = dr["MaPhim"].ToString();
-                phimDTO.TenPhim = dr["TenPhim"].ToString();
+                phimDTO.Ten = dr["Ten"].ToString();
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
                 phimDTO.DienVien = dr["DienVien"].ToString();
-                phimDTO.GioiHanDoTuoi = dr["GioiHanDoTuoi"].ToString();
+                phimDTO.GioiHanDoTuoi = (int)dr["GioiHanDoTuoi"];
                 phimDTO.NoiDung = dr["NoiDung"].ToString();
                 phimDTO.NamSanXuat = Convert.ToInt32(dr["NamSanXuat"]);
                 phimDTO.Poster = dr["Poster"].ToString();
@@ -87,7 +84,7 @@ namespace DAO
         public void ThemPhim(string maphim, string tenphim, string theloai, string daodien, string dienvien,
                                string gioihandotuoi, string noidung, int namsx, string poster, string trailer)
         {
-            String query = @"INSERT INTO Phim VALUES ('" + maphim + "', N'" + tenphim + "', N'" + theloai + "', N'" + daodien + "', N'"
+            String query = @"INSERT INTO Phim VALUES ( N'" + tenphim + "', N'" + theloai + "', N'" + daodien + "', N'"
                 + dienvien + "',N'" + gioihandotuoi + "', N'" + noidung + "', " + namsx + " , '" + poster + "', '" + trailer + "')";
             DataProvider.ExecuteQuery(query);
         }
@@ -115,11 +112,11 @@ namespace DAO
         {
             List<String> listTen = new List<String>();
 
-            String query = "SELECT TenPhim FROM Phim";
+            String query = "SELECT Ten FROM Phim";
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
-                listTen.Add(dr["TenPhim"].ToString());
+                listTen.Add(dr["Ten"].ToString());
             }
 
             return listTen;

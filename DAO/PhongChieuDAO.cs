@@ -19,11 +19,9 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 PhongChieuDTO phongChieuDTO = new PhongChieuDTO();
-                phongChieuDTO.MaPhongChieu = dr["MaPhongChieu"].ToString();
-                phongChieuDTO.LoaiMayChieu = dr["LoaiMayChieu"].ToString();
-                phongChieuDTO.LoaiAmThanh = dr["LoaiAmThanh"].ToString();
-                phongChieuDTO.TinhTrang = dr["TinhTrang"].ToString();
-                phongChieuDTO.SoLuongChoNgoi = Convert.ToInt32(dr["SoLuongChoNgoi"]);
+                phongChieuDTO.TenPhongChieu = dr["TenPhongChieu"].ToString();
+                phongChieuDTO.SoLuongGhe = Convert.ToInt32(dr["SoLuongGhe"]);
+                phongChieuDTO.TinhTrang = (bool) dr["TinhTrang"];
                 listPhongChieuDTO.Add(phongChieuDTO);
             }
             return listPhongChieuDTO;
@@ -38,22 +36,21 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 phongChieuDTO = new PhongChieuDTO();
-                phongChieuDTO.MaPhongChieu = dr["MaPhongChieu"].ToString();
-                phongChieuDTO.LoaiMayChieu = dr["LoaiMayChieu"].ToString();
-                phongChieuDTO.LoaiAmThanh = dr["LoaiAmThanh"].ToString();
-                phongChieuDTO.TinhTrang = dr["TinhTrang"].ToString();
-                phongChieuDTO.SoLuongChoNgoi = Convert.ToInt32(dr["SoLuongChoNgoi"]);
+                phongChieuDTO.MaPhongChieu = (int)dr["MaPhongChieu"];
+                phongChieuDTO.TenPhongChieu = dr["TenPhongChieu"].ToString();
+                phongChieuDTO.SoLuongGhe = Convert.ToInt32(dr["SoLuongGhe"]);
+                phongChieuDTO.TinhTrang = (bool)dr["TinhTrang"];
             }
             return phongChieuDTO;
         }
 
-        public bool ThemPhongChieu(string mapc, string soluongcho, string loaimaychieu, string loaiamthanh, string tinhtrang)
+        public bool ThemPhongChieu(string mapc, string tenpc, string soluongghe,  string tinhtrang)
         {
             String test_mapc = "SELECT * FROM PhongChieu WHERE PhongChieu.MaPhongChieu = '" + mapc + "'";
             DataTable dt_mapc = DataProvider.ExecuteQuery(test_mapc);
             if (dt_mapc.Rows.Count > 0)
                 return false;
-            String query = @"INSERT INTO PhongChieu VALUES ('" + mapc + "', '" + soluongcho + "', N'" + loaimaychieu + "', N'" + loaiamthanh + "', N'"
+            String query = @"INSERT INTO PhongChieu VALUES ('" + tenpc + "', '" + soluongghe + "',  N'"
                 + tinhtrang + "')";
             DataProvider.ExecuteQuery(query);
             return true;
@@ -83,9 +80,9 @@ namespace DAO
         {
             List<Char> listDay = new List<Char>();
 
-            String query = "SELECT SoLuongChoNgoi FROM PhongChieu WHERE MaPhongChieu = '" + mapc + "'";
+            String query = "SELECT SoLuongGhe FROM PhongChieu WHERE MaPhongChieu = '" + mapc + "'";
             DataTable dt = DataProvider.ExecuteQuery(query);
-            int size = Convert.ToInt32(dt.Rows[0]["SoLuongChoNgoi"]);
+            int size = Convert.ToInt32(dt.Rows[0]["SoLuongGhe"]);
             Char c = 'A';
             for (int i = 0; i < size / 10; i++)
             {

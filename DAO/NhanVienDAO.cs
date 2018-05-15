@@ -19,17 +19,10 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 NhanVienDTO nhanVienDTO = new NhanVienDTO();
-                nhanVienDTO.MaNhanVien = dr["MaNhanVien"].ToString();
-                nhanVienDTO.TenNhanVien = dr["TenNhanVien"].ToString();
-                nhanVienDTO.NgaySinh = (dr["NgaySinh"]).ToString();
-                nhanVienDTO.GioiTinh = dr["GioiTinh"].ToString();
-                nhanVienDTO.CMND = dr["CMND"].ToString();
-                nhanVienDTO.DiaChi = dr["DiaChi"].ToString();
-                nhanVienDTO.SoDienThoai = dr["SoDienThoai"].ToString();
-                nhanVienDTO.ViTri = dr["ViTri"].ToString();
-                nhanVienDTO.TenDangNhap = dr["TenDangNhap"].ToString();
-                nhanVienDTO.Email = dr["Email"].ToString();
-
+                nhanVienDTO.MaNhanVien = (int) dr["MaNhanVien"];
+                nhanVienDTO.Luong = (float)dr["Luong"];
+                nhanVienDTO.LichLamViec = dr["LichLamViec"].ToString() ;
+                
                 listNhanVienDTO.Add(nhanVienDTO);
             }
 
@@ -38,32 +31,30 @@ namespace DAO
 
         public NhanVienDTO LayThongTin(string tendangnhap)
         {
-            String query = "SELECT * FROM NhanVien WHERE TenDangNhap = '" + tendangnhap + "'";
+            String query = "select * from NhanVien N, NguoiDung D where D.TenDangNhap = '" + tendangnhap + "' " +
+                "and N.MaNhanVien = D.MaNguoiDung";
             DataTable dt = DataProvider.ExecuteQuery(query);
             NhanVienDTO nhanVienDTO = new NhanVienDTO();
-            nhanVienDTO.MaNhanVien = dt.Rows[0]["MaNhanVien"].ToString();
-            nhanVienDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
-            nhanVienDTO.Email = dt.Rows[0]["Email"].ToString();
-            nhanVienDTO.TenNhanVien = dt.Rows[0]["TenNhanVien"].ToString();
-            nhanVienDTO.NgaySinh = (dt.Rows[0]["NgaySinh"]).ToString();
-            nhanVienDTO.GioiTinh = dt.Rows[0]["GioiTinh"].ToString();
-            nhanVienDTO.CMND = dt.Rows[0]["CMND"].ToString();
-            nhanVienDTO.SoDienThoai = dt.Rows[0]["SoDienThoai"].ToString();
-            nhanVienDTO.DiaChi = dt.Rows[0]["DiaChi"].ToString();
-            nhanVienDTO.ViTri = dt.Rows[0]["ViTri"].ToString();
+            NguoiDungDTO nguoidungDTO = new NguoiDungDTO();
+            nhanVienDTO.MaNhanVien = (int) dt.Rows[0]["MaNhanVien"];
+            nguoidungDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
+            nguoidungDTO.HoTen = dt.Rows[0]["HoTen"].ToString();
+            nguoidungDTO.NgaySinh = (dt.Rows[0]["NgaySinh"]).ToString();
+            nguoidungDTO.GioiTinh =(bool)  dt.Rows[0]["GioiTinh"];
+            nguoidungDTO.SDT = dt.Rows[0]["SDT"].ToString();
+            nguoidungDTO.DiaChi = dt.Rows[0]["DiaChi"].ToString();
+            nhanVienDTO.LichLamViec = dt.Rows[0]["LichLamViec"].ToString();
 
             return nhanVienDTO;
         }
 
-        public bool ThemNhanVien(string manv, string tennv, string ngaysinh, string gioitinh, string cmnd,
-                               string diachi, string sdt, string vitri, string tendn, string email)
+        public bool ThemNhanVien(string manv, string luong, string lichlamviec)
         {
             String test_manv = "SELECT * FROM NhanVien WHERE NhanVien.MaNhanVien = '" + manv + "'";
             DataTable dt_manv = DataProvider.ExecuteQuery(test_manv);
             if (dt_manv.Rows.Count > 0)
                 return false;
-            String query = @"INSERT INTO Nhanvien VALUES ('" + manv + "', N'" + tennv + "', '" + ngaysinh + "', N'" + gioitinh + "', '" 
-                + cmnd + "',N'" + diachi + "', '" + sdt + "', N'" + vitri + "', '" + tendn + "', '" + email + "')";
+            String query = @"INSERT INTO Nhanvien VALUES ('" + manv + "', N'" + luong + "', '" + lichlamviec + "')";
             DataProvider.ExecuteQuery(query);
             return true;
         }
@@ -87,12 +78,9 @@ namespace DAO
             return count;
         }
 
-        public void SuaThongTin(string manv, string hoten, string ngaysinh, string gioitinh, string cmnd, string sdt,
-                                string diachi, string email, string vitri)
+        public void SuaThongTin(string manv, string luong, string lichlamviec)
         {
-            String query = @"UPDATE NhanVien SET TenNhanVien = N'" + hoten + "', NgaySinh = '" + ngaysinh + "', " +
-                "GioiTinh = N'" + gioitinh + "', CMND = '" + cmnd + "', SoDienThoai = '" + sdt + "', " +
-                "DiaChi = N'" + diachi + "', Email = '" + email + "', ViTri = N'" + vitri + "' WHERE MaNhanVien = '" + manv + "'";
+            String query = @"UPDATE NhanVien SET TenNhanVien = N'" + luong + "', NgaySinh = '" + lichlamviec + "' WHERE MaNhanVien = '" + manv + "'";
             DataProvider.ExecuteQuery(query);
         }
     }

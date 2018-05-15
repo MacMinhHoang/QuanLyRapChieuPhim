@@ -10,10 +10,10 @@ namespace DTO
     {
         private String _TenDangNhap;
         private String _MatKhau;
-        private String _ChucNang;
+        private String _PhanQuyen;
 
         public String TenDangNhap { get => _TenDangNhap; set => _TenDangNhap = value; }
         public String MatKhau { get => _MatKhau; set => _MatKhau = value; }
-        public String ChucNang { get => _ChucNang; set => _ChucNang = value; }
+        public String PhanQuyen { get => _PhanQuyen; set => _PhanQuyen = value; }
     }
 }

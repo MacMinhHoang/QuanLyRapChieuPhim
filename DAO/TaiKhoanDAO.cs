@@ -37,19 +37,19 @@ namespace DAO
                 TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
                 taiKhoanDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
                 taiKhoanDTO.MatKhau = dt.Rows[0]["MatKhau"].ToString();
-                taiKhoanDTO.ChucNang = dt.Rows[0]["ChucNang"].ToString();
+                taiKhoanDTO.PhanQuyen = dt.Rows[0]["PhanQuyen"].ToString();
                 return taiKhoanDTO;
             }
             return null;
         }
 
-        public bool ThemTaiKhoan(string tendn, string mk, string chucnang)
+        public bool ThemTaiKhoan(string tendn, string mk, string phanquyen)
         {
             String test_tendn = "SELECT * FROM TaiKhoan WHERE TaiKhoan.TenDangNhap = '" + tendn + "'";
             DataTable dt_test = DataProvider.ExecuteQuery(test_tendn);
             if (dt_test.Rows.Count > 0)
                 return false;
-            String query = "INSERT INTO TaiKhoan VALUES ('" + tendn + "','" + mk + "', N'" + chucnang + "')";
+            String query = "INSERT INTO TaiKhoan VALUES ('" + tendn + "','" + mk + "', N'" + phanquyen + "')";
             DataProvider.ExecuteQuery(query);
             return true;
         }
