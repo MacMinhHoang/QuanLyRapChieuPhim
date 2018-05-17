@@ -19,16 +19,13 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 QuanLyDTO quanLyDTO = new QuanLyDTO();
-                quanLyDTO.MaQuanLy = dr["MaQuanLy"].ToString();
-                quanLyDTO.TenDangNhap = dr["TenDangNhap"].ToString();
-                quanLyDTO.Email = dr["Email"].ToString();
+                quanLyDTO.MaQuanLy = Convert.ToInt32(dr["MaNguoiDung"]);
                 quanLyDTO.HoTen = dr["HoTen"].ToString();
                 quanLyDTO.NgaySinh = (dr["NgaySinh"]).ToString();
-                quanLyDTO.GioiTinh = dr["GioiTinh"].ToString();
-                quanLyDTO.CMND = dr["CMND"].ToString();
-                quanLyDTO.SoDienThoai = dr["SoDienThoai"].ToString();
+                quanLyDTO.GioiTinh = Convert.ToBoolean(dr["GioiTinh"]);
                 quanLyDTO.DiaChi = dr["DiaChi"].ToString();
-
+                quanLyDTO.SDT = dr["SDT"].ToString();
+                quanLyDTO.TenDangNhap = dr["TenDangNhap"].ToString();
                 listQuanLyDTO.Add(quanLyDTO);
             }
             return listQuanLyDTO;
@@ -39,37 +36,35 @@ namespace DAO
             String query = "SELECT * FROM QuanLy WHERE TenDangNhap = '" + tendangnhap + "'";
             DataTable dt = DataProvider.ExecuteQuery(query);
             QuanLyDTO quanLyDTO = new QuanLyDTO();
-            quanLyDTO.MaQuanLy = dt.Rows[0]["MaQuanLy"].ToString();
-            quanLyDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
-            quanLyDTO.Email = dt.Rows[0]["Email"].ToString();
+            quanLyDTO.MaQuanLy = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
             quanLyDTO.HoTen = dt.Rows[0]["HoTen"].ToString();
-            quanLyDTO.NgaySinh = Convert.ToDateTime(dt.Rows[0]["NgaySinh"]).ToShortDateString();
-            quanLyDTO.GioiTinh = dt.Rows[0]["GioiTinh"].ToString();
-            quanLyDTO.CMND = dt.Rows[0]["CMND"].ToString();
-            quanLyDTO.SoDienThoai = dt.Rows[0]["SoDienThoai"].ToString();
+            quanLyDTO.NgaySinh = (dt.Rows[0]["NgaySinh"]).ToString();
+            quanLyDTO.GioiTinh = Convert.ToBoolean(dt.Rows[0]["GioiTinh"]);
             quanLyDTO.DiaChi = dt.Rows[0]["DiaChi"].ToString();
+            quanLyDTO.SDT = dt.Rows[0]["SDT"].ToString();
+            quanLyDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
 
             return quanLyDTO;
         }
 
-        public void ThemQuanLy(string maql, string tendangnhap, string email, string hoten, string ngaysinh,
-            string gioitinh, string cmnd, string sodienthoai, string diachi)
+        public void ThemQuanLy(QuanLyDTO ql)
         {
-            String query = @"INSERT INTO QuanLy VALUES ('" + maql + "','" + tendangnhap + "','" + email + "',N'" + hoten + "','"
-                + ngaysinh + "',N'" + gioitinh + "','" + cmnd + "','" + sodienthoai + "',N'" + diachi + "')";
-            DataProvider.ExecuteQuery(query);
+            //String insertSQL = "INSERT INTO QuanLy VALUES ()";
+            //String query = string.Format(insertSQL )
+            //DataProvider.ExecuteQuery(query);
         }
 
-        public void XoaQuanLy(string maql)
+        public void XoaQuanLy(int maql)
         {
-            String query = @"delete from QuanLy where MaQuanLy = '" + maql + "' ";
+            String query = string.Format(@"DELETE FROM QuanLy WHERE MaQuanLy = '{0}'", maql);
             DataProvider.ExecuteQuery(query);
         }
 
         public int SoLuongQuanLy()
         {
             int count = 0;
-            String query = "SELECT count(QuanLy.MaQuanLy) as SoLuong FROM QuanLy";
+            String query = "SELECT count(ND.MaNguoiDung) as SoLuong FROM NguoiDung ND, TaiKhoan TK " +
+                "WHERE ND.TenDangNhap = TK.TenDangNhap AND TK.PhanQuyen = 'QL'";
             DataTable dt = DataProvider.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
@@ -79,12 +74,10 @@ namespace DAO
             return count;
         }
 
-        public void SuaThongTin(string maql, string hoten, string ngaysinh, string gioitinh,
-                                string cmnd, string sdt, string diachi, string email)
+        public void SuaThongTin(QuanLyDTO ql)
         {
-            String query = @"UPDATE QuanLy SET HoTen = N'" + hoten + "', NgaySinh = '" + ngaysinh + "', " +
-                "GioiTinh = N'" + gioitinh + "', CMND = '" + cmnd + "', SoDienThoai = '" + sdt + "', " +
-                "DiaChi = N'" + diachi + "', Email = '" + email + "' WHERE MaQuanLy = '" + maql + "'";
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = N'{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = '{5}'";
+            String query = string.Format(updateSQL, ql.HoTen, ql.NgaySinh, ql.GioiTinh, ql.DiaChi, ql.SDT, ql.MaQuanLy);
             DataProvider.ExecuteQuery(query);
         }
     }

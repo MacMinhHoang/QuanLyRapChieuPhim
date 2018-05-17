@@ -17,7 +17,7 @@ namespace QuanLyRapChieuPhim
             {
                 String tendangnhap = Session["TenDangNhap"].ToString();
                 AdminBUS adminBUS = new AdminBUS();
-                AdminDTO adminDTO = adminBUS.LayThongTin(tendangnhap);
+                NhanVienKTDTO adminDTO = adminBUS.LayThongTin(tendangnhap);
                 lb_TenDangNhap.Text = tendangnhap;
 
                 lb_ID.Text = adminDTO.AdminID;

@@ -8,17 +8,15 @@ namespace DTO
 {
     public class VeDTO
     {
-        
-        private int _MaVe;
-        private int _MaKhachHang;
-        private int _MaSuatChieu;
+        private Int32 _MaVe;
+        private Int32 _MaKhachHang;
+        private Int32 _MaSuatChieu;
         private String _Ghe;
         private Boolean _LoaiVe;
         private float _GiaVe;
         private Boolean _ThanhToan;
         private Boolean _TinhTrang;
         
-
         
         public int MaVe { get => _MaVe; set => _MaVe = value; }
         public int MaKhachHang { get => _MaKhachHang; set => _MaKhachHang = value; }

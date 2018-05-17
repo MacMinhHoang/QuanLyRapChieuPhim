@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class ThongKeDTO
+    public class ThongKeDTO
     {
         private Int32 _MaHoatDong;
         private String _TenHoatDong;

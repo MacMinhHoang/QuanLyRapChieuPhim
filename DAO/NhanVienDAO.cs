@@ -10,17 +10,25 @@ namespace DAO
 {
     public class NhanVienDAO
     {
+        //Nhân viên thường
         public List<NhanVienDTO> LayDanhSach()
         {
             List<NhanVienDTO> listNhanVienDTO = new List<NhanVienDTO>();
 
-            String query = "SELECT * FROM NhanVien";
+            //Nhân viên bình thường ko có tài khoản, NV kĩ thuật thì có
+            String query = "SELECT * FROM NguoiDung ND, NhanVien NV WHERE NV.MaNhanVien = ND.MaNguoiDung " +
+                "AND ND.TenDangNhap = NULL";
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
                 NhanVienDTO nhanVienDTO = new NhanVienDTO();
-                nhanVienDTO.MaNhanVien = (int) dr["MaNhanVien"];
-                nhanVienDTO.Luong = (float)dr["Luong"];
+                nhanVienDTO.MaNhanVien = Convert.ToInt32(dr["MaNhanVien"]);
+                nhanVienDTO.HoTen = dr["HoTen"].ToString();
+                nhanVienDTO.NgaySinh = (dr["NgaySinh"]).ToString();
+                nhanVienDTO.GioiTinh = Convert.ToBoolean(dr["GioiTinh"]);
+                nhanVienDTO.DiaChi = dr["DiaChi"].ToString();
+                nhanVienDTO.SDT = dr["SDT"].ToString();
+                nhanVienDTO.Luong = Convert.ToInt32(dr["Luong"]);
                 nhanVienDTO.LichLamViec = dr["LichLamViec"].ToString() ;
                 
                 listNhanVienDTO.Add(nhanVienDTO);
@@ -29,39 +37,48 @@ namespace DAO
             return listNhanVienDTO;
         }
 
-        public NhanVienDTO LayThongTin(string tendangnhap)
+        public NhanVienDTO LayThongTin(string id)
         {
-            String query = "select * from NhanVien N, NguoiDung D where D.TenDangNhap = '" + tendangnhap + "' " +
-                "and N.MaNhanVien = D.MaNguoiDung";
+            NhanVienDTO nhanVienDTO = null;
+            String query = string.Format("SELECT * FROM NguoiDung ND, NhanVien NV WHERE NV.MaNhanVien = '{0}' " +
+                "AND NV.MaNhanVien = ND.MaNguoiDung", id);
             DataTable dt = DataProvider.ExecuteQuery(query);
-            NhanVienDTO nhanVienDTO = new NhanVienDTO();
-            NguoiDungDTO nguoidungDTO = new NguoiDungDTO();
-            nhanVienDTO.MaNhanVien = (int) dt.Rows[0]["MaNhanVien"];
-            nguoidungDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
-            nguoidungDTO.HoTen = dt.Rows[0]["HoTen"].ToString();
-            nguoidungDTO.NgaySinh = (dt.Rows[0]["NgaySinh"]).ToString();
-            nguoidungDTO.GioiTinh =(bool)  dt.Rows[0]["GioiTinh"];
-            nguoidungDTO.SDT = dt.Rows[0]["SDT"].ToString();
-            nguoidungDTO.DiaChi = dt.Rows[0]["DiaChi"].ToString();
-            nhanVienDTO.LichLamViec = dt.Rows[0]["LichLamViec"].ToString();
-
+            if (dt.Rows.Count > 0)
+            {
+                nhanVienDTO = new NhanVienDTO();
+                nhanVienDTO.MaNhanVien = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
+                nhanVienDTO.HoTen = dt.Rows[0]["HoTen"].ToString();
+                nhanVienDTO.NgaySinh = (dt.Rows[0]["NgaySinh"]).ToString();
+                nhanVienDTO.GioiTinh = Convert.ToBoolean(dt.Rows[0]["GioiTinh"]);
+                nhanVienDTO.DiaChi = dt.Rows[0]["DiaChi"].ToString();
+                nhanVienDTO.SDT = dt.Rows[0]["SDT"].ToString();
+                nhanVienDTO.Luong = Convert.ToInt32(dt.Rows[0]["Luong"]);
+                nhanVienDTO.LichLamViec = dt.Rows[0]["LichLamViec"].ToString();
+            }
             return nhanVienDTO;
         }
 
-        public bool ThemNhanVien(string manv, string luong, string lichlamviec)
+        public bool ThemNhanVien(NhanVienDTO nv)
         {
-            String test_manv = "SELECT * FROM NhanVien WHERE NhanVien.MaNhanVien = '" + manv + "'";
-            DataTable dt_manv = DataProvider.ExecuteQuery(test_manv);
-            if (dt_manv.Rows.Count > 0)
-                return false;
-            String query = @"INSERT INTO Nhanvien VALUES ('" + manv + "', N'" + luong + "', '" + lichlamviec + "')";
+            String insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')";
+            String query = string.Format(insertSQL, null, nv.HoTen, nv.NgaySinh, nv.GioiTinh, nv.DiaChi, nv.SDT);
+            DataProvider.ExecuteQuery(query);
+
+            //Lấy mã người dùng mà CSDL mới tạo
+            String SQL = string.Format("SELECT MaNguoiDung FROM NguoiDung WHERE HoTen = '{0}' AND NgaySinh = ", nv.HoTen, nv.NgaySinh);
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            int manv = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
+
+            query = string.Format(@"INSERT INTO Nhanvien VALUES ('{0}', '{1}', '{2}')", manv, nv.Luong, nv.LichLamViec);
             DataProvider.ExecuteQuery(query);
             return true;
         }
 
-        public void XoaNhanVien(string manv)
+        public void XoaNhanVien(int manv)
         {
-            String query = "DELETE FROM NhanVien WHERE MaNhanVien = '" + manv + "' ";
+            String query = string.Format("DELETE FROM NhanVien WHERE MaNhanVien = '{0}'", manv);
+            DataProvider.ExecuteQuery(query);
+            query = string.Format("DELETE FROM NguoiDung WHERE MaNguoiDung = '{0}'", manv);
             DataProvider.ExecuteQuery(query);
         }
 
@@ -78,9 +95,14 @@ namespace DAO
             return count;
         }
 
-        public void SuaThongTin(string manv, string luong, string lichlamviec)
+        public void SuaThongTin(NhanVienDTO nv)
         {
-            String query = @"UPDATE NhanVien SET TenNhanVien = N'" + luong + "', NgaySinh = '" + lichlamviec + "' WHERE MaNhanVien = '" + manv + "'";
+            String SQL = @"UPDATE NhanVien SET Luong = '{0}', LichlamViec = '{1}' WHERE MaNhanVien = '{2}'";
+            String query = string.Format(SQL, nv.Luong, nv.LichLamViec, nv.MaNhanVien);
+            DataProvider.ExecuteQuery(query);
+
+            SQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = N'{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = '{5}'";
+            query = string.Format(SQL, nv.HoTen, nv.NgaySinh, nv.GioiTinh, nv.DiaChi, nv.SDT, nv.MaNhanVien);
             DataProvider.ExecuteQuery(query);
         }
     }

@@ -8,24 +8,20 @@ namespace DTO
 {
     public class QuanLyDTO
     {
-        private String _MaQuanLy;
+        private Int32 _MaQuanLy;
         private String _TenDangNhap;
-        private String _Email;
         private String _HoTen;
         private String _NgaySinh;
-        private String _GioiTinh;
-        private String _CMND;
-        private String _SoDienThoai;
+        private Boolean _GioiTinh;
         private String _DiaChi;
+        private String _SDT;
 
-        public String MaQuanLy { get => _MaQuanLy; set => _MaQuanLy = value; }
-        public String TenDangNhap { get => _TenDangNhap; set => _TenDangNhap = value; }
-        public String Email { get => _Email; set => _Email = value; }
-        public String HoTen { get => _HoTen; set => _HoTen = value; }
-        public String NgaySinh { get => _NgaySinh; set => _NgaySinh = value; }
-        public String GioiTinh { get => _GioiTinh; set => _GioiTinh = value; }
-        public String CMND { get => _CMND; set => _CMND = value; }
-        public String SoDienThoai { get => _SoDienThoai; set => _SoDienThoai = value; }
-        public String DiaChi { get => _DiaChi; set => _DiaChi = value; }
+        public int MaQuanLy { get => _MaQuanLy; set => _MaQuanLy = value; }
+        public string HoTen { get => _HoTen; set => _HoTen = value; }
+        public string NgaySinh { get => _NgaySinh; set => _NgaySinh = value; }
+        public bool GioiTinh { get => _GioiTinh; set => _GioiTinh = value; }
+        public string DiaChi { get => _DiaChi; set => _DiaChi = value; }
+        public string SDT { get => _SDT; set => _SDT = value; }
+        public string TenDangNhap { get => _TenDangNhap; set => _TenDangNhap = value; }
     }
 }

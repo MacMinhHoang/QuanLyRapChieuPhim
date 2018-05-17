@@ -18,33 +18,32 @@ namespace DAO
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
-                VeDTO VeDTO = new VeDTO();
-                VeDTO.MaKhachHang = dr["MaKhachHang"].ToString();
-                VeDTO.MaVe = dr["MaVe"].ToString();
-                VeDTO.TenPhim = dr["TenPhim"].ToString();
-                VeDTO.NgayChieu = dr["NgayChieu"].ToString();
-                VeDTO.SuatChieu = dr["SuatChieu"].ToString();
-                VeDTO.MaPhongChieu = dr["MaPhongChieu"].ToString();
-                VeDTO.ViTriNgoi = dr["ViTriNgoi"].ToString();
-                VeDTO.Gia = Convert.ToInt32(dr["Gia"]);
+                VeDTO veDTO = new VeDTO();
+                veDTO.MaVe = Convert.ToInt32(dr["MaVe"]);
+                veDTO.MaKhachHang = Convert.ToInt32(dr["MaKhachHang"]);
+                veDTO.MaSuatChieu = Convert.ToInt32(dr["MaSuatChieu"]);
+                veDTO.Ghe = dr["Ghe"].ToString();
+                veDTO.LoaiVe = Convert.ToBoolean(dr["LoaiVe"]);
+                veDTO.GiaVe = Convert.ToInt64(dr["GiaVe"]);
+                veDTO.ThanhToan = Convert.ToBoolean(dr["ThanhToan"]);
+                veDTO.TinhTrang = Convert.ToBoolean(dr["TinhTrang"]);
 
-                listVeDTO.Add(VeDTO);
+                listVeDTO.Add(veDTO);
             }
 
             return listVeDTO;
         }
 
-        public void ThemVe(string makh, string mave, string tenphim, string ngaychieu, string suatchieu,
-            string mapc, string vitringoi, int gia)
+        public void ThemVe(VeDTO ve)
         {
-            String query = @"insert into Ve values ('" + makh + "','" + mave + "', N'" + tenphim +
-                "','" + ngaychieu + "','" + suatchieu + "' , '" + mapc + "','" + vitringoi + "'," + gia.ToString() + ")";
+            String insertSQL = @"INSERT INTO Ve values ('{0}','{1}', '{2}', '{3}', '{4}', '{5}','{6}')";
+            String query = string.Format(insertSQL, ve.MaKhachHang, ve.MaSuatChieu, ve.Ghe, ve.LoaiVe, ve.GiaVe, ve.ThanhToan, ve.TinhTrang);
             DataProvider.ExecuteQuery(query);
         }
 
-        public void XoaVe(string mave)
+        public void XoaVe(int mave)
         {
-            String query = "delete from Ve where MaVe = '" + mave + "' ";
+            String query = string.Format("DELETE FROM Ve where MaVe = '{0}'", mave);
             DataProvider.ExecuteQuery(query);
         }
 

@@ -19,12 +19,12 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 PhimDTO phimDTO = new PhimDTO();
-                phimDTO.MaPhim = (int) dr["MaPhim"];
+                phimDTO.MaPhim = Convert.ToInt32(dr["MaPhim"]);
                 phimDTO.Ten = dr["Ten"].ToString();
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
                 phimDTO.DienVien = dr["DienVien"].ToString();
-                phimDTO.GioiHanDoTuoi =(int) dr["GioiHanDoTuoi"];
+                phimDTO.GioiHanDoTuoi = Convert.ToInt32(dr["GioiHanDoTuoi"]);
                 phimDTO.NoiDung = dr["NoiDung"].ToString();
                 phimDTO.NamSanXuat = Convert.ToInt32(dr["NamSanXuat"]);
                 phimDTO.Poster = dr["Poster"].ToString();
@@ -39,7 +39,7 @@ namespace DAO
         public List<PhimDTO> TimKiemTheoTen(string ten)
         {
             List<PhimDTO> listPhimDTO = new List<PhimDTO>();
-            String query = "SELECT * FROM Phim WHERE Ten LIKE N'%" + ten + "%'";
+            String query = string.Format("SELECT * FROM Phim WHERE Ten LIKE N'% '{0}' %'", ten);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -48,7 +48,7 @@ namespace DAO
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
                 phimDTO.DienVien = dr["DienVien"].ToString();
-                phimDTO.GioiHanDoTuoi = (int)dr["GioiHanDoTuoi"];
+                phimDTO.GioiHanDoTuoi = Convert.ToInt32(dr["GioiHanDoTuoi"]);
                 phimDTO.NoiDung = dr["NoiDung"].ToString();
                 phimDTO.NamSanXuat = Convert.ToInt32(dr["NamSanXuat"]);
                 phimDTO.Poster = dr["Poster"].ToString();
@@ -61,7 +61,7 @@ namespace DAO
         {
             List<PhimDTO> listPhimDTO = new List<PhimDTO>();
 
-            String query = "SELECT * FROM Phim WHERE TheLoai = N'" + theloai + "' ";
+            String query = string.Format("SELECT * FROM Phim WHERE TheLoai = N'{0}'", theloai);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -70,7 +70,7 @@ namespace DAO
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
                 phimDTO.DienVien = dr["DienVien"].ToString();
-                phimDTO.GioiHanDoTuoi = (int)dr["GioiHanDoTuoi"];
+                phimDTO.GioiHanDoTuoi = Convert.ToInt32(dr["GioiHanDoTuoi"]);
                 phimDTO.NoiDung = dr["NoiDung"].ToString();
                 phimDTO.NamSanXuat = Convert.ToInt32(dr["NamSanXuat"]);
                 phimDTO.Poster = dr["Poster"].ToString();
@@ -81,17 +81,23 @@ namespace DAO
             return listPhimDTO;
         }
 
-        public void ThemPhim(string maphim, string tenphim, string theloai, string daodien, string dienvien,
-                               string gioihandotuoi, string noidung, int namsx, string poster, string trailer)
+        public void ThemPhim(PhimDTO ph)
         {
-            String query = @"INSERT INTO Phim VALUES ( N'" + tenphim + "', N'" + theloai + "', N'" + daodien + "', N'"
-                + dienvien + "',N'" + gioihandotuoi + "', N'" + noidung + "', " + namsx + " , '" + poster + "', '" + trailer + "')";
+            String insertSQL = @"INSERT INTO Phim VALUES " +
+                "(N'{0}', N'{1}', N'{2}', N'{3}',N'{4}', N'{5}', '{6}' , '{7}', '{8}')";
+
+            String query = string.Format(insertSQL, ph.Ten, ph.TheLoai, ph.DaoDien, ph.DienVien, ph.GioiHanDoTuoi, 
+                ph.NoiDung, ph.NamSanXuat, ph.Poster, ph.Trailer);
+
             DataProvider.ExecuteQuery(query);
         }
 
-        public void XoaPhim(string maphim)
+        public void XoaPhim(int maphim)
         {
-            String query = "DELETE FROM Phim WHERE MaPhim = '" + maphim + "' ";
+            String query = string.Format("DELETE FROM SuatChieu WHERE MaPhim = '{0}'", maphim); ;
+            DataProvider.ExecuteQuery(query);
+
+            query = string.Format("DELETE FROM Phim WHERE MaPhim = '{0}'", maphim);
             DataProvider.ExecuteQuery(query);
         }
 

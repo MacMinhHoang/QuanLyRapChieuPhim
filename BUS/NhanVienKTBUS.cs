@@ -8,28 +8,28 @@ using System.Threading.Tasks;
 
 namespace BUS
 {
-    public class AdminBUS
+    public class NhanVienKTBUS
     {
-        private AdminDAO adminDAO;
+        private NhanVienKTDAO nhanVienKTDAO;
 
-        public AdminBUS()
+        public NhanVienKTBUS()
         {
-            adminDAO = new AdminDAO();
+            nhanVienKTDAO = new NhanVienKTDAO();
         }
 
         public List<NhanVienKTDTO> LayDanhSach()
         {
-            return adminDAO.LayDanhSach();
+            return nhanVienKTDAO.LayDanhSach();
         }
 
         public NhanVienKTDTO LayThongTin(string tendangnhap)
         {
-            return adminDAO.LayThongTin(tendangnhap);
+            return nhanVienKTDAO.LayThongTin(tendangnhap);
         }
 
-        public void SuaThongTin(NhanVienKTDTO ad)
+        public void SuaThongTin(NhanVienKTDTO kt)
         {
-            adminDAO.SuaThongTin(ad);
+            nhanVienKTDAO.SuaThongTin(kt);
         }
     }
 }

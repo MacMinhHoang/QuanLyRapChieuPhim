@@ -12,7 +12,7 @@ namespace DTO
         private Int32 _MaPhongChieu;
         private String _NgayChieu;
         private String _GioChieu;
-        private int _MaPhim;
+        private Int32 _MaPhim;
 
         public int MaPhongChieu { get => _MaPhongChieu; set => _MaPhongChieu = value; }
         public int MaSuatChieu { get => _MaSuatChieu; set => _MaSuatChieu = value; }

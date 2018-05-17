@@ -44,7 +44,6 @@
     <Compile Include="AdminDAO.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="KhachHangDAO.cs" />
-    <Compile Include="NguoiDungDAO.cs" />
     <Compile Include="SuatChieuDAO.cs" />
     <Compile Include="NhanVienDAO.cs" />
     <Compile Include="PhimDAO.cs" />

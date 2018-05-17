@@ -14,29 +14,50 @@ namespace DAO
         {
             List<KhachHangDTO> listKhachHangDTO = new List<KhachHangDTO>();
 
-            String query = "SELECT * FROM KhachHang";
+            String query = "SELECT * FROM NguoiDung ND, KhachHang KH WHERE KH.MaKhachHang = ND.MaNguoiDung";
             DataTable dt = DataProvider.ExecuteQuery(query);
+
             foreach (DataRow dr in dt.Rows)
             {
                 KhachHangDTO khachHangDTO = new KhachHangDTO();
                 khachHangDTO.MaKhachHang = Convert.ToInt32(dr["MaKhachHang"]);
+                khachHangDTO.HoTen = dr["HoTen"].ToString();
+                khachHangDTO.NgaySinh = (dr["NgaySinh"]).ToString();
+                khachHangDTO.GioiTinh = Convert.ToBoolean(dr["GioiTinh"]);
+                khachHangDTO.DiaChi = dr["DiaChi"].ToString();
+                khachHangDTO.SDT = dr["SDT"].ToString();
+                khachHangDTO.TenDangNhap = dr["TenDangNhap"].ToString();
                 khachHangDTO.DiemTichLuy = Convert.ToInt32(dr["DiemTichLuy"]);
-
-
                 listKhachHangDTO.Add(khachHangDTO);
             }
             return listKhachHangDTO;
         }
 
-        public void ThemKhachHang(string makh, string diemtichluy)
+        public void ThemKhachHang(KhachHangDTO kh, TaiKhoanDTO tk)
         {
-            String query = @"INSERT INTO KhachHang VALUES ('" + makh + "', '" + diemtichluy + "')";
+            String insertSQL = @"INSERT INTO TaiKhoan VALUES ('{0}', '{1}', '{2}')";
+            String query = string.Format(insertSQL, tk.TenDangNhap, tk.MatKhau, tk.PhanQuyen);
+            DataProvider.ExecuteQuery(query);
+
+            insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')";
+            query = string.Format(insertSQL, kh.TenDangNhap, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT);
+            DataProvider.ExecuteQuery(query);
+
+            //Lấy mã người dùng mà CSDL mới tạo
+            String SQL = string.Format("SELECT MaNguoiDung FROM NguoiDung WHERE TenDangNhap = '{0}'", tk.TenDangNhap);
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            int makh = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
+
+            insertSQL = @"INSERT INTO KhachHang VALUES ('{0}', '{1}')";
+            query = string.Format(insertSQL, makh, kh.DiemTichLuy);
             DataProvider.ExecuteQuery(query);
         }
 
-        public void XoaKhachHang(string makh)
+        public void XoaKhachHang(int makh)
         {
-            String query = "DELETE FROM KhachHang WHERE MaKhachHang = '" + makh + "' ";
+            String query = string.Format("DELETE FROM NguoiDung WHERE MaNguoiDung = '{0}'", makh);
+            DataProvider.ExecuteQuery(query);
+            query = string.Format("DELETE FROM KhachHang WHERE MaKhachHang = '{0}'", makh);
             DataProvider.ExecuteQuery(query);
         }
 
@@ -53,36 +74,24 @@ namespace DAO
             return count;
         }
 
-        public string LayMaKH(string makh)
-        {
-            String query = "SELECT MaKhachHang FROM KhachHang WHERE MaKhachHang = '" + makh + "'";
-            DataTable dt = DataProvider.ExecuteQuery(query);
-            return dt.Rows[0]["MaKhachHang"].ToString();
-        }
+        /*   Hàm tối nghĩa  */
 
-        public void SuaThongTin(string makh, string hoten, string ngaysinh, string gioitinh, string diachi, string sdt)
-        {
-            String query = @"update NguoiDung set HoTen = N'" + hoten +"' where NguoiDung.MaNguoiDung = '"+ makh + "'";
-            DataProvider.ExecuteQuery(query);            
-        }
+        //public string LayMaKH(string makh)
+        //{
+        //    String query = "SELECT MaKhachHang FROM KhachHang WHERE MaKhachHang = '" + makh + "'";
+        //    DataTable dt = DataProvider.ExecuteQuery(query);
+        //    return dt.Rows[0]["MaKhachHang"].ToString();
+        //}
 
-        public NguoiDungDTO LayThongTin(string tendangnhap)
+        public void SuaThongTin(KhachHangDTO kh)
         {
-            String query = "SELECT * FROM KhachHang, NguoiDung WHERE NguoiDung.TenDangNhap = '" + tendangnhap  +"' and NguoiDung.MaNguoiDung = KhachHang.MaKhachHang";
-            DataTable dt = DataProvider.ExecuteQuery(query);
-            NguoiDungDTO nguoidungDTO = null; 
-            if (dt.Rows.Count > 0)
-            {
-                nguoidungDTO = new NguoiDungDTO();
-                nguoidungDTO.MaNguoiDung = (int) dt.Rows[0]["MaNguoiDung"];
-                nguoidungDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
-                nguoidungDTO.HoTen = dt.Rows[0]["HoTen"].ToString();
-                nguoidungDTO.NgaySinh = (dt.Rows[0]["NgaySinh"]).ToString();
-                nguoidungDTO.GioiTinh = (bool) (dt.Rows[0]["GioiTinh"]);
-                nguoidungDTO.DiaChi = dt.Rows[0]["DiaChi"].ToString();
-                nguoidungDTO.SDT = dt.Rows[0]["SDT"].ToString();
-            }
-            return nguoidungDTO;
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = N'{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' Where MaNguoiDung = '{5}'";
+            String query = string.Format(updateSQL, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT, kh.MaKhachHang);
+            DataProvider.ExecuteQuery(query);
+
+            updateSQL = @"UPDATE KhachHang SET DiemTichLuy = '{0}' WHERE MaKhachHang = '{1}'";
+            query = string.Format(updateSQL, kh.DiemTichLuy, kh.MaKhachHang);
+            DataProvider.ExecuteQuery(query);
         }
     }
 }

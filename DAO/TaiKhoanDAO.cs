@@ -21,7 +21,7 @@ namespace DAO
                 TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
                 taiKhoanDTO.TenDangNhap = dr["TenDangNhap"].ToString();
                 taiKhoanDTO.MatKhau = dr["MatKhau"].ToString();
-                taiKhoanDTO.ChucNang = dr["ChucNang"].ToString();
+                taiKhoanDTO.PhanQuyen = dr["PhanQuyen"].ToString();
                 listTaiKhoanDTO.Add(taiKhoanDTO);
             }
 
@@ -30,7 +30,7 @@ namespace DAO
 
         public TaiKhoanDTO DangNhap(String username, String password)
         {
-            String query = "SELECT * FROM TaiKhoan WHERE TenDangNhap = '" + username + "' AND MatKhau = '" + password + "' ";
+            String query = string.Format("SELECT * FROM TaiKhoan WHERE TenDangNhap = '{0}' AND MatKhau = '{1}'", username, password);
             DataTable dt = DataProvider.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
@@ -45,18 +45,18 @@ namespace DAO
 
         public bool ThemTaiKhoan(string tendn, string mk, string phanquyen)
         {
-            String test_tendn = "SELECT * FROM TaiKhoan WHERE TaiKhoan.TenDangNhap = '" + tendn + "'";
+            String test_tendn = string.Format("SELECT * FROM TaiKhoan WHERE TaiKhoan.TenDangNhap = '{0}'", tendn);
             DataTable dt_test = DataProvider.ExecuteQuery(test_tendn);
             if (dt_test.Rows.Count > 0)
                 return false;
-            String query = "INSERT INTO TaiKhoan VALUES ('" + tendn + "','" + mk + "', N'" + phanquyen + "')";
+            String query = string.Format("INSERT INTO TaiKhoan VALUES ('{0}', '{1}')", tendn, mk, phanquyen);
             DataProvider.ExecuteQuery(query);
             return true;
         }
 
         public void XoaTaiKhoan(string tdn)
         {
-            String query = "DELETE FROM TaiKhoan WHERE TenDangNhap = '" + tdn + "' ";
+            String query = string.Format(@"DELETE FROM TaiKhoan WHERE TenDangNhap = '{0}'", tdn);
             DataProvider.ExecuteQuery(query);
         }
     }

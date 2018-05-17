@@ -136,6 +136,9 @@ INSERT INTO NguoiDung VALUES ('nlhuy', N'Nguyễn Lê Huy', '13/01/1997', 0, N'3
 INSERT INTO NguoiDung VALUES ('dhgcat', N'Đỗ Huy Gia Cát', '01/03/1997', 0, N'304 Âu Cơ, P.Phú Trung, Q.Tân Phú, tpHCM', '0937298456')
 INSERT INTO NguoiDung VALUES ('nntt', N'Nguyễn Ngọc Thanh Thảo', '10/11/1997', 0, N'203 Nguyễn Chí Thanh, P.1, Q.10, tpHCM', '0904933167')
 INSERT INTO NguoiDung VALUES ('mmhoang', N'Mạc Minh Hoàng', '08/05/1997', 0, N'2A/11 Hùng Vương, P.12, Q.5, tpHCM', '01881123321')
+INSERT INTO NguoiDung VALUES (NULL, N'Nhân Viên A', '09/05/1997', 0, N'2A/10 Hùng Vương, P.11, Q.5, tpHCM', '01881123333')
+INSERT INTO NguoiDung VALUES (NULL, N'Nhân Viên B', '10/05/1997', 0, N'2A/12 Hùng Vương, P.12, Q.4, tpHCM', '01881123444')
+
 
 /***** KhachHang *****/
 INSERT INTO KhachHang VALUES (11111001, 10)
@@ -143,7 +146,8 @@ INSERT INTO KhachHang VALUES (11111002, 0)
 INSERT INTO KhachHang VALUES (11111003, 20)
 
 /***** NhanVien *****/
-INSERT INTO NhanVien VALUES (11111004, 9000000, '246')
+INSERT INTO NhanVien VALUES (11111008, 4500000, '2468')
+INSERT INTO NhanVien VALUES (11111009, 4000000, '357')
 
 /***** Phim *****/
 /*** ID bắt đầu từ 99999001 ***/
