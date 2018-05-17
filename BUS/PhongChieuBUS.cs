@@ -22,12 +22,12 @@ namespace BUS
             return phongChieuDAO.LayDanhSach();
         }
 
-        public bool ThemPhongChieu(string mapc, string soluongcho, string loaimaychieu, string loaiamthanh, string tinhtrang)
+        public bool ThemPhongChieu(PhongChieuDTO pc)
         {
-            return phongChieuDAO.ThemPhongChieu(mapc, soluongcho, loaimaychieu, loaiamthanh, tinhtrang);
+            return phongChieuDAO.ThemPhongChieu(pc);
         }
 
-        public void XoaPhongChieu(string mpc)
+        public void XoaPhongChieu(int mpc)
         {
             phongChieuDAO.XoaPhongChieu(mpc);
         }
@@ -42,7 +42,7 @@ namespace BUS
             return phongChieuDAO.LayThongTin(mapc);
         }
 
-        public List<Char> LayDanhSachDayGhe(string mapc)
+        public List<Char> LayDanhSachDayGhe(int mapc)
         {
             return phongChieuDAO.LayDanhSachDayGhe(mapc);
         }

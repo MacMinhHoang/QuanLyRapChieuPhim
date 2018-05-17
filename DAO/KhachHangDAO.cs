@@ -33,6 +33,29 @@ namespace DAO
             return listKhachHangDTO;
         }
 
+        public KhachHangDTO LayThongTin(string tendangnhap)
+        {
+            List<KhachHangDTO> listKhachHangDTO = new List<KhachHangDTO>();
+
+            String query = "SELECT * FROM NguoiDung ND, KhachHang KH WHERE KH.MaKhachHang = ND.MaNguoiDung";
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            KhachHangDTO khachHangDTO = null;
+            if (dt.Rows.Count > 0)
+            {
+                khachHangDTO = new KhachHangDTO();
+                khachHangDTO.MaKhachHang = Convert.ToInt32(dt.Rows[0]["MaKhachHang"]);
+                khachHangDTO.HoTen = dt.Rows[0]["HoTen"].ToString();
+                khachHangDTO.NgaySinh = (dt.Rows[0]["NgaySinh"]).ToString();
+                khachHangDTO.GioiTinh = Convert.ToBoolean(dt.Rows[0]["GioiTinh"]);
+                khachHangDTO.DiaChi = dt.Rows[0]["DiaChi"].ToString();
+                khachHangDTO.SDT = dt.Rows[0]["SDT"].ToString();
+                khachHangDTO.TenDangNhap = dt.Rows[0]["TenDangNhap"].ToString();
+                khachHangDTO.DiemTichLuy = Convert.ToInt32(dt.Rows[0]["DiemTichLuy"]);
+                listKhachHangDTO.Add(khachHangDTO);
+            }
+            return khachHangDTO;
+        }
+
         public void ThemKhachHang(KhachHangDTO kh, TaiKhoanDTO tk)
         {
             String insertSQL = @"INSERT INTO TaiKhoan VALUES ('{0}', '{1}', '{2}')";
@@ -74,14 +97,12 @@ namespace DAO
             return count;
         }
 
-        /*   Hàm tối nghĩa  */
-
-        //public string LayMaKH(string makh)
-        //{
-        //    String query = "SELECT MaKhachHang FROM KhachHang WHERE MaKhachHang = '" + makh + "'";
-        //    DataTable dt = DataProvider.ExecuteQuery(query);
-        //    return dt.Rows[0]["MaKhachHang"].ToString();
-        //}
+        public int LayMaKH(string tendn)
+        {
+            String query = string.Format("SELECT MaKhachHang FROM KhachHang WHERE TenDangNhap = '{0}'", tendn);
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            return Convert.ToInt32(dt.Rows[0]["MaKhachHang"]);
+        }
 
         public void SuaThongTin(KhachHangDTO kh)
         {

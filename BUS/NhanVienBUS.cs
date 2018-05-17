@@ -27,13 +27,12 @@ namespace BUS
             return nvDAO.LayThongTin(tendangnhap);
         }
 
-        public bool ThemNhanVien(string manv, string tennv, string ngaysinh, string gioitinh, string cmnd,
-                                string sdt, string diachi, string vitri, string tendn, string email)
+        public bool ThemNhanVien(NhanVienDTO nv)
         {
-            return nvDAO.ThemNhanVien(manv, tennv, ngaysinh, gioitinh, cmnd, sdt, diachi, vitri, tendn, email);
+            return nvDAO.ThemNhanVien(nv);
         }
 
-        public void XoaNhanVien(string mnv)
+        public void XoaNhanVien(int mnv)
         {
             nvDAO.XoaNhanVien(mnv);
         }
@@ -43,10 +42,9 @@ namespace BUS
             return nvDAO.SoLuongNhanVien();
         }
 
-        public void SuaThongTin(string manv, string hoten, string ngaysinh, string gioitinh, string cmnd, string sdt,
-                                string diachi, string email, string vitri)
+        public void SuaThongTin(NhanVienDTO nv)
         {
-            nvDAO.SuaThongTin(manv, hoten, ngaysinh, gioitinh, cmnd, sdt, diachi, email, vitri);
+            nvDAO.SuaThongTin(nv);
         }
     }
 }

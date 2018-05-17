@@ -32,11 +32,9 @@ namespace BUS
             return phimDAO.TimKiemTheoTheLoai(theloai);
         }
 
-        public void ThemPhim(string maphim, string tenphim, string theloai, string daodien, string dienvien,
-                              string gioihandotuoi, string noidung, int namsx, string poster, string trailer)
+        public void ThemPhim(PhimDTO ph)
         {
-            phimDAO.ThemPhim(maphim, tenphim, theloai, daodien, dienvien,
-                              gioihandotuoi, noidung, namsx, poster, trailer);
+            phimDAO.ThemPhim(ph);
         }
 
         public int SoLuongPhim()
@@ -44,7 +42,7 @@ namespace BUS
             return phimDAO.SoLuongPhim();
         }
 
-        public void XoaPhim(string maphim)
+        public void XoaPhim(int maphim)
         {
             phimDAO.XoaPhim(maphim);
         }

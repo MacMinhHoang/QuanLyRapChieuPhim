@@ -27,9 +27,9 @@ namespace BUS
             return taiKhoanDAO.DangNhap(username, password);
         }
 
-        public bool ThemTaiKhoan(string tendn, string mk, string chucnang)
+        public bool ThemTaiKhoan(TaiKhoanDTO tk)
         {
-            return taiKhoanDAO.ThemTaiKhoan(tendn, mk, chucnang);
+            return taiKhoanDAO.ThemTaiKhoan(tk);
         }
 
         public void XoaTaiKhoan(string tdn)

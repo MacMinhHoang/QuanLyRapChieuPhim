@@ -43,13 +43,13 @@ namespace DAO
             return null;
         }
 
-        public bool ThemTaiKhoan(string tendn, string mk, string phanquyen)
+        public bool ThemTaiKhoan(TaiKhoanDTO tk)
         {
-            String test_tendn = string.Format("SELECT * FROM TaiKhoan WHERE TaiKhoan.TenDangNhap = '{0}'", tendn);
+            String test_tendn = string.Format("SELECT * FROM TaiKhoan WHERE TaiKhoan.TenDangNhap = '{0}'", tk.TenDangNhap);
             DataTable dt_test = DataProvider.ExecuteQuery(test_tendn);
             if (dt_test.Rows.Count > 0)
                 return false;
-            String query = string.Format("INSERT INTO TaiKhoan VALUES ('{0}', '{1}')", tendn, mk, phanquyen);
+            String query = string.Format("INSERT INTO TaiKhoan VALUES ('{0}', '{1}')", tk.TenDangNhap, tk.MatKhau, tk.PhanQuyen);
             DataProvider.ExecuteQuery(query);
             return true;
         }

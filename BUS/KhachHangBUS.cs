@@ -22,13 +22,12 @@ namespace BUS
             return khachHangDAO.LayDanhSach();
         }
 
-        public void ThemKhachHang(string makh, string tenkh, string ngaysinh, string gioitinh, string cmnd,
-                                string diachi, string email, string sdt, string tendn)
+        public void ThemKhachHang(KhachHangDTO kh, TaiKhoanDTO tk)
         {
-            khachHangDAO.ThemKhachHang(makh, tenkh, ngaysinh, gioitinh, cmnd, diachi, email, sdt, tendn);
+            khachHangDAO.ThemKhachHang(kh, tk);
         }
 
-        public void XoaKhachHang(string mnv)
+        public void XoaKhachHang(int mnv)
         {
             khachHangDAO.XoaKhachHang(mnv);
         }
@@ -38,15 +37,14 @@ namespace BUS
             return khachHangDAO.SoLuongKhachHang();
         }
 
-        public string LayMaKH(string tendn)
+        public int LayMaKH(string tendn)
         {
             return khachHangDAO.LayMaKH(tendn);
         }
 
-        public void SuaThongTin(string makh, string hoten, string ngaysinh, string gioitinh, string cmnd, string sdt,
-                                string diachi, string email)
+        public void SuaThongTin(KhachHangDTO kh)
         {
-            khachHangDAO.SuaThongTin(makh, hoten, ngaysinh, gioitinh, cmnd, sdt, diachi, email);
+            khachHangDAO.SuaThongTin(kh);
         }
 
         public KhachHangDTO LayThongTin(string tendangnhap)

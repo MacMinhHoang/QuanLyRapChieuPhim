@@ -22,13 +22,12 @@ namespace BUS
             return veDAO.LayDanhSach();
         }
 
-        public void ThemVe(string makh, string mave, string tenphim, string ngaychieu, string suatchieu,
-           string mapc, string vitringoi, int gia)
+        public void ThemVe(VeDTO ve)
         {
-            veDAO.ThemVe(makh, mave, tenphim, ngaychieu, suatchieu, mapc, vitringoi, gia);
+            veDAO.ThemVe(ve);
         }
 
-        public void XoaVe(string mave)
+        public void XoaVe(int mave)
         {
             veDAO.XoaVe(mave);
         }

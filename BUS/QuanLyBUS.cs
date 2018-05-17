@@ -27,25 +27,23 @@ namespace BUS
             return quanLyDAO.LayThongTin(tendangnhap);
         }
 
-        public void ThemQuanLy(string maql, string tendangnhap, string email, string hoten, string ngaysinh,
-          string CMND, string gioitinh, string sodienthoai, string diachi)
+        public void ThemQuanLy(QuanLyDTO ql)
         {
-            quanLyDAO.ThemQuanLy(maql, tendangnhap, email, hoten, ngaysinh, CMND, gioitinh, sodienthoai, diachi);
+            quanLyDAO.ThemQuanLy(ql);
         }
         public int SoLuongQuanLy()
         {
             return SoLuongQuanLy();
         }
 
-        public void XoaQuanLy(string maql)
+        public void XoaQuanLy(int maql)
         {
             quanLyDAO.XoaQuanLy(maql);
         }
 
-        public void SuaThongTin(string maql, string hoten, string ngaysinh, string gioitinh,
-                                string cmnd, string sdt, string diachi, string email)
+        public void SuaThongTin(QuanLyDTO ql)
         {
-            quanLyDAO.SuaThongTin(maql, hoten, ngaysinh, gioitinh, cmnd, sdt, diachi, email);
+            quanLyDAO.SuaThongTin(ql);
         }
     }
 }

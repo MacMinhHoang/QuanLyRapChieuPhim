@@ -17,17 +17,17 @@ namespace BUS
             adminDAO = new AdminDAO();
         }
 
-        public List<NhanVienKTDTO> LayDanhSach()
+        public List<AdminDTO> LayDanhSach()
         {
             return adminDAO.LayDanhSach();
         }
 
-        public NhanVienKTDTO LayThongTin(string tendangnhap)
+        public AdminDTO LayThongTin(string tendangnhap)
         {
             return adminDAO.LayThongTin(tendangnhap);
         }
 
-        public void SuaThongTin(NhanVienKTDTO ad)
+        public void SuaThongTin(AdminDTO ad)
         {
             adminDAO.SuaThongTin(ad);
         }
