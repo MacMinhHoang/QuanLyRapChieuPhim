@@ -40,13 +40,13 @@ namespace QuanLyRapChieuPhim {
         protected global::System.Web.UI.WebControls.TextBox tbGioiTinh;
         
         /// <summary>
-        /// tbCMND control.
+        /// tbLuong control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbCMND;
+        protected global::System.Web.UI.WebControls.TextBox tbLuong;
         
         /// <summary>
         /// tbSDT control.
@@ -67,40 +67,13 @@ namespace QuanLyRapChieuPhim {
         protected global::System.Web.UI.WebControls.TextBox tbDiaChi;
         
         /// <summary>
-        /// tbViTri control.
+        /// tbLLV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbViTri;
-        
-        /// <summary>
-        /// tbEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEmail;
-        
-        /// <summary>
-        /// tbTenDN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbTenDN;
-        
-        /// <summary>
-        /// tbMatKhau control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbMatKhau;
+        protected global::System.Web.UI.WebControls.TextBox tbLLV;
         
         /// <summary>
         /// btnAdd control.

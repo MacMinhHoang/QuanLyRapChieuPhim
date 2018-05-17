@@ -6,13 +6,14 @@
         <asp:GridView ID="gvDanhSachVe" runat="server" class="mydatagrid" PagerStyle-CssClass="pager" AutoGenerateColumns="False" AllowSorting="True" HorizontalAlign="Center" Width="1100px">
              
         <Columns>
-            <asp:BoundField DataField="MaKhachHang" HeaderText="Mã Khách Hàng" />
             <asp:BoundField DataField="MaVe" HeaderText="Mã Vé" />
-            <asp:BoundField DataField="TenPhim" HeaderText="Tên Phim" />
-            <asp:BoundField DataField="NgayChieu" HeaderText="Ngày Chiếu" />
-            <asp:BoundField DataField="MaPhongChieu" HeaderText="Mã Phòng Chiếu" />
-            <asp:BoundField DataField="ViTriNgoi" HeaderText="Vị Trí Ngồi" />
-            <asp:BoundField DataField="Gia" HeaderText="Giá" />
+            <asp:BoundField DataField="MaKhachHang" HeaderText="Mã Khách Hàng" />
+            <asp:BoundField DataField="MaSuatChieu" HeaderText="Mã Suất Chiếu" />
+            <asp:BoundField DataField="Ghe" HeaderText="Ghế" />
+            <asp:BoundField DataField="LoaiVe" HeaderText="Loại Vé" />
+            <asp:BoundField DataField="GiaVe" HeaderText="Giá Vé" />
+            <asp:BoundField DataField="ThanhToan" HeaderText="Hình Thức Thanh Toán" />
+            <asp:BoundField DataField="TinhTrang" HeaderText="Tình Trạng Sử Dụng" />
         </Columns>
         <HeaderStyle CssClass="header"></HeaderStyle>
         <PagerStyle CssClass="pager"></PagerStyle>

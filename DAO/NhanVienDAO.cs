@@ -40,7 +40,7 @@ namespace DAO
         public NhanVienDTO LayThongTin(string id)
         {
             NhanVienDTO nhanVienDTO = null;
-            String query = string.Format("SELECT * FROM NguoiDung ND, NhanVien NV WHERE NV.MaNhanVien = '{0}' " +
+            String query = string.Format("SELECT * FROM NguoiDung ND, NhanVien NV WHERE NV.MaNhanVien = {0} " +
                 "AND NV.MaNhanVien = ND.MaNguoiDung", id);
             DataTable dt = DataProvider.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
@@ -60,25 +60,25 @@ namespace DAO
 
         public bool ThemNhanVien(NhanVienDTO nv)
         {
-            String insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')";
+            String insertSQL = @"INSERT INTO NguoiDung VALUES ({0}, N'{1}', '{2}', {3}, N'{4}', '{5}')";
             String query = string.Format(insertSQL, null, nv.HoTen, nv.NgaySinh, nv.GioiTinh, nv.DiaChi, nv.SDT);
             DataProvider.ExecuteQuery(query);
 
             //Lấy mã người dùng mà CSDL mới tạo
-            String SQL = string.Format("SELECT MaNguoiDung FROM NguoiDung WHERE HoTen = '{0}' AND NgaySinh = ", nv.HoTen, nv.NgaySinh);
+            String SQL = string.Format("SELECT MaNguoiDung FROM NguoiDung WHERE HoTen = N'{0}' AND NgaySinh = ", nv.HoTen, nv.NgaySinh);
             DataTable dt = DataProvider.ExecuteQuery(query);
             int manv = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
 
-            query = string.Format(@"INSERT INTO Nhanvien VALUES ('{0}', '{1}', '{2}')", manv, nv.Luong, nv.LichLamViec);
+            query = string.Format(@"INSERT INTO Nhanvien VALUES ({0}, {1}, '{2}')", manv, nv.Luong, nv.LichLamViec);
             DataProvider.ExecuteQuery(query);
             return true;
         }
 
         public void XoaNhanVien(int manv)
         {
-            String query = string.Format("DELETE FROM NhanVien WHERE MaNhanVien = '{0}'", manv);
+            String query = string.Format("DELETE FROM NhanVien WHERE MaNhanVien = {0}", manv);
             DataProvider.ExecuteQuery(query);
-            query = string.Format("DELETE FROM NguoiDung WHERE MaNguoiDung = '{0}'", manv);
+            query = string.Format("DELETE FROM NguoiDung WHERE MaNguoiDung = {0}", manv);
             DataProvider.ExecuteQuery(query);
         }
 
@@ -97,11 +97,11 @@ namespace DAO
 
         public void SuaThongTin(NhanVienDTO nv)
         {
-            String SQL = @"UPDATE NhanVien SET Luong = '{0}', LichlamViec = '{1}' WHERE MaNhanVien = '{2}'";
+            String SQL = @"UPDATE NhanVien SET Luong = {0}, LichlamViec = '{1}' WHERE MaNhanVien = {2}";
             String query = string.Format(SQL, nv.Luong, nv.LichLamViec, nv.MaNhanVien);
             DataProvider.ExecuteQuery(query);
 
-            SQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = N'{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = '{5}'";
+            SQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
             query = string.Format(SQL, nv.HoTen, nv.NgaySinh, nv.GioiTinh, nv.DiaChi, nv.SDT, nv.MaNhanVien);
             DataProvider.ExecuteQuery(query);
         }

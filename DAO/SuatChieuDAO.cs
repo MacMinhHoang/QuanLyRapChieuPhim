@@ -34,7 +34,7 @@ namespace DAO
         {
             List<String> listNgay = new List<String>();
 
-            String SQL = "SELECT SC.NgayChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = '{0}'";
+            String SQL = "SELECT SC.NgayChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = N'{0}'";
             String query = string.Format(SQL, tenphim);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
@@ -49,7 +49,7 @@ namespace DAO
         {
             List<String> listSuat = new List<String>();
 
-            String SQL = "SELECT SC.GioChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = '{0}' AND SC.MgayChieu = '{1}'";
+            String SQL = "SELECT SC.GioChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = N'{0}' AND SC.MgayChieu = '{1}'";
             String query = string.Format(SQL, tenphim, ngaychieu);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
@@ -63,7 +63,7 @@ namespace DAO
         public String LayTenPhongChieu(string tenphim, string ngaychieu, string giochieu)
         {
             String SQL = "SELECT TenPhongChieu FROM PhongChieu WHERE MaPhongChieu = " +
-                "(SELECT SC.GioChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = '{0}' AND SC.MgayChieu = '{1}' AND SC.GioChieu = '{2}')";
+                "(SELECT SC.GioChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = N'{0}' AND SC.MgayChieu = '{1}' AND SC.GioChieu = '{2}')";
             String query = string.Format(SQL, tenphim, ngaychieu, giochieu);
             DataTable dt = DataProvider.ExecuteQuery(query);
             String tenpc = dt.Rows[0]["TenPhongChieu"].ToString();
@@ -90,12 +90,12 @@ namespace DAO
 
         public bool ThemSuatChieu(SuatChieuDTO sc)
         {
-            String SQL = "SELECT * FROM SuatChieu WHERE MaPhongChieu = '{0}' AND NgayChieu = '{1}' AND GioChieu = '{2}'";
+            String SQL = "SELECT * FROM SuatChieu WHERE MaPhongChieu = {0} AND NgayChieu = '{1}' AND GioChieu = '{2}'";
             String query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu);
             DataTable dt = DataProvider.ExecuteQuery(SQL);
             if (dt.Rows.Count > 0)
                 return false;
-            SQL = @"INSERT INTO SuatChieu VALUES (N'{0}', '{1}', '{2}','{3}')";
+            SQL = @"INSERT INTO SuatChieu VALUES ({0}, '{1}', '{2}', {3})";
             query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu, sc.MaPhim);
             DataProvider.ExecuteQuery(query);
             return true;
@@ -103,7 +103,7 @@ namespace DAO
 
         public void XoaSuatChieu(int ma)
         {
-            String query = string.Format("DELETE FROM NhanVien WHERE MaSuatChieu = '{0}'", ma);
+            String query = string.Format("DELETE FROM NhanVien WHERE MaSuatChieu = {0}", ma);
             DataProvider.ExecuteQuery(query);
 
             //Ve có khoa ngoai đến suatchieu
@@ -113,7 +113,7 @@ namespace DAO
 
         public List<int> ListGheTrong(SuatChieuDTO sc, string day)
         {
-            String SQL = "SELECT Ghe FROM Ve WHERE MaSuatCHieu = '{0}' AND ViTriNgoi LIKE '{1}%' ";
+            String SQL = "SELECT Ghe FROM Ve WHERE MaSuatCHieu = {0} AND ViTriNgoi LIKE '{1}%' ";
             String query = string.Format(SQL, sc.MaSuatChieu, day);
             DataTable dt = DataProvider.ExecuteQuery(query);
             List<int> listGheTrong = new List<int>();

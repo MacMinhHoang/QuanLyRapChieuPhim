@@ -19,22 +19,27 @@ namespace QuanLyRapChieuPhim
                 QuanLyBUS quanLyBUS = new QuanLyBUS();
                 QuanLyDTO quanLyDTO = quanLyBUS.LayThongTin(lb_TenDangNhap.Text);
 
-                lb_ID.Text = quanLyDTO.MaQuanLy;
+                lb_ID.Text = quanLyDTO.MaQuanLy.ToString();
                 tb_HoTen.Text = quanLyDTO.HoTen;
                 tb_NgaySinh.Text = quanLyDTO.NgaySinh;
-                tb_GioiTinh.Text = quanLyDTO.GioiTinh;
-                tb_CMND.Text = quanLyDTO.CMND;
-                tb_SDT.Text = quanLyDTO.SoDienThoai;
+                tb_GioiTinh.Text = (quanLyDTO.GioiTinh) ? "Nữ" : "Nam";
                 tb_DiaChi.Text = quanLyDTO.DiaChi;
-                tb_Email.Text = quanLyDTO.Email;
+                tb_SDT.Text = quanLyDTO.SDT;
             }
         }
 
         protected void btn_Sua_Click(object sender, EventArgs e)
         {
             QuanLyBUS quanLyBUS = new QuanLyBUS();
-            quanLyBUS.SuaThongTin(lb_ID.Text, tb_HoTen.Text, tb_NgaySinh.Text, tb_GioiTinh.Text, tb_CMND.Text,
-                tb_SDT.Text, tb_DiaChi.Text, tb_Email.Text);
+            QuanLyDTO ql = new QuanLyDTO();
+            ql.MaQuanLy = Convert.ToInt32(lb_ID.Text);
+            ql.HoTen = tb_HoTen.Text;
+            ql.NgaySinh = tb_NgaySinh.Text;
+            ql.GioiTinh = (tb_GioiTinh.Text == "Nữ");
+            ql.DiaChi = tb_DiaChi.Text;
+            ql.SDT = tb_SDT.Text;
+
+            quanLyBUS.SuaThongTin(ql);
         }
     }
 }

@@ -16,39 +16,39 @@ namespace QuanLyRapChieuPhim
             {
                 lbl_name.Text = Session["TenPhim"].ToString();
 
-                LichChieuBUS lichChieuBUS = new LichChieuBUS();
-                rdl_ngaychieu.DataSource = lichChieuBUS.LayDanhSachNgayChieu(lbl_name.Text);
+                SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
+                rdl_ngaychieu.DataSource = suatChieuBUS.LayDanhSachNgayChieu(lbl_name.Text);
                 rdl_ngaychieu.DataBind();
             }
         }
 
         protected void rdl_ngaychieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LichChieuBUS lichChieuBUS = new LichChieuBUS();
-            rdl_suatchieu.DataSource = lichChieuBUS.LayDanhSachSuatChieu(Session["TenPhim"].ToString(), rdl_ngaychieu.SelectedItem.Text);
+            SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
+            rdl_suatchieu.DataSource = suatChieuBUS.LayDanhSachSuatChieu(Session["TenPhim"].ToString(), rdl_ngaychieu.SelectedItem.Text);
             rdl_suatchieu.DataBind();
         }
 
         protected void rdl_suatchieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LichChieuBUS lichChieuBUS = new LichChieuBUS();
+            SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
             PhongChieuBUS phongChieuBUS = new PhongChieuBUS();
-            String mapc = lichChieuBUS.LayMaPhongChieu(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text);
+            String mapc = suatChieuBUS.LayMaPhongChieu(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text);
             ddl_day.DataSource = phongChieuBUS.LayDanhSachDayGhe(mapc);
             ddl_day.DataBind();
         }
 
         protected void ddl_day_DataBound(object sender, EventArgs e)
         {
-            LichChieuBUS lichChieuBUS = new LichChieuBUS();
-            ddl_soghe.DataSource = lichChieuBUS.ListGheTrong(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text, ddl_day.SelectedItem.Text);
+            SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
+            ddl_soghe.DataSource = suatChieuBUS.ListGheTrong(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text, ddl_day.SelectedItem.Text);
             ddl_soghe.DataBind();
         }
 
         protected void btn_DatVe_Click(object sender, EventArgs e)
         {
             VeBUS veBUS = new VeBUS();
-            LichChieuBUS lichChieuBUS = new LichChieuBUS();
+            SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
             int count = veBUS.SoLuongVe();
             string mave = "";
             if (count / 10 == 0)
@@ -58,7 +58,7 @@ namespace QuanLyRapChieuPhim
             else
                 mave = "V" + count.ToString();
 
-            String mapc = lichChieuBUS.LayMaPhongChieu(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text);
+            String mapc = suatChieuBUS.LayMaPhongChieu(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text);
             KhachHangBUS khachHangBUS = new KhachHangBUS();
             string makh = khachHangBUS.LayMaKH(Session["TenDangNhap"].ToString());
             int gia = 75000;
@@ -72,8 +72,8 @@ namespace QuanLyRapChieuPhim
 
         protected void ddl_day_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LichChieuBUS lichChieuBUS = new LichChieuBUS();
-            ddl_soghe.DataSource = lichChieuBUS.ListGheTrong(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text, ddl_day.SelectedItem.Text);
+            SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
+            ddl_soghe.DataSource = suatChieuBUS.ListGheTrong(rdl_ngaychieu.SelectedItem.Text, rdl_suatchieu.SelectedItem.Text, ddl_day.SelectedItem.Text);
             ddl_soghe.DataBind();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BUS;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,24 +25,28 @@ namespace QuanLyRapChieuPhim
         }
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            bool flag_pc = false;
+            //bool flag_pc = false;
             PhongChieuBUS pcBUS = new PhongChieuBUS();
-            flag_pc = pcBUS.ThemPhongChieu(tbMaPC.Text, tbSoLuongCho.Text, tbLoaiMC.Text, tbLoaiAT.Text, tbTinhTrang.Text);
-            if (flag_pc == false)
-            {
-                string strBuilder = "<script language='javascript'>alert('" + "Ma Phong Chieu da ton tai" + "')</script>";
-                Response.Write(strBuilder);
-                tbMaPC.Text = "";
-                tbSoLuongCho.Text = "";
-                tbLoaiMC.Text = "";
-                tbLoaiAT.Text = "";
-                tbTinhTrang.Text = "";
-                return;
-            }
-            tbMaPC.Text = "";
+            PhongChieuDTO pc = new PhongChieuDTO();
+            pc.TenPhongChieu = tbTenPC.Text;
+            pc.SoLuongGhe = Convert.ToInt32(tbSoLuongCho.Text);
+            pc.TinhTrang = (tbTinhTrang.Text == "Hoạt động");
+
+            pcBUS.ThemPhongChieu(pc);
+
+            //if (flag_pc == false)
+            //{
+            //    string strBuilder = "<script language='javascript'>alert('" + "Ma Phong Chieu da ton tai" + "')</script>";
+            //    Response.Write(strBuilder);
+            //    tbMaPC.Text = "";
+            //    tbSoLuongCho.Text = "";
+            //    tbLoaiMC.Text = "";
+            //    tbLoaiAT.Text = "";
+            //    tbTinhTrang.Text = "";
+            //    return;
+            //}
+            tbTenPC.Text = "";
             tbSoLuongCho.Text = "";
-            tbLoaiMC.Text = "";
-            tbLoaiAT.Text = "";
             tbTinhTrang.Text = "";
             FilGVDanhSachPhongChieu();
         }
@@ -50,7 +55,7 @@ namespace QuanLyRapChieuPhim
         {
             PhongChieuBUS pcBUS = new PhongChieuBUS();
             TableCell cell = gvDanhSachPhongChieu.Rows[e.RowIndex].Cells[0];
-            pcBUS.XoaPhongChieu(cell.Text);
+            pcBUS.XoaPhongChieu(Convert.ToInt32(cell.Text));
             FilGVDanhSachPhongChieu();
         }
     }

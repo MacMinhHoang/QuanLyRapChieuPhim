@@ -5,13 +5,14 @@ CREATE DATABASE RapChieuPhimDB;
 GO
 USE RapChieuPhimDB;
 
+SELECT * FROM NguoiDung
 
 /***** Tạo các bảng và khóa chính *****/
 
 CREATE TABLE TaiKhoan (
 	TenDangNhap varchar(30) NOT NULL,
 	MatKhau varchar(30),
-	PhanQuyen char(3),
+	PhanQuyen char(2),
 	PRIMARY KEY (TenDangNhap)
 )
 
@@ -22,7 +23,7 @@ CREATE TABLE NguoiDung (
 	NgaySinh varchar(11),
 	GioiTinh bit,
 	DiaChi nvarchar(100),
-	SDT char(12),
+	SDT varchar(12),
 	PRIMARY KEY (MaNguoiDung)
 )
 
@@ -35,7 +36,7 @@ CREATE TABLE KhachHang (
 CREATE TABLE NhanVien (
 	MaNhanVien int NOT NULL,
 	Luong float,
-	LichLamViec char(8),
+	LichLamViec varchar(8),
 	PRIMARY KEY (MaNhanVien) 
 )
 
@@ -74,7 +75,7 @@ CREATE TABLE Ve (
 	MaVe int IDENTITY(77777001, 1),
 	MaKhachHang int,
 	MaSuatChieu int,
-	Ghe char(4),
+	Ghe varchar(4),
 	LoaiVe bit,
 	GiaVe float,
 	ThanhToan bit,
@@ -156,19 +157,19 @@ INSERT INTO Phim VALUES (N'Cô Ba Sài Gòn',N'Tâm lý',N'Trần Bửu Lộc, K
   Như Ý vô cùng bỡ ngỡ khi đứng trước xã hội ở thế kỷ 21 với nhiều thay đổi. Hơn hết, Như Ý phải đối mặt với chính cô của tương lai. Như Ý tìm cách trở về thế giới của mình, bằng cách phải lấy chiếc áo dài cũ từ chính phiên bản Như Ý của tương lai.','2017',
   './Images/CBSG.jpg','https://www.youtube.com/watch?v=YP4TDQVkZO4')
 
-INSERT INTO Phim VALUES(N'24 Giờ Hồi Sinh',N'Hành Động','Brian Smrz','Rutger Hauer, Ethan Hawke, Paul Anderson',2,N'Sau một cuộc phẫu thuật thử nghiệm, sát thủ Travis Conrad được hồi sinh từ cõi chết và có đúng 24 giờ để sống lại. Anh quyết định hợp 
+INSERT INTO Phim VALUES(N'24 Giờ Hồi Sinh',N'Hành động','Brian Smrz','Rutger Hauer, Ethan Hawke, Paul Anderson',2,N'Sau một cuộc phẫu thuật thử nghiệm, sát thủ Travis Conrad được hồi sinh từ cõi chết và có đúng 24 giờ để sống lại. Anh quyết định hợp 
 tác với chính nữ đặc vụ đã giết chết mình nhằm trả thù tổ chức tội phạm đã sát hại vợ và con của anh. Đây cũng chính là cơ hội để Travis chuộc
  lại những lỗi lầm trong quá khứ. Chỉ có 24 giờ để báo thù, liệu Travis có hoàn thành được nhiệm vụ khi từng giây trôi qua, tử thần lại càng
   đến gần hơn?','2017','./Images/24h.jpg','https://www.youtube.com/watch?v=e1Dam6exiYE')
 
-INSERT INTO Phim VALUES(N'Liên Minh Công Lý ( Justice League)',N'Hành Động','Zack Snyder','Ben Affleck, Gal Gadot, Henry Cavill, 
+INSERT INTO Phim VALUES(N'Liên Minh Công Lý ( Justice League)',N'Hành động','Zack Snyder','Ben Affleck, Gal Gadot, Henry Cavill, 
 Jason Momoa, Ezra Miller',0,N'Được thôi thúc bằng niềm tin vào loài người vừa tìm lại và sự hy sinh cao cả của Superman, tỷ phú Bruce Wayne 
 – Batman quyết định tìm kiếm và tập họp những đồng minh mới cũng như Wonder Woman để chuẩn bị đối mặt với những kẻ thù lớn hơn. 
 Phim tiếp tục được giao vào tay đạo diễn Zack Snyder – người gây nhiều tranh cãi khi cầm trịch Batman v Superman: Dawn Of Justice.
  Dàn diễn viên quen thuộc Ben Affleck, Henry Cavill và Gal Gadot tiếp tục góp mặt trong phim. Justice League được xem là siêu phẩm hoành tráng
   nhất của DC Comics.','2017','./Images/Justice-League-banner.jpg','https://www.youtube.com/watch?v=r9-DM9uBtVI')
 
-INSERT INTO Phim VALUES(N'Trải Nghiệm Điểm Chết (Flatliners)',N'Kinh Dị','Niels Arden Oplev','Ellen Page, Diego Luna, Nina Dobrev',1,N'Năm sinh viên y khoa tham gia vào một thí nghiệm cực kỳ nguy hiểm: Chết lâm sàng để được trải nghiệm cảm giác chu du "thế giới bên kia".
+INSERT INTO Phim VALUES(N'Trải Nghiệm Điểm Chết (Flatliners)',N'Kinh dị','Niels Arden Oplev','Ellen Page, Diego Luna, Nina Dobrev',1,N'Năm sinh viên y khoa tham gia vào một thí nghiệm cực kỳ nguy hiểm: Chết lâm sàng để được trải nghiệm cảm giác chu du "thế giới bên kia".
  Đây là trải nghiệm độc đáo có một không hai và nó khiến các chàng trai cô gái trẻ mê mẩn. Phim sở hữu cốt truyện hấp dẫn và đậm tính nhân văn.
   Theo đó, thế giới bên kia không phải nơi để bạn an nghỉ mà chính là “pháp trường” nơi bạn phải đối diện với những tội lỗi mình đã gây ra khi 
   còn sống. Là phần tiếp theo của bộ phim cùng tên do đạo diễn Joel Schumacher thực hiện năm 1990, Flatliners 2017 (tựa tiếng Việt là Trải 
@@ -200,7 +201,7 @@ chịu nhiều bất hạnh với những quy củ hà khắc từ gia đình nh
  đường nhân bản bi kịch của mình lên những người phụ nữ khác khi cô trở thành mẹ chồng... Một bộ phim quy tụ dàn diễn viên nữ hấp dẫn
 với Thanh Hằng, Diễm My, Ngọc Quyên, Lan Khuê, Midu...','2017','./Images/MeChong.jpg','https://www.youtube.com/watch?v=VKYdH1WrCQU&t=60s')
 
-INSERT INTO Phim VALUES (N'Star Wars: Jedi Cuối Cùng',N'Khoa học viễn tưởng','Rian Johnson','Mark Hamill, Carrie Fisher, Daisy Ridley, 
+INSERT INTO Phim VALUES (N'Star Wars: Jedi Cuối Cùng',N'Viễn tưởng','Rian Johnson','Mark Hamill, Carrie Fisher, Daisy Ridley, 
 John Boyega, Adam Driver, Kelly Marie Tran',0,N'Star Wars: Jedi Cuối Cùng là phần thứ 8 trong series kinh điển Star Wars, nối tiếp phần 7 
 Star Wars: Thần lực thức tỉnh ra mắt vào năm 2015. Phần phim này có thể sẽ giải đáp những câu hỏi lớn ở phần trước đó: Nguồn gốc của Rey,
  tại sao R2-D2 lại có bản đồ dẫn đến chỗ Luke, và Chỉ huy Tối cao Snoke thực chất là ai?','2017','./Images/SW.jpg','https://www.youtube.com/watch?v=Q0CbN8sfihY')

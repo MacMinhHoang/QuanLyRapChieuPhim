@@ -33,7 +33,7 @@ namespace DAO
 
         public QuanLyDTO LayThongTin(string tendangnhap)
         {
-            String query = "SELECT * FROM QuanLy WHERE TenDangNhap = '" + tendangnhap + "'";
+            String query = string.Format("SELECT * FROM NguoiDung WHERE TenDangNhap = '{0}'", tendangnhap);
             DataTable dt = DataProvider.ExecuteQuery(query);
             QuanLyDTO quanLyDTO = new QuanLyDTO();
             quanLyDTO.MaQuanLy = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
@@ -56,7 +56,7 @@ namespace DAO
 
         public void XoaQuanLy(int maql)
         {
-            String query = string.Format(@"DELETE FROM QuanLy WHERE MaQuanLy = '{0}'", maql);
+            String query = string.Format(@"DELETE FROM QuanLy WHERE MaQuanLy = {0}", maql);
             DataProvider.ExecuteQuery(query);
         }
 
@@ -76,7 +76,7 @@ namespace DAO
 
         public void SuaThongTin(QuanLyDTO ql)
         {
-            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = N'{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = '{5}'";
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
             String query = string.Format(updateSQL, ql.HoTen, ql.NgaySinh, ql.GioiTinh, ql.DiaChi, ql.SDT, ql.MaQuanLy);
             DataProvider.ExecuteQuery(query);
         }

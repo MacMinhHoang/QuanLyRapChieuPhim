@@ -22,6 +22,11 @@ namespace BUS
             return phimDAO.LayDanhSach();
         }
 
+        public PhimDTO LayThongTin(int id)
+        {
+            return phimDAO.LayThongTin(id);
+        }
+
         public List<PhimDTO> TimKiemTheoTen(string tenphim)
         {
             return phimDAO.TimKiemTheoTen(tenphim);

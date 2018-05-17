@@ -23,8 +23,12 @@ namespace QuanLyRapChieuPhim
                 image.ImageUrl = listPhim[i].Poster;
 
                 linkButton = new LinkButton();
-                linkButton.Text = listPhim[i].TenPhim;
-                linkButton.Click += LinkButton_Click;
+                linkButton.Text = listPhim[i].Ten;
+                int maphim = listPhim[i].MaPhim;
+                linkButton.Click += (s, ev) =>
+                {
+                    Response.Redirect("ThongTinPhim.aspx?search=false&id=" + maphim.ToString());
+                };
                 
                 
                 if (i % 2 == 0)
@@ -44,18 +48,18 @@ namespace QuanLyRapChieuPhim
             }
         }
 
-        private void LinkButton_Click(object sender, EventArgs e)
-        {
-            LinkButton lnk = sender as LinkButton;
-            Session["TenPhim"] = lnk.Text;
-            Session["isSearchName"] = true;
-            Response.Redirect("ThongTinPhim.aspx");
-        }
+        //private void LinkButton_Click(object sender, EventArgs e)
+        //{
+        //    LinkButton lnk = sender as LinkButton;
+        //    Session["TenPhim"] = lnk.Text;
+        //    Session["isSearchName"] = true;
+        //    Response.Redirect("ThongTinPhim.aspx");
+        //}
 
-        protected void BT_Login_Click(object sender, EventArgs e)
-        {
+        //protected void BT_Login_Click(object sender, EventArgs e)
+        //{
             
-        }
+        //}
 
         protected void btn_search_name_Click(object sender, ImageClickEventArgs e)
         {
@@ -66,17 +70,17 @@ namespace QuanLyRapChieuPhim
             }
             else
             {
-                Session["TenPhim"] = txt_name.Text;
-                Session["isSearchName"] = true;
-                Response.Redirect("ThongTinPhim.aspx");
+                //Session["TenPhim"] = txt_name.Text;
+                //Session["isSearchName"] = true;
+                Response.Redirect("ThongTinPhim.aspx?search=name&name=" + txt_name.Text);
             }
         }
 
         protected void btn_search_category_Click(object sender, ImageClickEventArgs e)
         {
-            Session["TheLoai"] = DropDownList1.SelectedItem.Text;
-            Session["isSearchName"] = false;
-            Response.Redirect("ThongTinPhim.aspx");
+            //Session["TheLoai"] = DropDownList1.SelectedItem.Text;
+            //Session["isSearchName"] = false;
+            Response.Redirect("ThongTinPhim.aspx?search=type&type=" + DropDownList1.SelectedItem.Value);
         }
     }
 }

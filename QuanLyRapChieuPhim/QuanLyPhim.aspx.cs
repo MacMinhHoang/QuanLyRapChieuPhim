@@ -1,4 +1,5 @@
 ﻿using BUS;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,16 +27,26 @@ namespace QuanLyRapChieuPhim
         protected void btnAddPhim_Click(object sender, EventArgs e)
         {
             PhimBUS pBUS = new PhimBUS();
-            int count = pBUS.SoLuongPhim();
-            string map = "";
-            if (count / 10 == 0)
-                map = "P00" + count.ToString();
-            else if (count / 100 == 0)
-                map = "P0" + count.ToString();
-            else
-                map = "P" + count.ToString();
-            pBUS.ThemPhim(map, tbTenPhim.Text, tbTheLoai.Text, tbDaoDien.Text, tbDienVien.Text,
-                                tbNoiDung.Text, tbGHDT.Text, Convert.ToInt32(tbNamSX.Text), tbPoster.Text, tbTrailer.Text);
+            //int count = pBUS.SoLuongPhim();
+            //string map = "";
+            //if (count / 10 == 0)
+            //    map = "P00" + count.ToString();
+            //else if (count / 100 == 0)
+            //    map = "P0" + count.ToString();
+            //else
+            //    map = "P" + count.ToString();
+            PhimDTO ph = new PhimDTO();
+            ph.Ten = tbTenPhim.Text;
+            ph.TheLoai = tbTheLoai.Text;
+            ph.DaoDien = tbDaoDien.Text;
+            ph.DienVien = tbDienVien.Text;
+            ph.GioiHanDoTuoi = Convert.ToInt32(tbGHDT.Text);
+            ph.NoiDung = tbNoiDung.Text;
+            ph.NamSanXuat = Convert.ToInt32(tbNamSX.Text);
+            ph.Poster = tbPoster.Text;
+            ph.Trailer = tbTrailer.Text;
+            pBUS.ThemPhim(ph);
+
             ResetTextBoxes();
             FilGVDanhSachPhim();
         }
@@ -56,7 +67,7 @@ namespace QuanLyRapChieuPhim
         {
             PhimBUS pBUS = new PhimBUS();
             TableCell cell = gvDanhSachPhim.Rows[e.RowIndex].Cells[0];
-            pBUS.XoaPhim(cell.Text);
+            pBUS.XoaPhim(Convert.ToInt32(cell.Text));
             cell = gvDanhSachPhim.Rows[e.RowIndex].Cells[8];
             FilGVDanhSachPhim();
         }

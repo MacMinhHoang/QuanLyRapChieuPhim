@@ -37,7 +37,8 @@ namespace DAO
         {
             List<KhachHangDTO> listKhachHangDTO = new List<KhachHangDTO>();
 
-            String query = "SELECT * FROM NguoiDung ND, KhachHang KH WHERE KH.MaKhachHang = ND.MaNguoiDung";
+            String query = string.Format("SELECT * FROM NguoiDung ND, KhachHang KH WHERE KH.MaKhachHang = ND.MaNguoiDung " +
+                "AND ND.TenDangNhap = '{0}'", tendangnhap);
             DataTable dt = DataProvider.ExecuteQuery(query);
             KhachHangDTO khachHangDTO = null;
             if (dt.Rows.Count > 0)
@@ -62,7 +63,7 @@ namespace DAO
             String query = string.Format(insertSQL, tk.TenDangNhap, tk.MatKhau, tk.PhanQuyen);
             DataProvider.ExecuteQuery(query);
 
-            insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')";
+            insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', N'{1}', '{2}', {3}, N'{4}', '{5}')";
             query = string.Format(insertSQL, kh.TenDangNhap, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT);
             DataProvider.ExecuteQuery(query);
 
@@ -71,16 +72,16 @@ namespace DAO
             DataTable dt = DataProvider.ExecuteQuery(query);
             int makh = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
 
-            insertSQL = @"INSERT INTO KhachHang VALUES ('{0}', '{1}')";
+            insertSQL = @"INSERT INTO KhachHang VALUES ({0}, {1})";
             query = string.Format(insertSQL, makh, kh.DiemTichLuy);
             DataProvider.ExecuteQuery(query);
         }
 
         public void XoaKhachHang(int makh)
         {
-            String query = string.Format("DELETE FROM NguoiDung WHERE MaNguoiDung = '{0}'", makh);
+            String query = string.Format("DELETE FROM NguoiDung WHERE MaNguoiDung = {0}", makh);
             DataProvider.ExecuteQuery(query);
-            query = string.Format("DELETE FROM KhachHang WHERE MaKhachHang = '{0}'", makh);
+            query = string.Format("DELETE FROM KhachHang WHERE MaKhachHang = {0}", makh);
             DataProvider.ExecuteQuery(query);
         }
 
@@ -106,11 +107,11 @@ namespace DAO
 
         public void SuaThongTin(KhachHangDTO kh)
         {
-            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = N'{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' Where MaNguoiDung = '{5}'";
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' Where MaNguoiDung = {5}";
             String query = string.Format(updateSQL, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT, kh.MaKhachHang);
             DataProvider.ExecuteQuery(query);
 
-            updateSQL = @"UPDATE KhachHang SET DiemTichLuy = '{0}' WHERE MaKhachHang = '{1}'";
+            updateSQL = @"UPDATE KhachHang SET DiemTichLuy = {0}'WHERE MaKhachHang = {1}";
             query = string.Format(updateSQL, kh.DiemTichLuy, kh.MaKhachHang);
             DataProvider.ExecuteQuery(query);
         }

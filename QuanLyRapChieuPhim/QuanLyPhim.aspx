@@ -111,7 +111,7 @@
         <asp:GridView ID="gvDanhSachPhim" OnRowDeleting="gvDanhSachPhim_RowDeleting" runat="server" class="mydatagrid" PagerStyle-CssClass="pager" AutoGenerateColumns="False" AllowSorting="True" HorizontalAlign="Center" Width="1100px">
         <Columns>
             <asp:BoundField DataField="MaPhim" HeaderText="Mã Phim" />
-            <asp:BoundField DataField="TenPhim" HeaderText="Tên Phim" />
+            <asp:BoundField DataField="Ten" HeaderText="Tên Phim" />
             <asp:BoundField DataField="TheLoai" HeaderText="Thể Loại" />
             <asp:BoundField DataField="DaoDien" HeaderText="Đạo Diễn" />
             <asp:BoundField DataField="DienVien" HeaderText="Diễn Viên" />

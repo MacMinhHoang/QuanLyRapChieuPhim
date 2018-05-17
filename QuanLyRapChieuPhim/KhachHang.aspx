@@ -63,9 +63,9 @@
                     <td style="height: 41px; width: 312px">
                         <asp:TextBox ID="tb_GioiTinh" runat="server" Height="35px" TabIndex="2" Width="242px"></asp:TextBox>
                     </td>
-                    <td style="height: 41px; width: 96px"><strong>CMND :</strong></td>
+                    <td style="height: 41px; width: 96px"><strong>Điểm :</strong></td>
                     <td style="height: 41px; width: 187px">
-                        <asp:TextBox ID="tb_CMND" runat="server" Height="35px" TabIndex="3" Width="242px"></asp:TextBox>
+                        <asp:TextBox ID="tb_Diem" runat="server" Height="35px" TabIndex="3" Width="242px" Enabled="False" TextMode="Number"></asp:TextBox>
                     </td>
                     <td style="height: 41px"></td>
                 </tr>
@@ -83,10 +83,9 @@
                     <td class="text-left" style="height: 41px; width: 312px;">
                         <asp:TextBox ID="tb_SDT" runat="server" Height="35px" TabIndex="4" TextMode="Phone" Width="242px"></asp:TextBox>
                     </td>
-                    <td class="text-left" style="height: 41px; width: 96px;"><strong>Email :</strong></td>
+                    <td class="text-left" style="height: 41px; width: 96px;"></td>
                     <td class="text-left" style="height: 41px; width: 187px;">
-                        <asp:TextBox ID="tb_Email" runat="server" Height="35px" TabIndex="5" TextMode="Email" Width="242px"></asp:TextBox>
-                    </td>
+                        &nbsp;</td>
                     <td class="text-left" style="height: 41px"></td>
                 </tr>
                 <tr>

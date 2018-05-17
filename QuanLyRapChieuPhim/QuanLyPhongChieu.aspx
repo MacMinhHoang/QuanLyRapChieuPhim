@@ -17,17 +17,16 @@
                     <td style="height: 22px"></td>
                 </tr>
                 <tr>
-                    <td style="height: 24px; width: 127px">Mã Phòng Chiếu</td>
+                    <td style="height: 24px; width: 127px">Tên Phòng Chiếu</td>
                     <td style="height: 24px; width: 254px">
-                        <asp:TextBox ID="tbMaPC" runat="server" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="tbTenPC" runat="server" Width="200px"></asp:TextBox>
                     </td>
                     <td style="height: 24px; width: 127px">Số Lượng Chỗ</td>
                     <td style="height: 24px; width: 262px">
                         <asp:TextBox ID="tbSoLuongCho" runat="server" Width="200px"></asp:TextBox>
                     </td>
-                    <td style="height: 24px; width: 113px">Loại Máy Chiếu</td>
+                    <td style="height: 24px; width: 113px"></td>
                     <td style="height: 24px">
-                        <asp:TextBox ID="tbLoaiMC" runat="server" Width="200px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -39,9 +38,8 @@
                     <td style="height: 22px"></td>
                 </tr>
                 <tr>
-                    <td style="width: 106px; height: 24px">Loại Âm Thanh</td>
+                    <td style="width: 106px; height: 24px"></td>
                     <td style="height: 24px; width: 254px">
-                        <asp:TextBox ID="tbLoaiAT" runat="server" Width="200px"></asp:TextBox>
                     </td>
                     <td style="width: 127px; height: 24px">Tình Trạng</td>
                     <td style="height: 24px; width: 262px">
@@ -64,11 +62,10 @@
     <div>
         <asp:GridView ID="gvDanhSachPhongChieu" OnRowDeleting="gvDanhSachPhongChieu_RowDeleting" runat="server" class="mydatagrid" PagerStyle-CssClass="pager" AutoGenerateColumns="False" AllowSorting="True" HorizontalAlign="Center" Width="1100px">             
         <Columns>
-            <asp:BoundField DataField="MaPhongChieu" HeaderText="Mã phòng chiếu" />
-            <asp:BoundField DataField="LoaiMayChieu" HeaderText="Loại máy chiếu" />
-            <asp:BoundField DataField="LoaiAmThanh" HeaderText="Loại âm thanh" />
-            <asp:BoundField DataField="TinhTrang" HeaderText="Tình trạng" />
-            <asp:BoundField DataField="SoLuongChoNgoi" HeaderText="Số lượng ghế ngồi" />
+            <asp:BoundField DataField="MaPhongChieu" HeaderText="Mã Phòng Chiếu" />
+            <asp:BoundField DataField="TenPhongChieu" HeaderText="Tên Phòng Chiếu" />
+            <asp:BoundField DataField="SoLuongGhe" HeaderText="Số Lượng Ghế Ngồi" />
+            <asp:BoundField DataField="TinhTrang" HeaderText="Tình Trạng" />
             <asp:CommandField ButtonType="Image" ShowDeleteButton="True" DeleteImageUrl="Images/icon_delete.png" DeleteText="" ShowCancelButton="False" />
         </Columns>
         <HeaderStyle CssClass="header"></HeaderStyle>

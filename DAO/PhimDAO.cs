@@ -36,10 +36,34 @@ namespace DAO
             return listPhimDTO;
         }
 
+        public PhimDTO LayThongTin(int id)
+        {
+            PhimDTO phimDTO = null;
+
+            String query = string.Format("SELECT * FROM Phim WHERE MaPhim = {0}", id);
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            if (dt.Rows.Count > 0)
+            {
+                phimDTO = new PhimDTO();
+                phimDTO.MaPhim = Convert.ToInt32(dt.Rows[0]["MaPhim"]);
+                phimDTO.Ten = dt.Rows[0]["Ten"].ToString();
+                phimDTO.TheLoai = dt.Rows[0]["TheLoai"].ToString();
+                phimDTO.DaoDien = dt.Rows[0]["DaoDien"].ToString();
+                phimDTO.DienVien = dt.Rows[0]["DienVien"].ToString();
+                phimDTO.GioiHanDoTuoi = Convert.ToInt32(dt.Rows[0]["GioiHanDoTuoi"]);
+                phimDTO.NoiDung = dt.Rows[0]["NoiDung"].ToString();
+                phimDTO.NamSanXuat = Convert.ToInt32(dt.Rows[0]["NamSanXuat"]);
+                phimDTO.Poster = dt.Rows[0]["Poster"].ToString();
+                phimDTO.Trailer = dt.Rows[0]["Trailer"].ToString();
+            }
+
+            return phimDTO;
+        }
+
         public List<PhimDTO> TimKiemTheoTen(string ten)
         {
             List<PhimDTO> listPhimDTO = new List<PhimDTO>();
-            String query = string.Format("SELECT * FROM Phim WHERE Ten LIKE N'% '{0}' %'", ten);
+            String query = string.Format("SELECT * FROM Phim WHERE Ten LIKE N'%{0}%'", ten);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -61,7 +85,7 @@ namespace DAO
         {
             List<PhimDTO> listPhimDTO = new List<PhimDTO>();
 
-            String query = string.Format("SELECT * FROM Phim WHERE TheLoai = N'{0}'", theloai);
+            String query = string.Format("SELECT * FROM Phim WHERE TheLoai LIKE N'{0}'", theloai);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -84,7 +108,7 @@ namespace DAO
         public void ThemPhim(PhimDTO ph)
         {
             String insertSQL = @"INSERT INTO Phim VALUES " +
-                "(N'{0}', N'{1}', N'{2}', N'{3}',N'{4}', N'{5}', '{6}' , '{7}', '{8}')";
+                "(N'{0}', N'{1}', N'{2}', N'{3}', {4}, N'{5}', {6}, '{7}', '{8}')";
 
             String query = string.Format(insertSQL, ph.Ten, ph.TheLoai, ph.DaoDien, ph.DienVien, ph.GioiHanDoTuoi, 
                 ph.NoiDung, ph.NamSanXuat, ph.Poster, ph.Trailer);
@@ -94,10 +118,10 @@ namespace DAO
 
         public void XoaPhim(int maphim)
         {
-            String query = string.Format("DELETE FROM SuatChieu WHERE MaPhim = '{0}'", maphim); ;
+            String query = string.Format("DELETE FROM SuatChieu WHERE MaPhim = {0}", maphim); ;
             DataProvider.ExecuteQuery(query);
 
-            query = string.Format("DELETE FROM Phim WHERE MaPhim = '{0}'", maphim);
+            query = string.Format("DELETE FROM Phim WHERE MaPhim = {0}", maphim);
             DataProvider.ExecuteQuery(query);
         }
 

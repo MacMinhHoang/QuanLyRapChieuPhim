@@ -67,15 +67,6 @@ namespace QuanLyRapChieuPhim {
         protected global::System.Web.UI.WebControls.TextBox tb_GioiTinh;
         
         /// <summary>
-        /// tb_CMND control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_CMND;
-        
-        /// <summary>
         /// tb_SDT control.
         /// </summary>
         /// <remarks>
@@ -83,15 +74,6 @@ namespace QuanLyRapChieuPhim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_SDT;
-        
-        /// <summary>
-        /// tb_Email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_Email;
         
         /// <summary>
         /// tb_DiaChi control.
@@ -128,14 +110,5 @@ namespace QuanLyRapChieuPhim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button5;
-        
-        /// <summary>
-        /// Button6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button6;
     }
 }

@@ -152,20 +152,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="KhachHang.aspx" />
-    <Content Include="NhanVien.aspx" />
+    <Content Include="NhanVienKT.aspx" />
     <Content Include="QuanLy.aspx" />
     <Content Include="QuanLyLichChieu.aspx" />
     <Content Include="ThongTinPhim.aspx" />
     <Content Include="WebUserControl1.ascx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="PhimDangChieu.aspx" />
-    <Content Include="QuanLyAdmin.aspx" />
     <Content Include="QuanLyKhachHang.aspx" />
     <Content Include="QuanLyNhanVien.aspx" />
     <Content Include="QuanLyPhim.aspx" />
     <Content Include="QuanLyPhongChieu.aspx" />
-    <Content Include="QuanLyQuanLy.aspx" />
-    <Content Include="QuanLyTaiKhoan.aspx" />
     <Content Include="QuanLyVe.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -272,12 +269,12 @@
     <Compile Include="KhachHang.aspx.designer.cs">
       <DependentUpon>KhachHang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien.aspx.cs">
-      <DependentUpon>NhanVien.aspx</DependentUpon>
+    <Compile Include="NhanVienKT.aspx.cs">
+      <DependentUpon>NhanVienKT.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="NhanVien.aspx.designer.cs">
-      <DependentUpon>NhanVien.aspx</DependentUpon>
+    <Compile Include="NhanVienKT.aspx.designer.cs">
+      <DependentUpon>NhanVienKT.aspx</DependentUpon>
     </Compile>
     <Compile Include="PhimDangChieu.aspx.cs">
       <DependentUpon>PhimDangChieu.aspx</DependentUpon>
@@ -293,13 +290,6 @@
     </Compile>
     <Compile Include="QuanLy.aspx.designer.cs">
       <DependentUpon>QuanLy.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyAdmin.aspx.cs">
-      <DependentUpon>QuanLyAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QuanLyAdmin.aspx.designer.cs">
-      <DependentUpon>QuanLyAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="QuanLyKhachHang.aspx.cs">
       <DependentUpon>QuanLyKhachHang.aspx</DependentUpon>
@@ -336,20 +326,6 @@
     <Compile Include="QuanLyPhongChieu.aspx.designer.cs">
       <DependentUpon>QuanLyPhongChieu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyQuanLy.aspx.cs">
-      <DependentUpon>QuanLyQuanLy.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QuanLyQuanLy.aspx.designer.cs">
-      <DependentUpon>QuanLyQuanLy.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyTaiKhoan.aspx.cs">
-      <DependentUpon>QuanLyTaiKhoan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QuanLyTaiKhoan.aspx.designer.cs">
-      <DependentUpon>QuanLyTaiKhoan.aspx</DependentUpon>
-    </Compile>
     <Compile Include="QuanLyVe.aspx.cs">
       <DependentUpon>QuanLyVe.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -380,6 +356,7 @@
     </Compile>
     <Compile Include="ThongTinPhim.aspx.cs">
       <DependentUpon>ThongTinPhim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ThongTinPhim.aspx.designer.cs">
       <DependentUpon>ThongTinPhim.aspx</DependentUpon>

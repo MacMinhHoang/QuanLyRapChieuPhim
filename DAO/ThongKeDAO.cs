@@ -30,7 +30,7 @@ namespace DAO
         public ThongKeDTO LayThongTin(string tendangnhap)
         {
             ThongKeDTO ThongKeDTO = null;
-            String query = "SELECT * FROM NguoiDung WHERE TenDangNhap = '" + tendangnhap + "'";
+            String query = string.Format("SELECT * FROM NguoiDung WHERE TenDangNhap = '{0}'", tendangnhap);
             DataTable dt = DataProvider.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
@@ -44,7 +44,7 @@ namespace DAO
 
         public void SuaThongTin(ThongKeDTO tk)
         {
-            String updateSQL = @"UPDATE ThongKe SET TenHoatDong = N'{0}', ChiPhi = '{1}'";
+            String updateSQL = @"UPDATE ThongKe SET TenHoatDong = N'{0}', ChiPhi = {1}";
             String query = string.Format(updateSQL, tk.TenHoatDong, tk.ChiPhi);
             DataProvider.ExecuteQuery(query);
         }

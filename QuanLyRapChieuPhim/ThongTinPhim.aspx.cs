@@ -9,59 +9,88 @@ using System.Web.UI.WebControls;
 
 namespace QuanLyRapChieuPhim
 {
-    public class ListPhim
-    {
-        public static List<PhimDTO> val;
-        public static int len = 0;
-        public static int index = 0;
-        public static bool isSearchName;
-        public static bool isError = false;
-    }
-
     public partial class ThongTinPhim : System.Web.UI.Page
     {
+        private static List<PhimDTO> listResults;
+        private static int countResults = 0;
+        private static int curResult = 0;
+        private static bool byName;
+        private static bool isError = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             PhimBUS phimBUS = new PhimBUS();
-
-            ListPhim listPhim = new ListPhim();
-
-            ListPhim.isSearchName = (bool)Session["isSearchName"];
-            if (ListPhim.isSearchName)
+            if (listResults != null)
             {
-                if (phimBUS.TimKiemTheoTen(Session["TenPhim"].ToString()) == null)
-                    ListPhim.isError = true;
-                else ListPhim.val = phimBUS.TimKiemTheoTen(Session["TenPhim"].ToString());
-                lbl_error.Text = "Không tìm thấy tên phim bạn nhập";
+                listResults.Clear();
+                listResults = null;
+            }
+            listResults = new List<PhimDTO>();
+
+            String search = Request.QueryString["search"].ToString();
+            if (search == "false")
+            {
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                listResults.Add(phimBUS.LayThongTin(id));
             }
             else
             {
-                if (phimBUS.TimKiemTheoTheLoai(Session["TheLoai"].ToString()) == null)
-                    ListPhim.isError = true;
-                else ListPhim.val = phimBUS.TimKiemTheoTheLoai(Session["TheLoai"].ToString());
-                lbl_error.Text = "Không tìm thấy phim nào thuộc thể loại " + Session["TheLoai"].ToString();
+                String str;
+                if (search == "name")
+                {
+                    string name = Request.QueryString["name"];
+                    List<PhimDTO> result = phimBUS.TimKiemTheoTen(name);
+                    if (result == null || result.Count == 0)
+                        isError = true;
+                    else listResults = result;
+                    lbl_error.Text = "Không tìm thấy kết quả cho : " + name;
+                    byName = true;
+                }
+                else
+                {
+                    int type = Convert.ToInt32(Request.QueryString["type"]);
+                    switch(type)
+                    {
+                        case 0:
+                            str = "Hành động";
+                            break;
+                        case 1:
+                            str = "Viễn tưởng";
+                            break;
+                        case 2:
+                            str = "Lãng mạn";
+                            break;
+                        case 3:
+                            str = "Tâm lý";
+                            break;
+                        case 4:
+                            str = "Kinh dị";
+                            break;
+                        default:
+                            str = "Hoạt hình";
+                            break;
+                    }
+                    List<PhimDTO> result = phimBUS.TimKiemTheoTheLoai(str);
+                    if (result == null || result.Count == 0)
+                        isError = true;
+                    else listResults = result;
+                    lbl_error.Text = "Không tìm thấy phim nào thuộc thể loại " + str;
+                    byName = false;
+                }
             }
-            if (ListPhim.isError)
+
+            if (isError)
             {
                 //Lỗi không tìm thấy phim yêu cầu
                 //Session["TenPhim"] = null;
                 lbl_error.Visible = true;
-                img_Phim.Visible = false;
-                btn_DatVe.Visible = false;
-                btn_Trailer.Visible = false;
-                lbl_NoiDung.Visible = false;
+                img_Phim.Visible = btn_DatVe.Visible = btn_Trailer.Visible = lbl_NoiDung.Visible = false;
 
-                lbl_Tenphim.Visible = false;
-                lbl_Theloai.Visible = false;
-                lbl_NamSX.Visible = false;
-                lbl_Daodien.Visible = false;
-                lbl_Dienvien.Visible = false;
-                lbl_Dotuoi.Visible = false;
-                lbl_TheloaiTD.Visible = false;
-                lbl_NamSXTD.Visible = false;
-                lbl_DaodienTD.Visible = false;
-                lbl_DienvienTD.Visible = false;
-                lbl_DotuoiTD.Visible = false;
+                lbl_Tenphim.Visible = lbl_Theloai.Visible = lbl_NamSX.Visible = lbl_Daodien.Visible = false;
+                lbl_Dienvien.Visible = lbl_Dotuoi.Visible = lbl_TheloaiTD.Visible = lbl_NamSXTD.Visible = false;
+                lbl_DaodienTD.Visible = lbl_DienvienTD.Visible = lbl_DotuoiTD.Visible = false;
+
+                lnk_back.Visible = lnk_forward.Visible = false;
             }
             else
             {
@@ -82,8 +111,8 @@ namespace QuanLyRapChieuPhim
                 lbl_DienvienTD.Visible = true;
                 lbl_DotuoiTD.Visible = true;
 
-                ListPhim.len = ListPhim.val.Count;
-                if (ListPhim.index == ListPhim.len - 1 || ListPhim.len == 1)
+                countResults = listResults.Count;
+                if (curResult == countResults - 1 || countResults == 1)
                 {
                     lnk_back.Visible = true;
                     lnk_forward.Visible = false;
@@ -93,15 +122,15 @@ namespace QuanLyRapChieuPhim
                     lnk_back.Visible = true;
                     lnk_forward.Visible = true;
                 }
-                img_Phim.ImageUrl = ListPhim.val[ListPhim.index].Poster;
+                img_Phim.ImageUrl = listResults[curResult].Poster;
                 img_Phim.DataBind();
-                lbl_NoiDung.Text = ListPhim.val[ListPhim.index].NoiDung;
-                lbl_Tenphim.Text = ListPhim.val[ListPhim.index].TenPhim;
-                lbl_Theloai.Text = ListPhim.val[ListPhim.index].TheLoai;
-                lbl_NamSX.Text = ListPhim.val[ListPhim.index].NamSanXuat.ToString();
-                lbl_Daodien.Text = ListPhim.val[ListPhim.index].DaoDien;
-                lbl_Dienvien.Text = ListPhim.val[ListPhim.index].DienVien;
-                lbl_Dotuoi.Text = ListPhim.val[ListPhim.index].GioiHanDoTuoi;
+                lbl_NoiDung.Text = listResults[curResult].NoiDung;
+                lbl_Tenphim.Text = listResults[curResult].Ten;
+                lbl_Theloai.Text = listResults[curResult].TheLoai;
+                lbl_NamSX.Text = listResults[curResult].NamSanXuat.ToString();
+                lbl_Daodien.Text = listResults[curResult].DaoDien;
+                lbl_Dienvien.Text = listResults[curResult].DienVien;
+                lbl_Dotuoi.Text = listResults[curResult].GioiHanDoTuoi.ToString();
             }
         }
 
@@ -110,41 +139,45 @@ namespace QuanLyRapChieuPhim
             if (Session["TenDangNhap"] == null)
                 Response.Redirect("DangNhap.aspx");
             
-            Session["TenPhim"] = ListPhim.val[ListPhim.index].TenPhim;
+            Session["TenPhim"] = listResults[curResult].Ten;
             Response.Redirect("DatVe.aspx");
         }
 
         protected void lnk_back_Click(object sender, EventArgs e)
         {
-            if (ListPhim.index == 0)
+            if (curResult == 0)
             {
                 Session["TenPhim"] = null;
                 Session["isSearchName"] = null;
                 Session["TheLoai"] = null;
-                ListPhim.val.Clear();
-                ListPhim.len = 0;
-                ListPhim.isError = false;
-                ListPhim.index = 0;
+                listResults.Clear();
+                countResults = 0;
+                isError = false;
+                curResult = 0;
                 Response.Redirect("PhimDangChieu.aspx");
     }
             else
             {
-                ListPhim.index--;
-                Response.Redirect("ThongTinPhim.aspx");
+                curResult--;
+                if (byName)
+                    Response.Redirect("ThongTinPhim.aspx?search=name&name=" + Request.QueryString["name"]);
+                else Response.Redirect("ThongTinPhim.aspx?search=type&type=" + Request.QueryString["type"]);
             }
         }
 
         protected void lnk_forward_Click(object sender, EventArgs e)
         {
-            ListPhim.index++;
-            Response.Redirect("ThongTinPhim.aspx");
+            curResult++;
+            if (byName)
+                Response.Redirect("ThongTinPhim.aspx?search=name&name=" + Request.QueryString["name"]);
+            else Response.Redirect("ThongTinPhim.aspx?search=type&type=" + Request.QueryString["type"]);
         }
 
         protected void btn_Trailer_Click(object sender, EventArgs e)
         {
             Page.ClientScript.RegisterStartupScript(
-                this.GetType(), "OpenWindow", "window.open('" + ListPhim.val[ListPhim.index].Trailer + "', '_newtab');", true);
-            //Response.Redirect(ListPhim.val[ListPhim.index].Trailer);
+                this.GetType(), "OpenWindow", "window.open('" + listResults[curResult].Trailer + "', '_newtab');", true);
+            //Response.Redirect(val[index].Trailer);
         }
     }
 }

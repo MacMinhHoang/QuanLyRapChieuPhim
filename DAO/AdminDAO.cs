@@ -35,7 +35,7 @@ namespace DAO
         public AdminDTO LayThongTin(string tendangnhap)
         {
             AdminDTO adminDTO = null;
-            String query = "SELECT * FROM NguoiDung WHERE TenDangNhap = '" + tendangnhap + "'";
+            String query = String.Format("SELECT * FROM NguoiDung WHERE TenDangNhap = '{0}'", tendangnhap);
             DataTable dt = DataProvider.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
@@ -53,7 +53,7 @@ namespace DAO
 
         public void SuaThongTin(AdminDTO ad)
         {
-            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = N'{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = '{5}'";
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
             String query = string.Format(updateSQL, ad.HoTen, ad.NgaySinh, ad.GioiTinh, ad.DiaChi, ad.SDT, ad.MaAdmin);
             DataProvider.ExecuteQuery(query);
         }

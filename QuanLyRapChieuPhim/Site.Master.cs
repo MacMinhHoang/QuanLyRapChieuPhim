@@ -50,7 +50,9 @@ namespace QuanLyRapChieuPhim
             Session["isLogin"] = false;
             Session["TenDangNhap"] = null;
             Session["ChucNang"] = null;
-            Response.Redirect("Default.aspx");
+            string strBuilder = "<script language='javascript'>alert('" + "Đã đăng xuất" + "')</script>";
+            Response.Write(strBuilder);
+            Server.Transfer("Default.aspx");
         }
     }
 }

@@ -18,8 +18,8 @@ namespace QuanLyRapChieuPhim
 
         private void FilGVDanhSachLichChieu()
         {
-            LichChieuBUS lichChieuBUS = new LichChieuBUS();
-            gvDanhSachLichChieu.DataSource = lichChieuBUS.LayDanhSach();
+            SuatChieuBUS SuatChieuBUS = new SuatChieuBUS();
+            gvDanhSachLichChieu.DataSource = SuatChieuBUS.LayDanhSach();
             gvDanhSachLichChieu.DataBind();
 
             PhimBUS phimBUS = new PhimBUS();

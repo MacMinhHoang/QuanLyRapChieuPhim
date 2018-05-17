@@ -28,11 +28,11 @@ namespace QuanLyRapChieuPhim
             if (taiKhoanDTO != null)
             {
 
-                if (taiKhoanDTO.ChucNang == "KH")
+                if (taiKhoanDTO.PhanQuyen == "KH")
                 {
                     Session["isLogin"] = true;
                     Session["TenDangNhap"] = taiKhoanDTO.TenDangNhap;
-                    Session["ChucNang"] = taiKhoanDTO.ChucNang;
+                    Session["ChucNang"] = taiKhoanDTO.PhanQuyen;
                     Response.Redirect("KhachHang.aspx");
                 }
                 else
@@ -61,8 +61,8 @@ namespace QuanLyRapChieuPhim
             {
                 Session["isLogin"] = true;
                 Session["TenDangNhap"] = taiKhoanDTO.TenDangNhap;
-                Session["ChucNang"] = taiKhoanDTO.ChucNang;
-                switch (taiKhoanDTO.ChucNang)
+                Session["ChucNang"] = taiKhoanDTO.PhanQuyen;
+                switch (taiKhoanDTO.PhanQuyen)
                 {
                     case "AD":
                         Response.Redirect("Admin.aspx");
@@ -73,7 +73,7 @@ namespace QuanLyRapChieuPhim
                     case "QL":
                         Response.Redirect("QuanLy.aspx");
                         break;
-                    case "KH":
+                    default:
                         ErrorMessage2.Text = "Mục này chỉ dành cho nhân viên. Xin hãy kéo lên";
                         ErrorMessage2.Visible = true;
                         break;

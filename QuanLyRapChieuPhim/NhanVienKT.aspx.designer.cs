@@ -10,105 +10,105 @@
 namespace QuanLyRapChieuPhim {
     
     
-    public partial class QuanLyQuanLy {
+    public partial class NhanVien {
         
         /// <summary>
-        /// tbTenQL control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbTenQL;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// tbNgaySinh control.
+        /// lb_TenDangNhap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNgaySinh;
+        protected global::System.Web.UI.WebControls.Label lb_TenDangNhap;
         
         /// <summary>
-        /// tbGioiTinh control.
+        /// lb_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbGioiTinh;
+        protected global::System.Web.UI.WebControls.Label lb_ID;
         
         /// <summary>
-        /// tbCMND control.
+        /// tb_HoTen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbCMND;
+        protected global::System.Web.UI.WebControls.TextBox tb_HoTen;
         
         /// <summary>
-        /// tbSDT control.
+        /// tb_NgaySinh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbSDT;
+        protected global::System.Web.UI.WebControls.TextBox tb_NgaySinh;
         
         /// <summary>
-        /// tbDiaChi control.
+        /// tb_GioiTinh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDiaChi;
+        protected global::System.Web.UI.WebControls.TextBox tb_GioiTinh;
         
         /// <summary>
-        /// tbEmail control.
+        /// tb_SDT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEmail;
+        protected global::System.Web.UI.WebControls.TextBox tb_SDT;
         
         /// <summary>
-        /// tbTenDN control.
+        /// tb_DiaChi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbTenDN;
+        protected global::System.Web.UI.WebControls.TextBox tb_DiaChi;
         
         /// <summary>
-        /// tbMatKhau control.
+        /// btn_Sua control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbMatKhau;
+        protected global::System.Web.UI.WebControls.Button btn_Sua;
         
         /// <summary>
-        /// btnAdd control.
+        /// Button5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
+        protected global::System.Web.UI.WebControls.Button Button5;
         
         /// <summary>
-        /// gvDanhSachQuanLy control.
+        /// Button6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDanhSachQuanLy;
+        protected global::System.Web.UI.WebControls.Button Button6;
     }
 }

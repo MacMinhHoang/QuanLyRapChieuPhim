@@ -13,13 +13,13 @@ namespace QuanLyRapChieuPhim {
     public partial class QuanLyPhongChieu {
         
         /// <summary>
-        /// tbMaPC control.
+        /// tbTenPC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbMaPC;
+        protected global::System.Web.UI.WebControls.TextBox tbTenPC;
         
         /// <summary>
         /// tbSoLuongCho control.
@@ -29,24 +29,6 @@ namespace QuanLyRapChieuPhim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbSoLuongCho;
-        
-        /// <summary>
-        /// tbLoaiMC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbLoaiMC;
-        
-        /// <summary>
-        /// tbLoaiAT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbLoaiAT;
         
         /// <summary>
         /// tbTinhTrang control.

@@ -17,6 +17,11 @@ namespace DTO
         private String _SDT;
         private Int32 _DiemTichLuy;
 
+        public KhachHangDTO()
+        {
+            _DiemTichLuy = 0;
+        }
+
         public int MaKhachHang { get => _MaKhachHang; set => _MaKhachHang = value; }
         public string HoTen { get => _HoTen; set => _HoTen = value; }
         public string NgaySinh { get => _NgaySinh; set => _NgaySinh = value; }

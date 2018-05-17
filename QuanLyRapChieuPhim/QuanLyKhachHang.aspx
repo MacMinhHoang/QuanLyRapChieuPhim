@@ -7,13 +7,13 @@
         <asp:GridView ID="gvDanhSachKhachHang" OnRowDeleting="gvDanhSachKhachHang_RowDeleting" runat="server" class="mydatagrid" PagerStyle-CssClass="pager" AutoGenerateColumns="False" AllowSorting="True" HorizontalAlign="Center" Width="1100px">
         <Columns>
             <asp:BoundField DataField="MaKhachHang" HeaderText="Mã Khách Hàng" />
-            <asp:BoundField DataField="TenKhachHang" HeaderText="Tên Khách Hàng" />
+            <asp:BoundField DataField="HoTen" HeaderText="Tên Khách Hàng" />
             <asp:BoundField DataField="NgaySinh" HeaderText="Ngày Sinh" />
             <asp:BoundField DataField="GioiTinh" HeaderText="Giới Tính" />
-            <asp:BoundField DataField="CMND" HeaderText="CMND" />
             <asp:BoundField DataField="DiaChi" HeaderText="Địa Chỉ" />
-            <asp:BoundField DataField="SoDienThoai" HeaderText="SĐT" />
+            <asp:BoundField DataField="SDT" HeaderText="SĐT" />
             <asp:BoundField DataField="TenDangNhap" HeaderText="Tên Đăng Nhập" />
+            <asp:BoundField DataField="DiemTichLuy" HeaderText="Điểm Tích Lũy" />
             <asp:CommandField ButtonType="Image" ShowDeleteButton="True" DeleteImageUrl="Images/icon_delete.png" DeleteText="" ShowCancelButton="False" />
         </Columns>
         <HeaderStyle CssClass="header"></HeaderStyle>

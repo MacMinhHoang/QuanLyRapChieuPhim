@@ -36,14 +36,14 @@ namespace DAO
 
         public void ThemVe(VeDTO ve)
         {
-            String insertSQL = @"INSERT INTO Ve values ('{0}','{1}', '{2}', '{3}', '{4}', '{5}','{6}')";
+            String insertSQL = @"INSERT INTO Ve values ({0}, {1}, '{2}', {3}, {4}, {5}, {6})";
             String query = string.Format(insertSQL, ve.MaKhachHang, ve.MaSuatChieu, ve.Ghe, ve.LoaiVe, ve.GiaVe, ve.ThanhToan, ve.TinhTrang);
             DataProvider.ExecuteQuery(query);
         }
 
         public void XoaVe(int mave)
         {
-            String query = string.Format("DELETE FROM Ve where MaVe = '{0}'", mave);
+            String query = string.Format("DELETE FROM Ve where MaVe = {0}", mave);
             DataProvider.ExecuteQuery(query);
         }
 

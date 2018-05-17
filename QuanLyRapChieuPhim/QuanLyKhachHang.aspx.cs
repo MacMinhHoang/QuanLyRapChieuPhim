@@ -81,7 +81,7 @@ namespace QuanLyRapChieuPhim
             TaiKhoanBUS tkBUS = new TaiKhoanBUS();
             KhachHangBUS nvBUS = new KhachHangBUS();
             TableCell cell = gvDanhSachKhachHang.Rows[e.RowIndex].Cells[0];
-            nvBUS.XoaKhachHang(cell.Text);
+            nvBUS.XoaKhachHang(Convert.ToInt32(cell.Text));
             cell = gvDanhSachKhachHang.Rows[e.RowIndex].Cells[8];
             tkBUS.XoaTaiKhoan(cell.Text);
             FilGVDanhSachKhachHang();

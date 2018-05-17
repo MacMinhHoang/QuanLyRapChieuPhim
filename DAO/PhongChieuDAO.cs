@@ -32,7 +32,7 @@ namespace DAO
         {
             PhongChieuDTO phongChieuDTO = null;
 
-            String query = string.Format("SELECT * FROM PhongChieu WHERE MaPhongChieu = '{0}'", mapc);
+            String query = string.Format("SELECT * FROM PhongChieu WHERE MaPhongChieu = {0}", mapc);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -47,11 +47,11 @@ namespace DAO
 
         public bool ThemPhongChieu(PhongChieuDTO pc)
         {
-            String test_mapc = string.Format("SELECT * FROM PhongChieu WHERE MaPhongChieu = '{0}'", pc.MaPhongChieu);
-            DataTable dt_mapc = DataProvider.ExecuteQuery(test_mapc);
-            if (dt_mapc.Rows.Count > 0)
-                return false;
-            String query = string.Format(@"INSERT INTO PhongChieu VALUES ('N{0}', '{1}',  '{2}')", 
+            //String test_mapc = string.Format("SELECT * FROM PhongChieu WHERE MaPhongChieu = '{0}'", pc.MaPhongChieu);
+            //DataTable dt_mapc = DataProvider.ExecuteQuery(test_mapc);
+            //if (dt_mapc.Rows.Count > 0)
+            //    return false;
+            String query = string.Format(@"INSERT INTO PhongChieu VALUES ('N{0}', {1},  {2})", 
                 pc.TenPhongChieu, pc.SoLuongGhe, pc.TinhTrang);
             DataProvider.ExecuteQuery(query);
             return true;
@@ -59,7 +59,7 @@ namespace DAO
 
         public void XoaPhongChieu(int mpc)
         {
-            String query = string.Format("DELETE FROM PhongChieu WHERE MaPhongChieu = '{0}'", mpc);
+            String query = string.Format("DELETE FROM PhongChieu WHERE MaPhongChieu = {0}", mpc);
             DataProvider.ExecuteQuery(query);
         }
 
@@ -81,7 +81,7 @@ namespace DAO
         {
             List<Char> listDay = new List<Char>();
 
-            String query = string.Format("SELECT SoLuongGhe FROM PhongChieu WHERE MaPhongChieu = '{0}'", mapc);
+            String query = string.Format("SELECT SoLuongGhe FROM PhongChieu WHERE MaPhongChieu = {0}", mapc);
             DataTable dt = DataProvider.ExecuteQuery(query);
             int size = Convert.ToInt32(dt.Rows[0]["SoLuongGhe"]);
             Char c = 'A';
