@@ -36,7 +36,7 @@ namespace DAO
 
         public void ThemVe(VeDTO ve)
         {
-            String insertSQL = @"INSERT INTO Ve values ({0}, {1}, '{2}', {3}, {4}, {5}, {6})";
+            String insertSQL = @"INSERT INTO Ve values ({0}, {1}, '{2}', '{3}', {4}, '{5}', '{6}')";
             String query = string.Format(insertSQL, ve.MaKhachHang, ve.MaSuatChieu, ve.Ghe, ve.LoaiVe, ve.GiaVe, ve.ThanhToan, ve.TinhTrang);
             DataProvider.ExecuteQuery(query);
         }

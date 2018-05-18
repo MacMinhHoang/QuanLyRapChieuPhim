@@ -33,7 +33,7 @@
             
             <asp:DropDownList ID="ddl_day" OnDataBound="ddl_day_DataBound" OnSelectedIndexChanged="ddl_day_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList><br />
             CHỌN SỐ GHẾ<br />
-            <asp:DropDownList ID="ddl_soghe" runat="server"></asp:DropDownList><br /><br />
+            <asp:DropDownList ID="ddl_soghe" runat="server" OnDataBound="ddl_soghe_DataBound" OnSelectedIndexChanged="ddl_soghe_SelectedIndexChanged"></asp:DropDownList><br /><br />
             <asp:Button ID="btn_DatVe" OnClick="btn_DatVe_Click" runat="server" Text="Đặt Vé" />
             
         </div>

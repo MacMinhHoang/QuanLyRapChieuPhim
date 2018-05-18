@@ -22,19 +22,24 @@ namespace BUS
             return suatChieuDAO.LayDanhSach();
         }
 
-        public List<String> LayDSNgayChieuCuaPhim(string tenphim)
+        public int LayMaSuatChieu(string ngay, string gio, int phong)
         {
-            return suatChieuDAO.LayDSNgayChieuCuaPhim(tenphim);
+            return suatChieuDAO.LayMaSuatChieu(ngay, gio, phong);
         }
 
-        public List<String> LayDSSuatChieuCuaPhimTheoNgay(string tenphim, string ngaychieu)
+        public List<String> LayDSNgayChieuCuaPhim(int id)
         {
-            return suatChieuDAO.LayDSSuatChieuCuaPhimTheoNgay(tenphim, ngaychieu);
+            return suatChieuDAO.LayDSNgayChieuCuaPhim(id);
         }
 
-        public String LayTenPhongChieu(string tenphim, string ngaychieu, string giochieu)
+        public List<String> LayDSSuatChieuCuaPhimTheoNgay(int id, string ngaychieu)
         {
-            return suatChieuDAO.LayTenPhongChieu(tenphim, ngaychieu, giochieu);
+            return suatChieuDAO.LayDSSuatChieuCuaPhimTheoNgay(id, ngaychieu);
+        }
+
+        public int LayMaPhongChieu(int id, string ngaychieu, string giochieu)
+        {
+            return suatChieuDAO.LayMaPhongChieu(id, ngaychieu, giochieu);
         }
 
         public bool ThemSuatChieu(SuatChieuDTO sc)

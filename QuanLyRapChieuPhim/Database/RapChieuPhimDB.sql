@@ -5,7 +5,7 @@ CREATE DATABASE RapChieuPhimDB;
 GO
 USE RapChieuPhimDB;
 
-SELECT * FROM NguoiDung
+SELECT * FROM Ve
 
 /***** Tạo các bảng và khóa chính *****/
 
@@ -256,8 +256,8 @@ INSERT INTO SuatChieu VALUES(55555008, '03/01/2018','23:00', 99999008)
 /***** Ve *****/
 /*** ID bắt đầu từ 77777001, 0: vé thường, 1: vé vip ***/
 INSERT INTO Ve VALUES(11111001, 33333001, 'G8', 0, 50000, 1, 0)
-INSERT INTO Ve VALUES(11111002, 33333001, 'J7', 1, 55000, 1, 0)
-INSERT INTO Ve VALUES(11111002, 33333001, 'J8', 1, 55000, 1, 0)
+INSERT INTO Ve VALUES(11111002, 33333001, 'J7', 1, 80000, 1, 0)
+INSERT INTO Ve VALUES(11111002, 33333001, 'J8', 1, 80000, 1, 0)
 
 /***** ThongKe *****/
 /*** ID bắt đầu từ 22222001 ***/

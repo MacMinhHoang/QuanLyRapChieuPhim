@@ -100,9 +100,9 @@ namespace DAO
 
         public int LayMaKH(string tendn)
         {
-            String query = string.Format("SELECT MaKhachHang FROM KhachHang WHERE TenDangNhap = '{0}'", tendn);
+            String query = string.Format("SELECT MaNguoiDung FROM NguoiDung WHERE TenDangNhap = '{0}'", tendn);
             DataTable dt = DataProvider.ExecuteQuery(query);
-            return Convert.ToInt32(dt.Rows[0]["MaKhachHang"]);
+            return Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
         }
 
         public void SuaThongTin(KhachHangDTO kh)

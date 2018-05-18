@@ -137,10 +137,13 @@ namespace QuanLyRapChieuPhim
         protected void btn_DatVe_Click(object sender, EventArgs e)
         {
             if (Session["TenDangNhap"] == null)
-                Response.Redirect("DangNhap.aspx");
+            {
+                string strBuilder = "<script language='javascript'>alert('" + "Bạn phải đăng nhập để thực hiện chức năng này." + "')</script>";
+                Response.Write(strBuilder);
+                Server.Transfer("DangNhap.aspx");
+            }
             
-            Session["TenPhim"] = listResults[curResult].Ten;
-            Response.Redirect("DatVe.aspx");
+            Response.Redirect("DatVe.aspx?id=" + listResults[curResult].MaPhim);
         }
 
         protected void lnk_back_Click(object sender, EventArgs e)
@@ -177,7 +180,6 @@ namespace QuanLyRapChieuPhim
         {
             Page.ClientScript.RegisterStartupScript(
                 this.GetType(), "OpenWindow", "window.open('" + listResults[curResult].Trailer + "', '_newtab');", true);
-            //Response.Redirect(val[index].Trailer);
         }
     }
 }

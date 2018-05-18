@@ -30,12 +30,20 @@ namespace DAO
             return listSuatChieuDTO;
         }
 
-        public List<String> LayDSNgayChieuCuaPhim(string tenphim)
+        public int LayMaSuatChieu(string ngay, string gio, int phong)
+        {
+            String SQL = "SELECT MaSuatChieu FROM SuatChieu WHERE NgayChieu = '{0}' AND GioChieu = '{1}' AND MaPhongChieu = {2}";
+            String query = string.Format(SQL, ngay, gio, phong);
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            return Convert.ToInt32(dt.Rows[0]["MaSuatChieu"]);
+        }
+
+        public List<String> LayDSNgayChieuCuaPhim(int id)
         {
             List<String> listNgay = new List<String>();
 
-            String SQL = "SELECT SC.NgayChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = N'{0}'";
-            String query = string.Format(SQL, tenphim);
+            String SQL = "SELECT DISTINCT NgayChieu FROM SuatChieu WHERE MaPhim = {0}";
+            String query = string.Format(SQL, id);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -45,12 +53,12 @@ namespace DAO
             return listNgay;
         }
 
-        public List<String> LayDSSuatChieuCuaPhimTheoNgay(string tenphim, string ngaychieu)
+        public List<String> LayDSSuatChieuCuaPhimTheoNgay(int id, string ngaychieu)
         {
             List<String> listSuat = new List<String>();
 
-            String SQL = "SELECT SC.GioChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = N'{0}' AND SC.MgayChieu = '{1}'";
-            String query = string.Format(SQL, tenphim, ngaychieu);
+            String SQL = "SELECT GioChieu FROM SuatChieu WHERE MaPhim = {0} AND NgayChieu = '{1}'";
+            String query = string.Format(SQL, id, ngaychieu);
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -60,14 +68,13 @@ namespace DAO
             return listSuat;
         }
 
-        public String LayTenPhongChieu(string tenphim, string ngaychieu, string giochieu)
+        public int LayMaPhongChieu(int id, string ngaychieu, string giochieu)
         {
-            String SQL = "SELECT TenPhongChieu FROM PhongChieu WHERE MaPhongChieu = " +
-                "(SELECT SC.GioChieu FROM SuatChieu SC, Phim P WHERE SC.MaPhim = P.MaPhim AND P.Ten = N'{0}' AND SC.MgayChieu = '{1}' AND SC.GioChieu = '{2}')";
-            String query = string.Format(SQL, tenphim, ngaychieu, giochieu);
+            String SQL = "SELECT MaPhongChieu FROM SuatChieu WHERE MaPhim = {0} AND NgayChieu = '{1}' AND GioChieu = '{2}'";
+            String query = string.Format(SQL, id, ngaychieu, giochieu);
             DataTable dt = DataProvider.ExecuteQuery(query);
-            String tenpc = dt.Rows[0]["TenPhongChieu"].ToString();
-            return tenpc;
+            int mapc = Convert.ToInt32(dt.Rows[0]["MaPhongChieu"]);
+            return mapc;
         }
 
         //public List<SuatChieuDTO> LaySuatChieuTheoTen(string tenphim)
@@ -113,7 +120,7 @@ namespace DAO
 
         public List<int> ListGheTrong(SuatChieuDTO sc, string day)
         {
-            String SQL = "SELECT Ghe FROM Ve WHERE MaSuatCHieu = {0} AND ViTriNgoi LIKE '{1}%' ";
+            String SQL = "SELECT Ghe FROM Ve WHERE MaSuatCHieu = {0} AND Ghe LIKE '{1}%' ";
             String query = string.Format(SQL, sc.MaSuatChieu, day);
             DataTable dt = DataProvider.ExecuteQuery(query);
             List<int> listGheTrong = new List<int>();
