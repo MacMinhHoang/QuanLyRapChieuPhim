@@ -31,5 +31,15 @@ namespace BUS
         {
             thongKeDAO.SuaThongTin(kt);
         }
+
+        public void ThemHoatDong(ThongKeDTO tkDTO)
+        {
+            thongKeDAO.ThemHoatDong(tkDTO);
+        }
+
+        public void XoaHoatDong(int id)
+        {
+            thongKeDAO.XoaHoatDong(id);
+        }
     }
 }

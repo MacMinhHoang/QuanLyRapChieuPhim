@@ -129,9 +129,9 @@
                 <tr>
                     <td class="text-center" colspan="6" style="height: 8px; font-size: larger;">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="Button4" runat="server" Height="53px" Text="Quản lý Lương" Width="200px" BorderStyle="Double" BorderColor="Black" />
+                        <asp:Button ID="Button4" runat="server" Height="53px" Text="Quản lý Lương" Width="200px" BorderStyle="Double" BorderColor="Black" PostBackUrl="~/QuanLyLuong.aspx" />
                         &nbsp;&nbsp;
-                        <asp:Button ID="Button6" runat="server" Height="53px" Text="Quản lý Doanh Thu" Width="200px" BorderStyle="Double" BorderColor="Black" />
+                        <asp:Button ID="Button6" runat="server" Height="53px" Text="Quản lý Doanh Thu" Width="200px" BorderStyle="Double" BorderColor="Black" PostBackUrl="~/QuanLyDoanhThu.aspx" />
                         <br />
                     </td>
                 </tr>

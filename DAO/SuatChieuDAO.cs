@@ -114,15 +114,31 @@ namespace DAO
 
         public bool ThemSuatChieu(SuatChieuDTO sc)
         {
-            String SQL = "SELECT * FROM SuatChieu WHERE MaPhongChieu = {0} AND NgayChieu = '{1}' AND GioChieu = '{2}' AND MaPhim = {3}";
-            String query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu, sc.MaPhim);
-            DataTable dt = DataProvider.ExecuteQuery(SQL);
-            if (dt.Rows.Count > 0)
-                return false;
-            SQL = @"INSERT INTO SuatChieu VALUES ({0}, '{1}', '{2}', {3})";
-            query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu, sc.MaPhim);
-            DataProvider.ExecuteQuery(query);
-            return true;
+            //String SQL = "SELECT * FROM SuatChieu WHERE MaPhongChieu = {0} AND NgayChieu = '{1}' AND GioChieu = '{2}' AND MaPhim = {3}";
+            //String query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu, sc.MaPhim);
+            //DataTable dt = DataProvider.ExecuteQuery(SQL);
+            //if (dt.Rows.Count > 0)
+            //    return false;
+            //SQL = @"INSERT INTO SuatChieu VALUES ({0}, '{1}', '{2}', {3})";
+            //query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu, sc.MaPhim);
+            //DataProvider.ExecuteQuery(query);
+            //return true;
+
+            
+                DataTable dt = DataProvider.ExecuteQuery("SELECT * FROM SuatChieu");
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (sc.MaPhongChieu == Convert.ToInt32(dr["MaPhongChieu"])
+                        && sc.NgayChieu == dr["NgayChieu"].ToString()
+                        && sc.GioChieu == dr["GioChieu"].ToString()
+                        && sc.MaPhim == Convert.ToInt32(dr["MaPhim"]))
+                        return false;
+                }
+                String SQL = @"INSERT INTO SuatChieu VALUES ({0}, '{1}', '{2}', {3})";
+                String query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu, sc.MaPhim);
+                DataProvider.ExecuteQuery(query);
+                return true;
+            
         }
 
         public void XoaSuatChieu(int ma)

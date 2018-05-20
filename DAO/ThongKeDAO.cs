@@ -21,7 +21,7 @@ namespace DAO
                 ThongKeDTO thongKeDTO = new ThongKeDTO();
                 thongKeDTO.MaHoatDong = Convert.ToInt32(dr["MaHoatDong"]);
                 thongKeDTO.TenHoatDong = dr["TenHoatDong"].ToString();
-                thongKeDTO.ChiPhi = Convert.ToInt64(dr["ChiPhi"]);
+                thongKeDTO.ChiPhi = (float)Convert.ToDouble(dt.Rows[0]["ChiPhi"]);
                 listThongKeDTO.Add(thongKeDTO);
             }
             return listThongKeDTO;
@@ -46,6 +46,19 @@ namespace DAO
         {
             String updateSQL = @"UPDATE ThongKe SET TenHoatDong = N'{0}', ChiPhi = {1}";
             String query = string.Format(updateSQL, tk.TenHoatDong, tk.ChiPhi);
+            DataProvider.ExecuteQuery(query);
+        }
+
+        public void ThemHoatDong(ThongKeDTO tkDTO)
+        {
+            String SQL = @"INSERT INTO ThongKe VALUES ('{0}', {1})";
+            String query = string.Format(SQL, tkDTO.TenHoatDong, tkDTO.ChiPhi);
+            DataProvider.ExecuteQuery(query);
+        }
+
+        public void XoaHoatDong(int id)
+        {
+            String query = string.Format("DELETE FROM ThongKe WHERE MaHoatDong = {0}", id);
             DataProvider.ExecuteQuery(query);
         }
     }

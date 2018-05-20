@@ -38,6 +38,8 @@ namespace QuanLyRapChieuPhim
             SuatChieuBUS scBUS = new SuatChieuBUS();
             TableCell cell = gvDanhSachLichChieu.Rows[e.RowIndex].Cells[0];
             scBUS.XoaSuatChieu(Convert.ToInt32(cell.Text));
+            string strBuilder = "<script language='javascript'>alert('" + "Xóa thành công" + "')</script>";
+            Response.Write(strBuilder);
             FilGVDanhSachLichChieu();
         }
 
@@ -53,7 +55,8 @@ namespace QuanLyRapChieuPhim
 
             SuatChieuBUS scBUS = new SuatChieuBUS();
             scBUS.ThemSuatChieu(scDTO);
-
+            string strBuilder = "<script language='javascript'>alert('" + "Thêm thành công" + "')</script>";
+            Response.Write(strBuilder);
             tbNgayChieu.Text = "";
             tbGioChieu.Text = "";
             FilGVDanhSachLichChieu();

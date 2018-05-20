@@ -156,8 +156,10 @@
     <Content Include="LichSuGiaoDich.aspx" />
     <Content Include="NhanVienKT.aspx" />
     <Content Include="QuanLy.aspx" />
+    <Content Include="QuanLyDoanhThu.aspx" />
     <Content Include="QuanLyLichChieu.aspx" />
     <Content Include="QuanLyLichLamViec.aspx" />
+    <Content Include="QuanLyLuong.aspx" />
     <Content Include="ThongTinPhim.aspx" />
     <Content Include="ThongTinVe.aspx" />
     <Content Include="WebUserControl1.ascx" />
@@ -309,6 +311,13 @@
     <Compile Include="QuanLy.aspx.designer.cs">
       <DependentUpon>QuanLy.aspx</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyDoanhThu.aspx.cs">
+      <DependentUpon>QuanLyDoanhThu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuanLyDoanhThu.aspx.designer.cs">
+      <DependentUpon>QuanLyDoanhThu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyKhachHang.aspx.cs">
       <DependentUpon>QuanLyKhachHang.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -329,6 +338,13 @@
     </Compile>
     <Compile Include="QuanLyLichLamViec.aspx.designer.cs">
       <DependentUpon>QuanLyLichLamViec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyLuong.aspx.cs">
+      <DependentUpon>QuanLyLuong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuanLyLuong.aspx.designer.cs">
+      <DependentUpon>QuanLyLuong.aspx</DependentUpon>
     </Compile>
     <Compile Include="QuanLyNhanVien.aspx.cs">
       <DependentUpon>QuanLyNhanVien.aspx</DependentUpon>
