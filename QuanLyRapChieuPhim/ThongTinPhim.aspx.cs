@@ -141,18 +141,17 @@ namespace QuanLyRapChieuPhim
                 string strBuilder = "<script language='javascript'>alert('" + "Bạn phải đăng nhập để thực hiện chức năng này." + "')</script>";
                 Response.Write(strBuilder);
                 Server.Transfer("DangNhap.aspx");
-            }
-            
-            Response.Redirect("DatVe.aspx?id=" + listResults[curResult].MaPhim);
+            }            
+            Response.Redirect("DatVe.aspx?id=" + listResults[curResult].MaPhim.ToString());
         }
 
         protected void lnk_back_Click(object sender, EventArgs e)
         {
             if (curResult == 0)
             {
-                Session["TenPhim"] = null;
-                Session["isSearchName"] = null;
-                Session["TheLoai"] = null;
+                //Session["TenPhim"] = null;
+                //Session["isSearchName"] = null;
+                //Session["TheLoai"] = null;
                 listResults.Clear();
                 countResults = 0;
                 isError = false;

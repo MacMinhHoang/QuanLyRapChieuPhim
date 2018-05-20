@@ -53,7 +53,7 @@ namespace DAO
 
         public void SuaThongTin(NhanVienKTDTO nvkt)
         {
-            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
             String query = string.Format(updateSQL, nvkt.HoTen, nvkt.NgaySinh, nvkt.GioiTinh, nvkt.DiaChi, nvkt.SDT, nvkt.MaNhanVienKT);
             DataProvider.ExecuteQuery(query);
         }

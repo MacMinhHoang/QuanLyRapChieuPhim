@@ -51,7 +51,7 @@ namespace DAO
             //DataTable dt_mapc = DataProvider.ExecuteQuery(test_mapc);
             //if (dt_mapc.Rows.Count > 0)
             //    return false;
-            String query = string.Format(@"INSERT INTO PhongChieu VALUES ('N{0}', {1},  {2})", 
+            String query = string.Format(@"INSERT INTO PhongChieu VALUES ('N{0}', {1},  '{2}')", 
                 pc.TenPhongChieu, pc.SoLuongGhe, pc.TinhTrang);
             DataProvider.ExecuteQuery(query);
             return true;

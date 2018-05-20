@@ -63,7 +63,7 @@ namespace DAO
             String query = string.Format(insertSQL, tk.TenDangNhap, tk.MatKhau, tk.PhanQuyen);
             DataProvider.ExecuteQuery(query);
 
-            insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', N'{1}', '{2}', {3}, N'{4}', '{5}')";
+            insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', N'{1}', '{2}', '{3}', N'{4}', '{5}')";
             query = string.Format(insertSQL, kh.TenDangNhap, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT);
             DataProvider.ExecuteQuery(query);
 
@@ -107,11 +107,11 @@ namespace DAO
 
         public void SuaThongTin(KhachHangDTO kh)
         {
-            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' Where MaNguoiDung = {5}";
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' Where MaNguoiDung = {5}";
             String query = string.Format(updateSQL, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT, kh.MaKhachHang);
             DataProvider.ExecuteQuery(query);
 
-            updateSQL = @"UPDATE KhachHang SET DiemTichLuy = {0}'WHERE MaKhachHang = {1}";
+            updateSQL = @"UPDATE KhachHang SET DiemTichLuy = {0} WHERE MaKhachHang = {1}";
             query = string.Format(updateSQL, kh.DiemTichLuy, kh.MaKhachHang);
             DataProvider.ExecuteQuery(query);
         }

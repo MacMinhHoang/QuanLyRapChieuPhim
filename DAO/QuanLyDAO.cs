@@ -76,7 +76,7 @@ namespace DAO
 
         public void SuaThongTin(QuanLyDTO ql)
         {
-            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
+            String updateSQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
             String query = string.Format(updateSQL, ql.HoTen, ql.NgaySinh, ql.GioiTinh, ql.DiaChi, ql.SDT, ql.MaQuanLy);
             DataProvider.ExecuteQuery(query);
         }

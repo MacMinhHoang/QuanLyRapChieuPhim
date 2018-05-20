@@ -60,7 +60,7 @@ namespace DAO
 
         public bool ThemNhanVien(NhanVienDTO nv)
         {
-            String insertSQL = @"INSERT INTO NguoiDung VALUES ({0}, N'{1}', '{2}', {3}, N'{4}', '{5}')";
+            String insertSQL = @"INSERT INTO NguoiDung VALUES ({0}, N'{1}', '{2}', '{3}', N'{4}', '{5}')";
             String query = string.Format(insertSQL, null, nv.HoTen, nv.NgaySinh, nv.GioiTinh, nv.DiaChi, nv.SDT);
             DataProvider.ExecuteQuery(query);
 
@@ -101,7 +101,7 @@ namespace DAO
             String query = string.Format(SQL, nv.Luong, nv.LichLamViec, nv.MaNhanVien);
             DataProvider.ExecuteQuery(query);
 
-            SQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = {2}, DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
+            SQL = @"UPDATE NguoiDung SET HoTen = N'{0}', NgaySinh = '{1}', GioiTinh = '{2}', DiaChi = N'{3}', SDT = '{4}' WHERE MaNguoiDung = {5}";
             query = string.Format(SQL, nv.HoTen, nv.NgaySinh, nv.GioiTinh, nv.DiaChi, nv.SDT, nv.MaNhanVien);
             DataProvider.ExecuteQuery(query);
         }
