@@ -37,7 +37,7 @@ namespace QuanLyRapChieuPhim
             //    map = "P" + count.ToString();
             PhimDTO ph = new PhimDTO();
             ph.Ten = tbTenPhim.Text;
-            ph.TheLoai = tbTheLoai.Text;
+            ph.TheLoai = tbTheLoai.SelectedValue;
             ph.DaoDien = tbDaoDien.Text;
             ph.DienVien = tbDienVien.Text;
             ph.GioiHanDoTuoi = Convert.ToInt32(tbGHDT.Text);
@@ -56,7 +56,6 @@ namespace QuanLyRapChieuPhim
         {
             tbTenPhim.Text = "";
             tbDaoDien.Text = "";
-            tbTheLoai.Text = "";
             tbDienVien.Text = "";
             tbGHDT.Text = "";
             tbNoiDung.Text = "";
@@ -71,7 +70,7 @@ namespace QuanLyRapChieuPhim
             TableCell cell = gvDanhSachPhim.Rows[e.RowIndex].Cells[0];
             pBUS.XoaPhim(Convert.ToInt32(cell.Text));
             cell = gvDanhSachPhim.Rows[e.RowIndex].Cells[8];
-            string strBuilder = "<script language='javascript'>alert('" + "Thêm thành công" + "')</script>";
+            string strBuilder = "<script language='javascript'>alert('" + "Xóa thành công" + "')</script>";
             Response.Write(strBuilder);
             FilGVDanhSachPhim();
         }

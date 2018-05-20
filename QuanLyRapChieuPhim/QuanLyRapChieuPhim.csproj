@@ -151,11 +151,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="KeToan.aspx" />
     <Content Include="KhachHang.aspx" />
     <Content Include="LichSuGiaoDich.aspx" />
     <Content Include="NhanVienKT.aspx" />
     <Content Include="QuanLy.aspx" />
     <Content Include="QuanLyLichChieu.aspx" />
+    <Content Include="QuanLyLichLamViec.aspx" />
     <Content Include="ThongTinPhim.aspx" />
     <Content Include="ThongTinVe.aspx" />
     <Content Include="WebUserControl1.ascx" />
@@ -264,6 +266,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="KeToan.aspx.cs">
+      <DependentUpon>KeToan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KeToan.aspx.designer.cs">
+      <DependentUpon>KeToan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KhachHang.aspx.cs">
       <DependentUpon>KhachHang.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,6 +322,13 @@
     </Compile>
     <Compile Include="QuanLyLichChieu.aspx.designer.cs">
       <DependentUpon>QuanLyLichChieu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyLichLamViec.aspx.cs">
+      <DependentUpon>QuanLyLichLamViec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuanLyLichLamViec.aspx.designer.cs">
+      <DependentUpon>QuanLyLichLamViec.aspx</DependentUpon>
     </Compile>
     <Compile Include="QuanLyNhanVien.aspx.cs">
       <DependentUpon>QuanLyNhanVien.aspx</DependentUpon>

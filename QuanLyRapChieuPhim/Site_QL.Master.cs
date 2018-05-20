@@ -22,10 +22,13 @@ namespace QuanLyRapChieuPhim
                     Response.Redirect("Admin.aspx");
                     break;
                 case "NV":
-                    Response.Redirect("NhanVien.aspx");
+                    Response.Redirect("NhanVienKT.aspx");
                     break;
                 case "QL":
                     Response.Redirect("QuanLy.aspx");
+                    break;
+                case "KT":
+                    Response.Redirect("KeToan.aspx");
                     break;
             }
 

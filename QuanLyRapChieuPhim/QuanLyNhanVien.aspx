@@ -80,9 +80,6 @@
                     <td class="text-left" style="height: 24px">&nbsp;</td>
                     <td class="text-left" style="height: 24px">&nbsp;</td>
                 </tr>
-                <%--<tr>
-                    <td class="text-center" colspan="6" style="height: 24px; font-size: xx-large;">&nbsp;</td>
-                </tr>--%>
                 <tr>
                     <td class="text-left" style="height: 24px">&nbsp;</td>
                     <td class="text-left" style="height: 24px; width: 254px;">&nbsp;</td>
@@ -102,7 +99,7 @@
                     <td style="width: 135px; height: 24px"></td>
                     <td style="height: 24px"></td>
                 </tr>
-                <%--<tr>
+                <tr>
                     <td style="width: 106px; height: 24px">&nbsp;</td>
                     <td style="height: 24px; width: 254px">&nbsp;</td>
                     <td style="width: 127px; height: 24px">&nbsp;</td>
@@ -128,42 +125,32 @@
                     <td style="height: 24px">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td style="width: 106px; height: 24px"></td>
-                    <td style="width: 254px; height: 24px"></td>
-                    <td style="width: 127px; height: 24px"></td>
-                    <td class="text-left" style="width: 262px; height: 24px">
-                        &nbsp;</td>
-                    <td style="width: 135px; height: 24px"></td>
-                    <td style="height: 24px"></td>
-                </tr>
-                <tr>
                     <td style="width: 106px; height: 24px">&nbsp;</td>
                     <td style="width: 254px; height: 24px">&nbsp;</td>
                     <td style="width: 127px; height: 24px">&nbsp;</td>
                     <td class="text-left" style="width: 262px; height: 24px">&nbsp;</td>
                     <td style="width: 135px; height: 24px">&nbsp;</td>
                     <td style="height: 24px">&nbsp;</td>
-                </tr>--%>
+                </tr>
             </table>
         </center>
     </div>
     <div>
         <asp:GridView ID="gvDanhSachNhanVien" OnRowDeleting="gvDanhSachNhanVien_RowDeleting" runat="server" class="mydatagrid" PagerStyle-CssClass="pager" AutoGenerateColumns="False" AllowSorting="True" HorizontalAlign="Center" Width="1100px">
-        <Columns>
-            <asp:BoundField DataField="MaNhanVien" HeaderText="Mã Nhân Viên" />
-            <asp:BoundField DataField="HoTen" HeaderText="Tên Nhân Viên" />
-            <asp:BoundField DataField="NgaySinh" HeaderText="Ngày Sinh" />
-            <asp:BoundField DataField="GioiTinh" HeaderText="Giới Tính" />
-            <asp:BoundField DataField="DiaChi" HeaderText="Địa Chỉ" />
-            <asp:BoundField DataField="SDT" HeaderText="SĐT" />
-            <asp:BoundField DataField="Luong" HeaderText="Lương" />
-            <asp:BoundField DataField="LichLamViec" HeaderText="Lịch Làm Việc" />
-            <asp:CommandField ButtonType="Image" ShowDeleteButton="True" DeleteImageUrl="Images/icon_delete.png" DeleteText="" ShowCancelButton="False" />
-        </Columns>
-        <HeaderStyle CssClass="header"></HeaderStyle>
-        <PagerStyle CssClass="pager"></PagerStyle>
-        <RowStyle CssClass="rows"></RowStyle>
-
+            <Columns>
+                <asp:BoundField DataField="MaNhanVien" HeaderText="Mã Nhân Viên" />
+                <asp:BoundField DataField="HoTen" HeaderText="Tên Nhân Viên" />
+                <asp:BoundField DataField="NgaySinh" HeaderText="Ngày Sinh" />
+                <asp:BoundField DataField="GioiTinh" HeaderText="Giới Tính" />
+                <asp:BoundField DataField="DiaChi" HeaderText="Địa Chỉ" />
+                <asp:BoundField DataField="SDT" HeaderText="SĐT" />
+                <asp:BoundField DataField="Luong" HeaderText="Lương" />
+                <asp:BoundField DataField="LichLamViec" HeaderText="Lịch Làm Việc" />
+                <asp:CommandField ButtonType="Image" ShowDeleteButton="True" DeleteImageUrl="Images/icon_delete.png" DeleteText="" ShowCancelButton="False" />
+            </Columns>
+            <HeaderStyle CssClass="header"></HeaderStyle>
+            <PagerStyle CssClass="pager"></PagerStyle>
+            <RowStyle CssClass="rows"></RowStyle>
         </asp:GridView>
     </div>
 

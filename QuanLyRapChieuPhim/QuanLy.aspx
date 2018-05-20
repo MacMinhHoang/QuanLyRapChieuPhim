@@ -132,7 +132,7 @@
                         <br />
                         <asp:Button ID="Button3" runat="server" Height="53px" Text="Quản lý nhân viên" Width="200px" BorderStyle="Double" PostBackUrl="~/QuanLyNhanVien.aspx" BorderColor="Black" />
                         &nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="Button5" runat="server" BorderColor="Black" BorderStyle="Double" Height="53px" Text="Quản lý lịch làm việc" Width="200px" />
+                        <asp:Button ID="Button5" runat="server" BorderColor="Black" BorderStyle="Double" Height="53px" Text="Quản lý lịch làm việc" Width="200px" PostBackUrl="~/QuanLyLichLamViec.aspx" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>

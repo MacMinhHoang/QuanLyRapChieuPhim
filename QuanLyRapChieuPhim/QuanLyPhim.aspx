@@ -6,7 +6,7 @@
         <center style="text-align: left">
             <table align="left" cellspacing="0" style="width: 1150px">
                 <tr>
-                    <td colspan="6" style="text-align: center; font-size: xx-large;"><strong>Thông Tin Phim</strong></td>
+                    <td colspan="6" style="text-align: center; font-size: xx-large; height: 47px;"><strong>Thông Tin Phim</strong></td>
                 </tr>
                 <tr>
                     <td style="width: 106px; height: 22px"></td>
@@ -24,7 +24,13 @@
                     </td>
                     <td style="height: 24px; width: 162px">Thể Loại</td>
                     <td style="height: 24px; width: 262px">
-                        <asp:TextBox ID="tbTheLoai" runat="server" Width="200px"></asp:TextBox>
+                        <asp:DropDownList ID="tbTheLoai" runat="server" Height="40px" Width="203px">
+                            <asp:ListItem>Hành động</asp:ListItem>
+                            <asp:ListItem>Tâm lý</asp:ListItem>
+                            <asp:ListItem>Kinh dị</asp:ListItem>
+                            <asp:ListItem>Hoạt hình</asp:ListItem>
+                            <asp:ListItem>Viễn tưởng</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                     <td style="height: 24px; width: 135px">Đạo Diễn</td>
                     <td style="height: 24px">

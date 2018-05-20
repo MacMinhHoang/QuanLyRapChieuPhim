@@ -66,13 +66,13 @@ namespace QuanLyRapChieuPhim
                         Response.Redirect("Admin.aspx");
                         break;
                     case "NV":
-                        Response.Redirect("NhanVien.aspx");
+                        Response.Redirect("NhanVienKT.aspx");
                         break;
                     case "QL":
                         Response.Redirect("QuanLy.aspx");
                         break;
                     case "KT":
-                        //Response.Redirect("KeToan.aspx");
+                        Response.Redirect("KeToan.aspx");
                         break;
                     default:
                         ErrorMessage2.Text = "Mục này chỉ dành cho nhân viên. Xin hãy kéo lên";

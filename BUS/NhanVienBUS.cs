@@ -22,9 +22,9 @@ namespace BUS
             return nvDAO.LayDanhSach();
         }
 
-        public NhanVienDTO LayThongTin(string tendangnhap)
+        public NhanVienDTO LayThongTin(int id)
         {
-            return nvDAO.LayThongTin(tendangnhap);
+            return nvDAO.LayThongTin(id);
         }
 
         public bool ThemNhanVien(NhanVienDTO nv)

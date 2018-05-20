@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Admin" Language="C#" MasterPageFile="~/Site_QL.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="QuanLyRapChieuPhim.Admin" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site_QL.Master" AutoEventWireup="true" CodeBehind="KeToan.aspx.cs" Inherits="QuanLyRapChieuPhim.KeToan" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <link href="Content/GridView.css" rel="stylesheet" />
@@ -9,7 +8,7 @@
             <table align="left" cellspacing="0" style="width: 1150px; margin-bottom: 0px;">
                 <tr>
                     <td colspan="6" style="text-align: center; font-size: xx-large;">
-                        Xin chào Admin
+                        Xin chào Kế Toán
                         <asp:label runat="server" Font-Bold="true" ForeColor="Orange" ID="lb_TenDangNhap"></asp:label>
                         <br />
                         <br />
@@ -130,9 +129,9 @@
                 <tr>
                     <td class="text-center" colspan="6" style="height: 8px; font-size: larger;">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="Button4" runat="server" Height="53px" Text="Quản lý phim" Width="200px" BorderStyle="Double" PostBackUrl="~/QuanLyPhim.aspx" BorderColor="Black" />
+                        <asp:Button ID="Button4" runat="server" Height="53px" Text="Quản lý Lương" Width="200px" BorderStyle="Double" BorderColor="Black" />
                         &nbsp;&nbsp;
-                        <asp:Button ID="Button6" runat="server" Height="53px" Text="Quản lý lịch chiếu" Width="200px" BorderStyle="Double" PostBackUrl="~/QuanLyLichChieu.aspx" BorderColor="Black" />
+                        <asp:Button ID="Button6" runat="server" Height="53px" Text="Quản lý Doanh Thu" Width="200px" BorderStyle="Double" BorderColor="Black" />
                         <br />
                     </td>
                 </tr>
@@ -140,4 +139,5 @@
         </center>
     </div>
     </asp:Panel>
+
 </asp:Content>

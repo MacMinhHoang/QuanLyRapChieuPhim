@@ -10,7 +10,7 @@
 namespace QuanLyRapChieuPhim {
     
     
-    public partial class Admin {
+    public partial class KeToan {
         
         /// <summary>
         /// Panel1 control.

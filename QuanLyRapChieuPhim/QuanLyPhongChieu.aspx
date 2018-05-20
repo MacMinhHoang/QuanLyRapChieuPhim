@@ -25,15 +25,21 @@
                     <td style="height: 24px; width: 262px">
                         <asp:TextBox ID="tbSoLuongCho" runat="server" Width="200px"></asp:TextBox>
                     </td>
-                    <td style="height: 24px; width: 113px"></td>
+                    <td style="height: 24px; width: 113px">Tình Trạng</td>
                     <td style="height: 24px">
+                        <asp:DropDownList ID="tbTinhTrang" runat="server" Height="39px" Width="198px">
+                            <asp:ListItem Value="1">Hoạt động</asp:ListItem>
+                            <asp:ListItem Value="0">Không hoạt động</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 106px; height: 22px"></td>
                     <td style="height: 22px; width: 254px"></td>
                     <td style="width: 127px; height: 22px"></td>
-                    <td style="height: 22px; width: 262px"></td>
+                    <td style="height: 22px; width: 262px">
+                        <asp:Button ID="btnAdd" runat="server" Text="Thêm" Width="115px" OnClick="btnAdd_Click" />
+                    </td>
                     <td style="height: 22px; width: 113px"></td>
                     <td style="height: 22px"></td>
                 </tr>
@@ -41,12 +47,12 @@
                     <td style="width: 106px; height: 24px"></td>
                     <td style="height: 24px; width: 254px">
                     </td>
-                    <td style="width: 127px; height: 24px">Tình Trạng</td>
+                    <td style="width: 127px; height: 24px"></td>
                     <td style="height: 24px; width: 262px">
-                        <asp:TextBox ID="tbTinhTrang" runat="server" Width="200px"></asp:TextBox>
+                        
                     </td>
                      <td class="text-right" style="width: 113px; height: 24px">
-                        <asp:Button ID="btnAdd" runat="server" Text="Thêm" Width="115px" OnClick="btnAdd_Click" />
+                        
                     </td>
                 </tr>
                 <tr>
@@ -73,6 +79,9 @@
         <RowStyle CssClass="rows"></RowStyle>
 
         </asp:GridView>
+    </div>
+
+</div>
     </div>
 
 </asp:Content>

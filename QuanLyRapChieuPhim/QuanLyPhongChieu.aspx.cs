@@ -30,7 +30,7 @@ namespace QuanLyRapChieuPhim
             PhongChieuDTO pc = new PhongChieuDTO();
             pc.TenPhongChieu = tbTenPC.Text;
             pc.SoLuongGhe = Convert.ToInt32(tbSoLuongCho.Text);
-            pc.TinhTrang = (tbTinhTrang.Text == "Hoạt động");
+            pc.TinhTrang = (tbTinhTrang.SelectedValue == "Hoạt động");
 
             pcBUS.ThemPhongChieu(pc);
 

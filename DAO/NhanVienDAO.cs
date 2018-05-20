@@ -16,8 +16,7 @@ namespace DAO
             List<NhanVienDTO> listNhanVienDTO = new List<NhanVienDTO>();
 
             //Nhân viên bình thường ko có tài khoản, NV kĩ thuật thì có
-            String query = "SELECT * FROM NguoiDung ND, NhanVien NV WHERE NV.MaNhanVien = ND.MaNguoiDung " +
-                "AND ND.TenDangNhap = NULL";
+            String query = "SELECT * FROM NguoiDung ND, NhanVien NV WHERE NV.MaNhanVien = ND.MaNguoiDung";
             DataTable dt = DataProvider.ExecuteQuery(query);
             foreach (DataRow dr in dt.Rows)
             {
@@ -37,7 +36,7 @@ namespace DAO
             return listNhanVienDTO;
         }
 
-        public NhanVienDTO LayThongTin(string id)
+        public NhanVienDTO LayThongTin(int id)
         {
             NhanVienDTO nhanVienDTO = null;
             String query = string.Format("SELECT * FROM NguoiDung ND, NhanVien NV WHERE NV.MaNhanVien = {0} " +
