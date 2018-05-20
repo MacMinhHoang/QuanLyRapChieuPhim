@@ -67,5 +67,10 @@ namespace BUS
             }
             return listPhim;
         }
+
+        public List<int> LayDanhSachIDPhim()
+        {
+            return phimDAO.LayDanhSachIDPhim();
+        }
     }
 }

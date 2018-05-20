@@ -114,8 +114,8 @@ namespace DAO
 
         public bool ThemSuatChieu(SuatChieuDTO sc)
         {
-            String SQL = "SELECT * FROM SuatChieu WHERE MaPhongChieu = {0} AND NgayChieu = '{1}' AND GioChieu = '{2}'";
-            String query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu);
+            String SQL = "SELECT * FROM SuatChieu WHERE MaPhongChieu = {0} AND NgayChieu = '{1}' AND GioChieu = '{2}' AND MaPhim = {3}";
+            String query = string.Format(SQL, sc.MaPhongChieu, sc.NgayChieu, sc.GioChieu, sc.MaPhim);
             DataTable dt = DataProvider.ExecuteQuery(SQL);
             if (dt.Rows.Count > 0)
                 return false;
@@ -127,7 +127,7 @@ namespace DAO
 
         public void XoaSuatChieu(int ma)
         {
-            String query = string.Format("DELETE FROM NhanVien WHERE MaSuatChieu = {0}", ma);
+            String query = string.Format("DELETE FROM XuatChieu WHERE MaSuatChieu = {0}", ma);
             DataProvider.ExecuteQuery(query);
 
             //Ve có khoa ngoai đến suatchieu

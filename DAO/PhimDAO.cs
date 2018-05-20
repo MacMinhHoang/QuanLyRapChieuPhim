@@ -174,5 +174,19 @@ namespace DAO
 
             return listMaPhim;
         }
+
+        public List<int> LayDanhSachIDPhim()
+        {
+            List<int> listID = new List<int>();
+
+            String query = "SELECT MaPhim FROM Phim";
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            foreach (DataRow dr in dt.Rows)
+            {
+                listID.Add((int)dr["MaPhim"]);
+            }
+
+            return listID;
+        }
     }
 }

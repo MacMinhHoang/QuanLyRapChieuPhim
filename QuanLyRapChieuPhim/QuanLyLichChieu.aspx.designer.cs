@@ -13,13 +13,13 @@ namespace QuanLyRapChieuPhim {
     public partial class QuanLyLichChieu {
         
         /// <summary>
-        /// ddl_tenphim control.
+        /// ddl_maphim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_tenphim;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_maphim;
         
         /// <summary>
         /// ddl_maphongchieu control.
@@ -31,22 +31,22 @@ namespace QuanLyRapChieuPhim {
         protected global::System.Web.UI.WebControls.DropDownList ddl_maphongchieu;
         
         /// <summary>
-        /// tbTenDN control.
+        /// tbNgayChieu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbTenDN;
+        protected global::System.Web.UI.WebControls.TextBox tbNgayChieu;
         
         /// <summary>
-        /// tbMatKhau control.
+        /// tbGioChieu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbMatKhau;
+        protected global::System.Web.UI.WebControls.TextBox tbGioChieu;
         
         /// <summary>
         /// btn_Them control.
