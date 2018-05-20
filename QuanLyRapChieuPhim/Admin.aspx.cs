@@ -42,6 +42,8 @@ namespace QuanLyRapChieuPhim
 
             AdminBUS adminBUS = new AdminBUS();
             adminBUS.SuaThongTin(adminDTO);
+            string strBuilder = "<script language='javascript'>alert('" + "Cập nhật thành công" + "')</script>";
+            Response.Write(strBuilder);
         }
     }
 }

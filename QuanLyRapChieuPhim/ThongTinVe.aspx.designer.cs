@@ -10,105 +10,78 @@
 namespace QuanLyRapChieuPhim {
     
     
-    public partial class KhachHang {
+    public partial class ThongTinVe {
         
         /// <summary>
-        /// Panel1 control.
+        /// VeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Label VeID;
         
         /// <summary>
-        /// lb_TenDangNhap control.
+        /// Phim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_TenDangNhap;
+        protected global::System.Web.UI.WebControls.Label Phim;
         
         /// <summary>
-        /// lb_ID control.
+        /// PhongChieu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_ID;
+        protected global::System.Web.UI.WebControls.Label PhongChieu;
         
         /// <summary>
-        /// tb_HoTen control.
+        /// NgayChieu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_HoTen;
+        protected global::System.Web.UI.WebControls.Label NgayChieu;
         
         /// <summary>
-        /// tb_NgaySinh control.
+        /// SuatCHieu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_NgaySinh;
+        protected global::System.Web.UI.WebControls.Label SuatCHieu;
         
         /// <summary>
-        /// tb_GioiTinh control.
+        /// SoGhe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_GioiTinh;
+        protected global::System.Web.UI.WebControls.Label SoGhe;
         
         /// <summary>
-        /// tb_Diem control.
+        /// LoaiVe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_Diem;
+        protected global::System.Web.UI.WebControls.Label LoaiVe;
         
         /// <summary>
-        /// tb_SDT control.
+        /// GiaVe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_SDT;
-        
-        /// <summary>
-        /// tb_DiaChi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_DiaChi;
-        
-        /// <summary>
-        /// btn_Sua control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Sua;
-        
-        /// <summary>
-        /// btn_LichSu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_LichSu;
+        protected global::System.Web.UI.WebControls.Label GiaVe;
     }
 }

@@ -34,8 +34,23 @@
             <asp:DropDownList ID="ddl_day" OnDataBound="ddl_day_DataBound" OnSelectedIndexChanged="ddl_day_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList><br />
             CHỌN SỐ GHẾ<br />
             <asp:DropDownList ID="ddl_soghe" runat="server" OnDataBound="ddl_soghe_DataBound" OnSelectedIndexChanged="ddl_soghe_SelectedIndexChanged"></asp:DropDownList><br /><br />
-            <asp:Button ID="btn_DatVe" OnClick="btn_DatVe_Click" runat="server" Text="Đặt Vé" />
             
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <p style="text-align:center; color:orangered">
+                CHỌN HÌNH THỨC THANH TOÁN
+                <br /><br />
+                <asp:RadioButtonList ID="ddl_thanhtoan" AutoPostBack="true" 
+                    OnSelectedIndexChanged="ddl_thanhtoan_SelectedIndexChanged" runat="server">
+                    <asp:ListItem Text="Online" Value="0" Selected></asp:ListItem>
+                    <asp:ListItem Text="Trực tiếp tại rạp" Value="1"></asp:ListItem>
+                </asp:RadioButtonList>
+                <asp:Button ID="btn_DatVe" OnClick="btn_DatVe_Click" runat="server" Text="Đặt Vé" />
+            </p>
         </div>
     </div>
     </asp:Panel>

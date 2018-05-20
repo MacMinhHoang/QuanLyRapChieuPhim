@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - MIGOS Cinema</title>
+    <title><%: Page.Title %>- MIGOS Cinema</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -64,9 +64,8 @@
                 <asp:HyperLink ID="linkLogin" runat="server" NavigateUrl="~/DangNhap.aspx"><strong>Đăng nhập</strong></asp:HyperLink>
                 <br />
                 <asp:Label ID="labelLogout" runat="server" Text="Xin chào,"></asp:Label>
-                <asp:Label ID="labelTenNguoiDung" runat="server"></asp:Label>
-                &nbsp;
-                <asp:Button ID="btn_LogOut" Text="Đăng xuất" OnClick="btn_LogOut_Click" runat="server" BorderStyle="None" />
+                &nbsp;<asp:HyperLink ID="labelTenNguoiDung" runat="server" NavigateUrl="~/KhachHang.aspx">HyperLink</asp:HyperLink>
+&nbsp;<asp:Button ID="btn_LogOut" Text="Đăng xuất" OnClick="btn_LogOut_Click" runat="server" BorderStyle="None" />
             </p>
         </asp:Panel>
         <div class="container body-content">
@@ -74,7 +73,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>COPYRIGHT 2017 MIGOS. ALL RIGHTS RESERVED</p>
+                <p>COPYRIGHT 2018 MIGOS. ALL RIGHTS RESERVED</p>
             </footer>
         </div>
 

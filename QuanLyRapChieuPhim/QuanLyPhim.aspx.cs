@@ -47,6 +47,8 @@ namespace QuanLyRapChieuPhim
             ph.Trailer = tbTrailer.Text;
             pBUS.ThemPhim(ph);
 
+            string strBuilder = "<script language='javascript'>alert('" + "Thêm thành công" + "')</script>";
+            Response.Write(strBuilder);
             ResetTextBoxes();
             FilGVDanhSachPhim();
         }
@@ -69,6 +71,8 @@ namespace QuanLyRapChieuPhim
             TableCell cell = gvDanhSachPhim.Rows[e.RowIndex].Cells[0];
             pBUS.XoaPhim(Convert.ToInt32(cell.Text));
             cell = gvDanhSachPhim.Rows[e.RowIndex].Cells[8];
+            string strBuilder = "<script language='javascript'>alert('" + "Thêm thành công" + "')</script>";
+            Response.Write(strBuilder);
             FilGVDanhSachPhim();
         }
     }

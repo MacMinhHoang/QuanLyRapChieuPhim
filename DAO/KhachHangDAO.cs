@@ -64,12 +64,12 @@ namespace DAO
             DataProvider.ExecuteQuery(query);
 
             insertSQL = @"INSERT INTO NguoiDung VALUES ('{0}', N'{1}', '{2}', '{3}', N'{4}', '{5}')";
-            query = string.Format(insertSQL, kh.TenDangNhap, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT);
+            query = string.Format(insertSQL, tk.TenDangNhap, kh.HoTen, kh.NgaySinh, kh.GioiTinh, kh.DiaChi, kh.SDT);
             DataProvider.ExecuteQuery(query);
 
             //Lấy mã người dùng mà CSDL mới tạo
             String SQL = string.Format("SELECT MaNguoiDung FROM NguoiDung WHERE TenDangNhap = '{0}'", tk.TenDangNhap);
-            DataTable dt = DataProvider.ExecuteQuery(query);
+            DataTable dt = DataProvider.ExecuteQuery(SQL);
             int makh = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
 
             insertSQL = @"INSERT INTO KhachHang VALUES ({0}, {1})";

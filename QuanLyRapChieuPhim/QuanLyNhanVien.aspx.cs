@@ -58,7 +58,8 @@ namespace QuanLyRapChieuPhim
             //    manv = "NV0" + count.ToString();
             //else
             //    manv = "NV" + count.ToString();
-
+            string strBuilder = "<script language='javascript'>alert('" + "Thêm thành công" + "')</script>";
+            Response.Write(strBuilder);
             ResetTextBoxes();
             FilGVDanhSachNhanVien();
         }
@@ -71,6 +72,8 @@ namespace QuanLyRapChieuPhim
             nvBUS.XoaNhanVien(Convert.ToInt32(cell.Text));
             cell = gvDanhSachNhanVien.Rows[e.RowIndex].Cells[8];
             tkBUS.XoaTaiKhoan(cell.Text);
+            string strBuilder = "<script language='javascript'>alert('" + "Xóa thành công" + "')</script>";
+            Response.Write(strBuilder);
             FilGVDanhSachNhanVien();
         }
 

@@ -48,18 +48,6 @@ namespace QuanLyRapChieuPhim
             }
         }
 
-        //private void LinkButton_Click(object sender, EventArgs e)
-        //{
-        //    LinkButton lnk = sender as LinkButton;
-        //    Session["TenPhim"] = lnk.Text;
-        //    Session["isSearchName"] = true;
-        //    Response.Redirect("ThongTinPhim.aspx");
-        //}
-
-        //protected void BT_Login_Click(object sender, EventArgs e)
-        //{
-            
-        //}
 
         protected void btn_search_name_Click(object sender, ImageClickEventArgs e)
         {

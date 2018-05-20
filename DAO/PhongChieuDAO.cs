@@ -28,7 +28,7 @@ namespace DAO
             return listPhongChieuDTO;
         }
 
-        public PhongChieuDTO LayThongTin(string mapc)
+        public PhongChieuDTO LayThongTin(int mapc)
         {
             PhongChieuDTO phongChieuDTO = null;
 

@@ -30,6 +30,23 @@ namespace DAO
             return listSuatChieuDTO;
         }
 
+        public SuatChieuDTO LayThongTin(int id)
+        {
+            SuatChieuDTO suatchieuDTO = null;
+            String query = string.Format("SELECT * FROM SuatChieu WHERE MaSuatChieu = {0}", id);
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            if (dt.Rows.Count > 0)
+            {
+                suatchieuDTO = new SuatChieuDTO();
+                suatchieuDTO.MaSuatChieu = Convert.ToInt32(dt.Rows[0]["MaSuatChieu"]);
+                suatchieuDTO.MaPhongChieu = Convert.ToInt32(dt.Rows[0]["MaPhongChieu"]);
+                suatchieuDTO.NgayChieu = dt.Rows[0]["NgayChieu"].ToString();
+                suatchieuDTO.GioChieu = dt.Rows[0]["GioChieu"].ToString();
+                suatchieuDTO.MaPhim = Convert.ToInt32(dt.Rows[0]["MaPhim"]);
+            }
+            return suatchieuDTO;
+        }
+
         public int LayMaSuatChieu(string ngay, string gio, int phong)
         {
             String SQL = "SELECT MaSuatChieu FROM SuatChieu WHERE NgayChieu = '{0}' AND GioChieu = '{1}' AND MaPhongChieu = {2}";

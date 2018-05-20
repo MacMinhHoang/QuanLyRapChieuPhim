@@ -116,28 +116,14 @@
                 </tr>
                 <tr>
                     <td class="text-center" colspan="6" style="height: 24px; font-size: larger;">
-                        <asp:Button ID="btn_Sua" runat="server" OnClick="ID_EditButton_Click" Text="Hoàn tất" />
+                        <asp:Button ID="btn_Sua" runat="server" OnClick="ID_EditButton_Click" Text="Cập Nhật" />
+                        <br />
+                        <br />
+                        <asp:Button ID="btn_LichSu" OnClick="btn_LichSu_Click" runat="server"  Text="Xem lịch sử giao dịch" />
                     </td>
                 </tr>
-                <tr>
-                    <td class="text-center" colspan="6" style="height: 8px; font-size: xx-large;">
-                        <br />
-                        <br />
-                        <span style="text-decoration: underline"><strong><br />
-                        <br />
-                        </strong></span></td>
-                </tr>
-                <tr>
-                    <td class="text-center" colspan="6" style="height: 8px; font-size: larger;">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <br />
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <br />
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                </tr>
+                
+                
             </table>
         </center>
     </div>

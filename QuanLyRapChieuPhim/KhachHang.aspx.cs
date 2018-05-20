@@ -42,6 +42,13 @@ namespace QuanLyRapChieuPhim
             kh.DiemTichLuy = Convert.ToInt32(tb_Diem.Text);
 
             khachHangBUS.SuaThongTin(kh);
+            string strBuilder = "<script language='javascript'>alert('" + "Cập nhật thành công" + "')</script>";
+            Response.Write(strBuilder);
+        }
+
+        protected void btn_LichSu_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LichSuGiaoDich.aspx");
         }
     }
 }

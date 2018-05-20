@@ -56,5 +56,16 @@ namespace BUS
         {
             return phimDAO.LayDanhSachTenPhim();
         }
+
+        public List<PhimDTO> LayTop3()
+        {
+            List<PhimDTO> listPhim = new List<PhimDTO>();
+            List<int> listMa = phimDAO.LayTop3();
+            foreach(int id in listMa)
+            {
+                listPhim.Add(phimDAO.LayThongTin(id));
+            }
+            return listPhim;
+        }
     }
 }

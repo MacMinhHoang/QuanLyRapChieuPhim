@@ -11,7 +11,7 @@ namespace QuanLyRapChieuPhim
 {
     public partial class ThongTinPhim : System.Web.UI.Page
     {
-        private static List<PhimDTO> listResults;
+        private static List<PhimDTO> listResults = new List<PhimDTO>();
         private static int countResults = 0;
         private static int curResult = 0;
         private static bool byName;
@@ -20,17 +20,12 @@ namespace QuanLyRapChieuPhim
         protected void Page_Load(object sender, EventArgs e)
         {
             PhimBUS phimBUS = new PhimBUS();
-            if (listResults != null)
-            {
-                listResults.Clear();
-                listResults = null;
-            }
-            listResults = new List<PhimDTO>();
 
             String search = Request.QueryString["search"].ToString();
             if (search == "false")
             {
                 int id = Convert.ToInt32(Request.QueryString["id"]);
+                listResults.Clear();
                 listResults.Add(phimBUS.LayThongTin(id));
             }
             else

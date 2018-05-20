@@ -84,6 +84,8 @@ namespace QuanLyRapChieuPhim
             nvBUS.XoaKhachHang(Convert.ToInt32(cell.Text));
             cell = gvDanhSachKhachHang.Rows[e.RowIndex].Cells[8];
             tkBUS.XoaTaiKhoan(cell.Text);
+            string strBuilder = "<script language='javascript'>alert('" + "Xóa thành công" + "')</script>";
+            Response.Write(strBuilder);
             FilGVDanhSachKhachHang();
         }
     }

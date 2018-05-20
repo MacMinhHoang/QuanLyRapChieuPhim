@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,16 @@ namespace BUS
         public int SoLuongVe()
         {
             return veDAO.SoLuongVe();
+        }
+
+        public VeDTO LayThongTin(int id)
+        {
+            return veDAO.LayThongTin(id);
+        }
+
+        public DataTable LayCacVeDaDat(int MaKH)
+        {
+            return veDAO.LayCacVeDaDat(MaKH);
         }
     }
 }

@@ -7,28 +7,19 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-3">
-            <iframe width="640" height="360" src="https://www.youtube.com/embed/ue80QwXMRHg" frameborder="0" gesture="media" allowfullscreen="true"></iframe>
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/D86RtevtfrA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
     </div>
     <h2 style="color:darkred"><strong>PHIM HOT</strong></h2>
-    <div class="row">
+    <div class="row" style="text-align:center">
         <div class="col-md-4">
-            <h3 style="text-align:center; color:orange">Black Panther</h3>
-            <a href="https://www.youtube.com/watch?v=xjDjIWPwcPU">
-                <img src ="./Images/black-panther.jpg" width="400">
-            </a>
+            <asp:Panel ID="MyPanel1" runat="server"></asp:Panel>
         </div>
         <div class="col-md-4">
-            <h3 style="text-align:center; color:orange">Justice League</h3>
-            <a href="https://www.youtube.com/watch?v=r9-DM9uBtVI">
-                <img src ="./Images/Justice-League-banner.jpg" width="400">
-            </a>
+            <asp:Panel ID="MyPanel2" runat="server"></asp:Panel>
         </div>
         <div class="col-md-4">
-            <h3 style="text-align:center; color:orange">Insidious: The Last Key</h3>
-            <a href="https://www.youtube.com/watch?v=acQyrwQyCOk&pbjreload=10">
-                <img src ="./Images/insidous.jpg" width="400">
-            </a>
+            <asp:Panel ID="MyPanel3" runat="server"></asp:Panel>
         </div>
     </div>
 

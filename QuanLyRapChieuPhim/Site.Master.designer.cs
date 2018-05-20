@@ -55,7 +55,7 @@ namespace QuanLyRapChieuPhim {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelTenNguoiDung;
+        protected global::System.Web.UI.WebControls.HyperLink labelTenNguoiDung;
         
         /// <summary>
         /// btn_LogOut control.

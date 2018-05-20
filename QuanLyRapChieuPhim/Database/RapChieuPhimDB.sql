@@ -5,8 +5,6 @@ CREATE DATABASE RapChieuPhimDB;
 GO
 USE RapChieuPhimDB;
 
-SELECT * FROM Ve
-
 /***** Tạo các bảng và khóa chính *****/
 
 CREATE TABLE TaiKhoan (
@@ -21,7 +19,7 @@ CREATE TABLE NguoiDung (
 	TenDangNhap varchar(30),
 	HoTen nvarchar(100),
 	NgaySinh varchar(11),
-	GioiTinh bit,
+	GioiTinh bit,			/* 0 : Nam, 1 : Nữ */
 	DiaChi nvarchar(100),
 	SDT varchar(12),
 	PRIMARY KEY (MaNguoiDung)
@@ -58,7 +56,7 @@ CREATE TABLE PhongChieu (
 	MaPhongChieu int IDENTITY(55555001, 1),
 	TenPhongChieu nvarchar(50),
 	SoLuongGhe int,
-	TinhTrang bit,
+	TinhTrang bit,				/* 0 : KO hoạt động, 1 : Hoạt động */
 	PRIMARY KEY (MaPhongChieu)
 )
 
@@ -76,10 +74,10 @@ CREATE TABLE Ve (
 	MaKhachHang int,
 	MaSuatChieu int,
 	Ghe varchar(4),
-	LoaiVe bit,
-	GiaVe float,
-	ThanhToan bit,
-	TinhTrang bit,
+	LoaiVe bit,					/* 0 : Thường, 1 : VIP */
+	GiaVe float,		
+	ThanhToan bit,				/* 0 : Trực tiếp, 1 : Online */
+	TinhTrang bit,				/* 0 : Chưa sử dụng, 1 : Đã sử dụng */
 	PRIMARY KEY (MaVe)
 )
 
@@ -157,7 +155,7 @@ INSERT INTO Phim VALUES (N'Cô Ba Sài Gòn',N'Tâm lý',N'Trần Bửu Lộc, K
   Như Ý vô cùng bỡ ngỡ khi đứng trước xã hội ở thế kỷ 21 với nhiều thay đổi. Hơn hết, Như Ý phải đối mặt với chính cô của tương lai. Như Ý tìm cách trở về thế giới của mình, bằng cách phải lấy chiếc áo dài cũ từ chính phiên bản Như Ý của tương lai.','2017',
   './Images/CBSG.jpg','https://www.youtube.com/watch?v=YP4TDQVkZO4')
 
-INSERT INTO Phim VALUES(N'24 Giờ Hồi Sinh',N'Hành động','Brian Smrz','Rutger Hauer, Ethan Hawke, Paul Anderson',2,N'Sau một cuộc phẫu thuật thử nghiệm, sát thủ Travis Conrad được hồi sinh từ cõi chết và có đúng 24 giờ để sống lại. Anh quyết định hợp 
+INSERT INTO Phim VALUES(N'24 Giờ Hồi Sinh',N'Hành động','Brian Smrz','Rutger Hauer, Ethan Hawke, Paul Anderson',18,N'Sau một cuộc phẫu thuật thử nghiệm, sát thủ Travis Conrad được hồi sinh từ cõi chết và có đúng 24 giờ để sống lại. Anh quyết định hợp 
 tác với chính nữ đặc vụ đã giết chết mình nhằm trả thù tổ chức tội phạm đã sát hại vợ và con của anh. Đây cũng chính là cơ hội để Travis chuộc
  lại những lỗi lầm trong quá khứ. Chỉ có 24 giờ để báo thù, liệu Travis có hoàn thành được nhiệm vụ khi từng giây trôi qua, tử thần lại càng
   đến gần hơn?','2017','./Images/24h.jpg','https://www.youtube.com/watch?v=e1Dam6exiYE')
@@ -169,7 +167,7 @@ Phim tiếp tục được giao vào tay đạo diễn Zack Snyder – người 
  Dàn diễn viên quen thuộc Ben Affleck, Henry Cavill và Gal Gadot tiếp tục góp mặt trong phim. Justice League được xem là siêu phẩm hoành tráng
   nhất của DC Comics.','2017','./Images/Justice-League-banner.jpg','https://www.youtube.com/watch?v=r9-DM9uBtVI')
 
-INSERT INTO Phim VALUES(N'Trải Nghiệm Điểm Chết (Flatliners)',N'Kinh dị','Niels Arden Oplev','Ellen Page, Diego Luna, Nina Dobrev',1,N'Năm sinh viên y khoa tham gia vào một thí nghiệm cực kỳ nguy hiểm: Chết lâm sàng để được trải nghiệm cảm giác chu du "thế giới bên kia".
+INSERT INTO Phim VALUES(N'Trải Nghiệm Điểm Chết (Flatliners)',N'Kinh dị','Niels Arden Oplev','Ellen Page, Diego Luna, Nina Dobrev',18,N'Năm sinh viên y khoa tham gia vào một thí nghiệm cực kỳ nguy hiểm: Chết lâm sàng để được trải nghiệm cảm giác chu du "thế giới bên kia".
  Đây là trải nghiệm độc đáo có một không hai và nó khiến các chàng trai cô gái trẻ mê mẩn. Phim sở hữu cốt truyện hấp dẫn và đậm tính nhân văn.
   Theo đó, thế giới bên kia không phải nơi để bạn an nghỉ mà chính là “pháp trường” nơi bạn phải đối diện với những tội lỗi mình đã gây ra khi 
   còn sống. Là phần tiếp theo của bộ phim cùng tên do đạo diễn Joel Schumacher thực hiện năm 1990, Flatliners 2017 (tựa tiếng Việt là Trải 
@@ -182,7 +180,7 @@ INSERT INTO Phim VALUES (N'Pháo Hoa, Nên Ngắm Từ Dưới Hay Bên Cạnh',
 những chân tình tinh khôi. Sẽ có những nước mắt, nụ cười, đau khổ lẫn câm giận nhưng đừng e sợ, vì tình yêu sẽ mang chúng ta trở lại với 
 nhau dù đó là thời khắc nào, chiều không gian nào đi nữa.','2017','./Images/firework.jpg','https://www.youtube.com/watch?v=WSfI5XtPEQQ')
 
-INSERT INTO Phim VALUES(N'Giao Ước Chết',N'Kinh dị','Sophon Sakdaphisit','Numthip Jongrachatawiboon, Apichaya Thongkham, Panisara Rikulsurakan',2,
+INSERT INTO Phim VALUES(N'Giao Ước Chết',N'Kinh dị','Sophon Sakdaphisit','Numthip Jongrachatawiboon, Apichaya Thongkham, Panisara Rikulsurakan',18,
 N'Năm 1997, hai cô gái Ib và Boum quyết định cùng nhau tự tử ở Bangkok, nhưng Boum đã không tự tử. Năm 2017, linh hồn thù hằn của Ib trở lại để ám ảnh 
 Boum và cô con gái 15 tuổi. Ib và Boum là đôi bạn thân từ nhỏ, hai ông bố của Ib và Boum cũng là bạn làm ăn cùng đầu tư xây dựng một dự án căn hộ cao cấp.
 Năm 1997, cuộc khủng hoảng tài chính ở Thái Lan bùng nổ. Từ hai tiểu thư giàu có xa hoa bỗng chốc cả hai không còn gì và phải gánh những
@@ -192,7 +190,7 @@ Như có một thế lực kì bí dẫn đường Bell vô tình tìm đến đ
 mộng không chỉ với Bell mà còn đối với Boum. Liệu hai mẹ con có thể thoát qua được kiếp nạn này hay cả hai cùng phải trả giá cho 
 lời hứa bồng bột năm xưa?','2017','./Images/GiaoUocChet.jpg','https://www.youtube.com/watch?v=RAAltbA7ClY')
 
-INSERT INTO Phim VALUES(N'Mẹ Chồng',N'Tâm lý',N'Lý Minh Thắng',N'Diễm My, Ngọc Quyên, Lan Khuê, Midu',1,N'Cuộc đời người phụ
+INSERT INTO Phim VALUES(N'Mẹ Chồng',N'Tâm lý',N'Lý Minh Thắng',N'Diễm My, Ngọc Quyên, Lan Khuê, Midu',14,N'Cuộc đời người phụ
  nữ Việt Nam dưới thời suy tàn của chế độ phong kiến: từ khi làm dâu cho đến khi lên làm mẹ chồng, tất cả đều là bi kịch vì sự ảnh hưởng
 nặng nề của Nho giáo. Mẹ Chồng là câu chuyện xảy ra ở bối cảnh giả định mang tên Đại Điền vào những năm 1945 - 1950, xoay quanh cuộc đời
 cô Ba Trân (Thanh Hằng), một người phụ nữ Nam Bộ chịu nhiều ảnh hưởng của nền giáo dục Nho giáo. Từ khi về làm dâu, Ba Trân luôn phải
@@ -202,7 +200,7 @@ chịu nhiều bất hạnh với những quy củ hà khắc từ gia đình nh
 với Thanh Hằng, Diễm My, Ngọc Quyên, Lan Khuê, Midu...','2017','./Images/MeChong.jpg','https://www.youtube.com/watch?v=VKYdH1WrCQU&t=60s')
 
 INSERT INTO Phim VALUES (N'Star Wars: Jedi Cuối Cùng',N'Viễn tưởng','Rian Johnson','Mark Hamill, Carrie Fisher, Daisy Ridley, 
-John Boyega, Adam Driver, Kelly Marie Tran',0,N'Star Wars: Jedi Cuối Cùng là phần thứ 8 trong series kinh điển Star Wars, nối tiếp phần 7 
+John Boyega, Adam Driver, Kelly Marie Tran',16,N'Star Wars: Jedi Cuối Cùng là phần thứ 8 trong series kinh điển Star Wars, nối tiếp phần 7 
 Star Wars: Thần lực thức tỉnh ra mắt vào năm 2015. Phần phim này có thể sẽ giải đáp những câu hỏi lớn ở phần trước đó: Nguồn gốc của Rey,
  tại sao R2-D2 lại có bản đồ dẫn đến chỗ Luke, và Chỉ huy Tối cao Snoke thực chất là ai?','2017','./Images/SW.jpg','https://www.youtube.com/watch?v=Q0CbN8sfihY')
 
@@ -221,43 +219,48 @@ INSERT INTO PhongChieu VALUES (N'P10', 135, 1)
 
  /***** SuatChieu *****/
  /*** ID bắt đầu từ 33333001 ***/
-INSERT INTO SuatChieu VALUES(55555001, '16/11/2017', '11:00', 99999001)
-INSERT INTO SuatChieu VALUES(55555004, '17/11/2017', '13:00', 99999001)
-INSERT INTO SuatChieu VALUES(55555005, '18/11/2017', '15:00', 99999001)
-INSERT INTO SuatChieu VALUES(55555008, '19/11/2017', '17:00', 99999001)
+INSERT INTO SuatChieu VALUES(55555001, '16/06/2018', '11:00', 99999001)
+INSERT INTO SuatChieu VALUES(55555004, '17/06/2018', '13:00', 99999001)
+INSERT INTO SuatChieu VALUES(55555005, '18/06/2018', '15:00', 99999001)
+INSERT INTO SuatChieu VALUES(55555008, '19/06/2018', '17:00', 99999001)
 
-INSERT INTO SuatChieu VALUES(55555002,'05/01/2018','16:50', 99999002)
-INSERT INTO SuatChieu VALUES(55555010,'05/01/2018','19:00', 99999002)
-INSERT INTO SuatChieu VALUES(55555004,'06/01/2018','10:15', 99999002)
-INSERT INTO SuatChieu VALUES(55555005,'09/01/2018','14:25', 99999002)
+INSERT INTO SuatChieu VALUES(55555002,'05/07/2018','16:50', 99999002)
+INSERT INTO SuatChieu VALUES(55555010,'05/07/2018','19:00', 99999002)
+INSERT INTO SuatChieu VALUES(55555004,'06/07/2018','10:15', 99999002)
+INSERT INTO SuatChieu VALUES(55555005,'09/07/2018','14:25', 99999002)
 
-INSERT INTO SuatChieu VALUES(55555006,'14/12/2017','23:30', 99999004)
-INSERT INTO SuatChieu VALUES(55555008,'15/12/2017','20:45', 99999004)
-INSERT INTO SuatChieu VALUES(55555009,'15/12/2017','23:59', 99999004)
+INSERT INTO SuatChieu VALUES(55555006,'14/07/2017','23:30', 99999004)
+INSERT INTO SuatChieu VALUES(55555008,'15/07/2017','20:45', 99999004)
+INSERT INTO SuatChieu VALUES(55555009,'15/07/2017','23:59', 99999004)
 
-INSERT INTO SuatChieu VALUES(55555001,'24/12/2017','18:30', 99999003)
-INSERT INTO SuatChieu VALUES(55555002,'24/12/2017','21:05', 99999003)
-INSERT INTO SuatChieu VALUES(55555003,'25/12/2017','13:35', 99999003)
+INSERT INTO SuatChieu VALUES(55555001,'24/07/2017','18:30', 99999003)
+INSERT INTO SuatChieu VALUES(55555002,'24/07/2017','21:05', 99999003)
+INSERT INTO SuatChieu VALUES(55555003,'25/07/2017','13:35', 99999003)
 
-INSERT INTO SuatChieu VALUES(55555005, '26/12/2017','09:00', 99999005)
-INSERT INTO SuatChieu VALUES(55555006, '26/12/2017','15:25', 99999005)
+INSERT INTO SuatChieu VALUES(55555005, '26/07/2017','09:00', 99999005)
+INSERT INTO SuatChieu VALUES(55555006, '26/07/2017','15:25', 99999005)
 
-INSERT INTO SuatChieu VALUES(55555008, '27/12/2017','20:55', 99999006)
-INSERT INTO SuatChieu VALUES(55555009, '27/12/2017','23:59', 99999006)
-INSERT INTO SuatChieu VALUES(55555010, '28/12/2017','12:05', 99999006)
+INSERT INTO SuatChieu VALUES(55555008, '27/06/2017','20:55', 99999006)
+INSERT INTO SuatChieu VALUES(55555009, '27/06/2017','23:59', 99999006)
+INSERT INTO SuatChieu VALUES(55555010, '28/06/2017','12:05', 99999006)
 
-INSERT INTO SuatChieu VALUES(55555001, '30/12/2017','17:40', 99999007)
-INSERT INTO SuatChieu VALUES(55555010, '31/12/2017','19:45', 99999007)
+INSERT INTO SuatChieu VALUES(55555001, '30/07/2017','17:40', 99999007)
+INSERT INTO SuatChieu VALUES(55555010, '31/07/2017','19:45', 99999007)
 
-INSERT INTO SuatChieu VALUES(55555005, '02/01/2018','19:00', 99999008)
-INSERT INTO SuatChieu VALUES(55555006, '03/01/2018','20:30', 99999008)
-INSERT INTO SuatChieu VALUES(55555008, '03/01/2018','23:00', 99999008)
+INSERT INTO SuatChieu VALUES(55555005, '02/08/2018','19:00', 99999008)
+INSERT INTO SuatChieu VALUES(55555006, '03/08/2018','20:30', 99999008)
+INSERT INTO SuatChieu VALUES(55555008, '03/08/2018','23:00', 99999008)
 
 /***** Ve *****/
 /*** ID bắt đầu từ 77777001, 0: vé thường, 1: vé vip ***/
 INSERT INTO Ve VALUES(11111001, 33333001, 'G8', 0, 50000, 1, 0)
+INSERT INTO Ve VALUES(11111001, 33333005, 'H6', 0, 50000, 1, 0)
+INSERT INTO Ve VALUES(11111001, 33333005, 'H7', 0, 50000, 1, 0)
 INSERT INTO Ve VALUES(11111002, 33333001, 'J7', 1, 80000, 1, 0)
 INSERT INTO Ve VALUES(11111002, 33333001, 'J8', 1, 80000, 1, 0)
+INSERT INTO Ve VALUES(11111003, 33333012, 'E7', 1, 80000, 1, 0)
+INSERT INTO Ve VALUES(11111003, 33333012, 'E8', 1, 80000, 1, 0)
+INSERT INTO Ve VALUES(11111003, 33333012, 'E9', 1, 80000, 1, 0)
 
 /***** ThongKe *****/
 /*** ID bắt đầu từ 22222001 ***/

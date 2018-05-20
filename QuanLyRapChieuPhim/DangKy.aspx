@@ -15,13 +15,13 @@
                 <input id="fullname" type="text" name="fullname" placeholder="Họ tên" value="" />
                 <input id="birthday" type="text" name="birthday" placeholder="Ngày sinh" value="" />
                 <input id="sex" type="text" name="sex" placeholder="Giới tính (Nam/Nữ)" value="" />
-                <input id="cmnd" type="text" name="cmnd" placeholder="CMND" value="" />
+                <%--<input id="cmnd" type="text" name="cmnd" placeholder="CMND" value="" />--%>
                 <input id="address" type="text" name="address" placeholder="Địa chỉ" value="" />
             </div>
 
             <div class="right" style="right: 0px; top: -28px">
                 <input id="phone" type="text" name="phone" placeholder="Số điện thoại" value="" />
-                <input id="email" type="text" name="email" placeholder="E-mail" value="" />
+                <%--<input id="email" type="text" name="email" placeholder="E-mail" value="" />--%>
                 <input id="username" type="text" name="username" placeholder="Tên đăng nhập" value="" />
                 <input id="password" type="password" name="password" placeholder="Mật khẩu" value="" />
             </div>

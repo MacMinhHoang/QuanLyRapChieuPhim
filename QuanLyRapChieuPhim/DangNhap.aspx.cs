@@ -15,8 +15,6 @@ namespace QuanLyRapChieuPhim
         {
             ErrorMessage1.Visible = false;
             ErrorMessage2.Visible = false;
-
-
         }
 
         protected void btn_LoginKH_Click(object sender, ImageClickEventArgs e)
@@ -72,6 +70,9 @@ namespace QuanLyRapChieuPhim
                         break;
                     case "QL":
                         Response.Redirect("QuanLy.aspx");
+                        break;
+                    case "KT":
+                        //Response.Redirect("KeToan.aspx");
                         break;
                     default:
                         ErrorMessage2.Text = "Mục này chỉ dành cho nhân viên. Xin hãy kéo lên";

@@ -40,6 +40,8 @@ namespace QuanLyRapChieuPhim
             ql.SDT = tb_SDT.Text;
 
             quanLyBUS.SuaThongTin(ql);
+            string strBuilder = "<script language='javascript'>alert('" + "Cập nhật thành công" + "')</script>";
+            Response.Write(strBuilder);
         }
     }
 }

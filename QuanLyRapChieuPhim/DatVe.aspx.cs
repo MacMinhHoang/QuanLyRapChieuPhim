@@ -16,6 +16,7 @@ namespace QuanLyRapChieuPhim
         private static string gioChieu;
         private static string dayNgoi;
         private static string gheNgoi;
+        private static bool thanhToan = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -113,15 +114,28 @@ namespace QuanLyRapChieuPhim
             ve.MaSuatChieu = masuat;
             ve.Ghe = dayNgoi + gheNgoi;
             ve.LoaiVe = xacDinhLoaiVe();
-            ve.GiaVe = (ve.LoaiVe) ? 50000 : 80000;
-            ve.ThanhToan = false;
+            ve.GiaVe = (ve.LoaiVe) ? 80000 : 50000;
+            ve.ThanhToan = thanhToan;
             ve.TinhTrang = false;
 
             veBUS.ThemVe(ve);
 
-            string strBuilder = "<script language='javascript'>alert('" + "Đặt vé thành công" + "')</script>";
+            KhachHangDTO khachHangDTO = khachHangBUS.LayThongTin(Session["TenDangNhap"].ToString());
+            int bonus = (int)(ve.GiaVe / 10000);
+            khachHangDTO.DiemTichLuy += bonus;
+            khachHangBUS.SuaThongTin(khachHangDTO);
+
+            string strBuilder = "<script language='javascript'>alert('" + "Đặt vé thành công. Bạn được cộng " + bonus.ToString() + " điểm." + "')</script>";
             Response.Write(strBuilder);
-            Server.Transfer("PhimDangChieu.aspx");
+
+            List<VeDTO> listVe = veBUS.LayDanhSach();
+            int id = listVe[listVe.Count - 1].MaVe;
+            Server.Transfer("ThongTinVe.aspx?id=" + id.ToString());
+        }
+
+        protected void ddl_thanhtoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            thanhToan = (ddl_thanhtoan.SelectedValue == "1");
         }
     }
 }

@@ -68,6 +68,7 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 PhimDTO phimDTO = new PhimDTO();
+                phimDTO.MaPhim = Convert.ToInt32(dr["MaPhim"]);
                 phimDTO.Ten = dr["Ten"].ToString();
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
@@ -77,6 +78,7 @@ namespace DAO
                 phimDTO.NamSanXuat = Convert.ToInt32(dr["NamSanXuat"]);
                 phimDTO.Poster = dr["Poster"].ToString();
                 phimDTO.Trailer = dr["Trailer"].ToString();
+                listPhimDTO.Add(phimDTO);
             }
             return listPhimDTO;
         }
@@ -90,6 +92,7 @@ namespace DAO
             foreach (DataRow dr in dt.Rows)
             {
                 PhimDTO phimDTO = new PhimDTO();
+                phimDTO.MaPhim = Convert.ToInt32(dr["MaPhim"]);
                 phimDTO.Ten = dr["Ten"].ToString();
                 phimDTO.TheLoai = dr["TheLoai"].ToString();
                 phimDTO.DaoDien = dr["DaoDien"].ToString();
@@ -150,6 +153,26 @@ namespace DAO
             }
 
             return listTen;
+        }
+
+        public List<int> LayTop3()
+        {
+            List<int> listMaPhim = new List<int>();
+
+            String query = "SELECT P.MaPhim, COUNT(V.MaVe) AS SoVe FROM Phim P, Ve V, SuatChieu SC " +
+                "WHERE V.MaSuatChieu = SC.MaSuatChieu AND SC.MaPhim = P.MaPhim GROUP BY P.MaPhim ORDER BY SoVe DESC";
+            DataTable dt = DataProvider.ExecuteQuery(query);
+            int count = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (count > 3)
+                    break;
+                int maphim = Convert.ToInt32(dr["MaPhim"]);
+                listMaPhim.Add(maphim);
+                count++;
+            }
+
+            return listMaPhim;
         }
     }
 }

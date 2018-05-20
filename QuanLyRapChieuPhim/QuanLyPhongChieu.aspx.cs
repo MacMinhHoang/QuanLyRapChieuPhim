@@ -48,6 +48,8 @@ namespace QuanLyRapChieuPhim
             tbTenPC.Text = "";
             tbSoLuongCho.Text = "";
             tbTinhTrang.Text = "";
+            string strBuilder = "<script language='javascript'>alert('" + "Thêm thành công" + "')</script>";
+            Response.Write(strBuilder);
             FilGVDanhSachPhongChieu();
         }
 
@@ -56,6 +58,8 @@ namespace QuanLyRapChieuPhim
             PhongChieuBUS pcBUS = new PhongChieuBUS();
             TableCell cell = gvDanhSachPhongChieu.Rows[e.RowIndex].Cells[0];
             pcBUS.XoaPhongChieu(Convert.ToInt32(cell.Text));
+            string strBuilder = "<script language='javascript'>alert('" + "Xóa thành công" + "')</script>";
+            Response.Write(strBuilder);
             FilGVDanhSachPhongChieu();
         }
     }

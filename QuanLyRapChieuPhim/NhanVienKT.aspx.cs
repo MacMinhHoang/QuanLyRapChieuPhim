@@ -41,6 +41,8 @@ namespace QuanLyRapChieuPhim
             nv.SDT = tb_SDT.Text;
 
             nhanVienKTBUS.SuaThongTin(nv);
+            string strBuilder = "<script language='javascript'>alert('" + "Cập nhật thành công" + "')</script>";
+            Response.Write(strBuilder);
         }
     }
 }

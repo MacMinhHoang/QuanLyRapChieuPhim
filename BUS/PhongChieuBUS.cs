@@ -37,7 +37,7 @@ namespace BUS
             return phongChieuDAO.LayDanhSachMaPhongChieu();
         }
 
-        public PhongChieuDTO LayThongTin(string mapc)
+        public PhongChieuDTO LayThongTin(int mapc)
         {
             return phongChieuDAO.LayThongTin(mapc);
         }

@@ -22,6 +22,11 @@ namespace BUS
             return suatChieuDAO.LayDanhSach();
         }
 
+        public SuatChieuDTO LayThongTin(int id)
+        {
+            return suatChieuDAO.LayThongTin(id);
+        }
+
         public int LayMaSuatChieu(string ngay, string gio, int phong)
         {
             return suatChieuDAO.LayMaSuatChieu(ngay, gio, phong);

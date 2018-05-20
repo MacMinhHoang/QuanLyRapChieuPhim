@@ -11,5 +11,32 @@ namespace QuanLyRapChieuPhim {
     
     
     public partial class _Default {
+        
+        /// <summary>
+        /// MyPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel MyPanel1;
+        
+        /// <summary>
+        /// MyPanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel MyPanel2;
+        
+        /// <summary>
+        /// MyPanel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel MyPanel3;
     }
 }
