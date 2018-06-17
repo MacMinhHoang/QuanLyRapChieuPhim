@@ -21,7 +21,7 @@ namespace DAO
                 ThongKeDTO thongKeDTO = new ThongKeDTO();
                 thongKeDTO.MaHoatDong = Convert.ToInt32(dr["MaHoatDong"]);
                 thongKeDTO.TenHoatDong = dr["TenHoatDong"].ToString();
-                thongKeDTO.ChiPhi = (float)Convert.ToDouble(dt.Rows[0]["ChiPhi"]);
+                thongKeDTO.ChiPhi = (float)Convert.ToDouble(dr["ChiPhi"]);
                 listThongKeDTO.Add(thongKeDTO);
             }
             return listThongKeDTO;
